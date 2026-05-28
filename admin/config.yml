@@ -1,0 +1,24 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "img"
+public_folder: "/img"
+
+collections:
+  - name: "fotos"
+    label: "Fotos de la Galeria"
+    files:
+      - file: "datos.json"
+        name: "catalogo"
+        label: "Catálogo de fotos"
+        fields:
+          - name: "fotos"
+            label: "Llista d'imatges"
+            widget: "list"
+            summary: "{{fields.descripcion}} ({{fields.categoria}})"
+            fields:
+              - {label: "Arxiu", name: "archivo", widget: "image", choose_url: false}
+              - {label: "Categoria", name: "categoria", widget: "select", options: ["astro", "paisatge", "macro", "moments"]}
+              - {label: "Descripció", name: "descripcion", widget: "string"}
+              - {label: "Data (AAAA-MM)", name: "fecha", widget: "string", hint: "Exemple: 2026-05"}
