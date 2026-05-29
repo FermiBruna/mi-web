@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: FermiBruna/mi-web
+  name: git-gateway
   branch: main
 
 media_folder: "img"
@@ -13,13 +12,29 @@ collections:
       - name: "catalogo"
         label: "Catálogo de fotos"
         file: "datos.json"
+        format: "json"
         fields:
           - name: "fotos"
             label: "Llista d'imatges"
             widget: "list"
             summary: "{{fields.descripcion}} ({{fields.categoria}})"
             fields:
-              - { label: "Arxiu", name: "archivo", widget: "image", choose_url: false }
-              - { label: "Categoria", name: "categoria", widget: "select", options: ["astro", "paisatge", "macro", "moments"] }
-              - { label: "Descripció", name: "descripcion", widget: "string" }
-              - { label: "Data (AAAA-MM)", name: "fecha", widget: "string", hint: "Exemple: 2026-05" }
+              - label: "Arxiu"
+                name: "archivo"
+                widget: "image"
+                choose_url: false
+              - label: "Categoria"
+                name: "categoria"
+                widget: "select"
+                options:
+                  - "astro"
+                  - "paisatge"
+                  - "macro"
+                  - "moments"
+              - label: "Descripció"
+                name: "descripcion"
+                widget: "string"
+              - label: "Data (AAAA-MM)"
+                name: "fecha"
+                widget: "string"
+                hint: "Exemple: 2026-05"
