@@ -4,745 +4,84 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio de Fotografia – Fermí Bruna</title>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#494949;
-  --surface:#3a3a3a;
-  --text:#f0f0f0;
-  --text-strong:#fff;
-  --muted:#ccc;
-  --font-title:'Playfair Display',serif;
-  --font-body:'Lato',sans-serif;
-  --shadow:0 10px 30px rgba(0,0,0,.3);
-}
-html{scroll-behavior:smooth}
-body{
-  font-family:var(--font-body);
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.6;
-  overflow-x:hidden;
-}
-h1,h2,h3{
-  font-family:var(--font-title);
-  color:var(--text-strong);
-}
-a{text-decoration:none;color:inherit}
-button{font:inherit}
-.container{
-  max-width:1200px;
-  margin:0 auto;
-  padding:0 1.5rem;
-}
-
-.navbar{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  z-index:1000;
-  background:rgba(73,73,73,.2);
-  backdrop-filter:blur(18px);
-}
-.navbar .container{
-  height:70px;
-  display:flex;
-  align-items:center;
-  gap:2rem;
-  justify-content:space-between;
-}
-.logo img{
-  height:55px;
-  width:auto;
-  max-width:250px;
-  object-fit:contain;
-}
-.nav-right{
-  margin-left:auto;
-  display:flex;
-  align-items:center;
-  gap:1rem;
-  min-width:0;
-}
-.nav-links{
-  list-style:none;
-  display:flex;
-  gap:2.25rem;
-  align-items:center;
-}
-.nav-links a{
-  color:var(--text);
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:.92rem;
-  position:relative;
-  white-space:nowrap;
-}
-.nav-links a::after{
-  content:'';
-  position:absolute;
-  left:0;
-  bottom:-4px;
-  width:0;
-  height:1px;
-  background:#fff;
-  transition:width .3s ease;
-}
+:root{--bg:#494949;--surface:#3a3a3a;--text:#f0f0f0;--text-strong:#fff;--muted:#ccc;--font-title:'Playfair Display',serif;--font-body:'Lato',sans-serif;--shadow:0 10px 30px rgba(0,0,0,.3)}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:var(--font-title);color:var(--text-strong)}
+a{text-decoration:none;color:inherit}button{font:inherit}.container{max-width:1200px;margin:0 auto;padding:0 1.5rem}
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(73,73,73,.2);backdrop-filter:blur(18px)}
+.navbar .container{height:70px;display:flex;align-items:center;gap:2rem;justify-content:space-between}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:1rem;min-width:0}
+.lang-switcher{display:flex;align-items:center;gap:.45rem;padding:.35rem .55rem;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.06);backdrop-filter:blur(10px)}
+.lang-switcher button{background:transparent;border:none;color:rgba(255,230,90,.55);cursor:pointer;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;padding:.12rem .26rem;opacity:1;white-space:nowrap}
+.lang-switcher button.active{color:#ffd84d;font-weight:700}
+.lang-switcher span{color:rgba(255,230,90,.25);font-size:.78rem;flex:0 0 auto}
+.nav-links{list-style:none;display:flex;gap:2.25rem;align-items:center}
+.nav-links a{color:var(--text);text-transform:uppercase;letter-spacing:2px;font-size:.92rem;position:relative;white-space:nowrap}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:#fff;transition:width .3s ease}
 .nav-links a:hover::after{width:100%}
-
-.lang-switcher{
-  display:flex;
-  align-items:center;
-  gap:.45rem;
-  padding:.35rem .55rem;
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:999px;
-  background:rgba(255,255,255,.06);
-  backdrop-filter:blur(10px);
-}
-.lang-switcher button{
-  background:transparent;
-  border:none;
-  color:rgba(255,230,90,.55);
-  cursor:pointer;
-  font-size:.78rem;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  padding:.12rem .26rem;
-  white-space:nowrap;
-}
-.lang-switcher button.active{
-  color:#ffd84d;
-  font-weight:700;
-}
-.lang-switcher span{
-  color:rgba(255,230,90,.25);
-  font-size:.78rem;
-}
-
-.menu-btn{
-  display:none;
-  background:transparent;
-  border:1px solid var(--text);
-  color:var(--text);
-  padding:.5rem 1rem;
-  border-radius:4px;
-  cursor:pointer;
-  font-size:.9rem;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  z-index:1001;
-}
-.mobile-menu{
-  position:fixed;
-  top:70px;
-  right:0;
-  width:50%;
-  background:rgba(73,73,73,.98);
-  backdrop-filter:blur(20px);
-  z-index:999;
-  transform:translateX(100%);
-  transition:transform .3s ease-in-out;
-  padding:2rem 1rem;
-  border-left:1px solid rgba(255,255,255,.15);
-  max-height:calc(100vh - 70px);
-  overflow-y:auto;
-}
+.logo img{height:55px;width:auto;max-width:250px;object-fit:contain}
+.hero{height:100vh;min-height:600px;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url('portada.jpg') center/cover no-repeat;transform:scale(1.18);animation:heroZoom 15s ease-in-out forwards;z-index:0}
+.hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.45);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:900px;padding:0 1rem;animation:fadeUp 2s ease-out}
+@keyframes heroZoom{0%{transform:scale(1.18)}100%{transform:scale(1)}}@keyframes fadeUp{0%{opacity:0;transform:translateY(28px)}100%{opacity:1;transform:translateY(0)}}
+.hero h1{font-size:3.5rem;line-height:1.15;margin-bottom:1rem}.hero p{font-size:1.8rem;font-weight:300;color:rgba(255,255,255,.9);margin-bottom:2rem}.hero .procedencia{font-size:1.2rem;color:rgba(255,255,255,.75);margin-bottom:1rem}
+.btn{display:inline-block;padding:.9rem 2.5rem;border:2px solid #fff;color:#fff;letter-spacing:2px;text-transform:uppercase;font-size:.85rem;background:transparent;cursor:pointer}.btn:hover{background:#fff;color:#333}
+section{padding:5rem 0}.section-eyebrow{text-align:center;color:#fff;text-transform:uppercase;letter-spacing:2px;font-size:.9rem;margin-bottom:.25rem;font-weight:600}.section-title{text-align:center;font-size:2.5rem;margin-bottom:.5rem}.section-title::after{content:'';display:block;width:60px;height:2px;background:#fff;margin:.8rem auto 0}.section-subtitle{text-align:center;font-size:1.2rem;color:var(--muted);margin-bottom:2.5rem;font-weight:300}
+.filter-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-bottom:2rem}
+.filter-btn, .show-all-btn{background:transparent;border:1px solid #fff;color:#fff;padding:.5rem 1.5rem;border-radius:30px;font-family:var(--font-body);font-size:.9rem;cursor:pointer;letter-spacing:1px;text-transform:uppercase}
+.filter-btn.active,.filter-btn:hover, .show-all-btn:hover{background:#fff;color:#333}
+.show-all-btn:disabled{opacity:0.5;cursor:not-allowed}
+.gallery-masonry{column-count:4;column-gap:1.5rem}.gallery-item{break-inside:avoid;margin-bottom:1.5rem;border-radius:6px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;background:#3a3a3a;transition:transform .3s ease,opacity .35s ease;opacity:1}.gallery-item img{width:100%;display:block;transition:transform .3s ease}.gallery-item:hover img{transform:scale(1.03)}.gallery-caption{padding:.65rem .8rem;font-size:.85rem;color:var(--muted);text-align:center}.gallery-item.hidden{display:none}
+.about-content{display:flex;gap:4rem;align-items:center;flex-wrap:wrap;justify-content:center}.about-image{flex:1 1 300px;max-width:400px;border-radius:6px;overflow:hidden;box-shadow:var(--shadow)}.about-image img{width:100%;display:block}.about-text{flex:1 1 500px;max-width:700px}.about-text h3{font-size:2rem;margin-bottom:1rem}.about-text p{margin-bottom:1rem;color:var(--muted);font-weight:300}
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem;margin-top:2rem}.news-card,.collab-card{background:var(--surface);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.1)}.news-card-image,.collab-card img{width:100%;height:180px;object-fit:cover;display:block}.news-card-body{padding:1.5rem}.news-card h3{font-size:1.25rem;margin-bottom:.5rem}.news-date{font-size:.8rem;color:var(--muted);margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px}
+.contact-content{max-width:600px;margin:0 auto}.contact-form{background:var(--surface);padding:2.5rem;border-radius:8px;box-shadow:var(--shadow)}.form-group{margin-bottom:1.5rem}.form-group label{display:block;margin-bottom:.5rem;font-weight:600;color:#fff}.form-group input,.form-group textarea{width:100%;padding:.9rem 1rem;border:1px solid #555;border-radius:4px;font-family:var(--font-body);font-size:1rem;background:#4a4a4a;color:var(--text)}.form-group textarea{min-height:120px;resize:vertical}.submit-btn{background:#fff;color:#333;border:none;padding:1rem 2.5rem;font-size:.9rem;text-transform:uppercase;letter-spacing:2px;cursor:pointer;border-radius:4px;width:100%;font-weight:600}
+.visitors-section{text-align:center;margin:2rem 0;color:var(--muted);font-size:.9rem}.btn-like{background:transparent;border:1px solid #fff;color:#fff;padding:.6rem 1.5rem;border-radius:30px;font-family:var(--font-body);font-size:.9rem;cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin:.5rem;display:inline-flex;align-items:center;gap:.5rem}
+footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2rem 0;font-size:.9rem;border-top:1px solid rgba(255,255,255,.15)}.social-links{display:flex;justify-content:center;gap:1.2rem;margin:1.5rem 0;flex-wrap:wrap}.social-item{display:flex;flex-direction:column;align-items:center;gap:.35rem}.social-links a{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.08);color:var(--text-strong);border:1px solid rgba(255,255,255,.18);transition:transform .2s ease,background .2s ease}.social-links a:hover{transform:scale(1.06);background:rgba(255,255,255,.16)}.social-links svg{width:28px;height:28px;fill:currentColor}.social-name{font-size:.82rem;color:rgba(255,255,255,.8);text-align:center;line-height:1.1;max-width:76px}.social-item.fb1 a{background:#1877F2;color:#fff}.social-item.fb2 a{background:#1877F2;color:#fff}.social-item.ig a{background:#E1306C;color:#fff}.social-item.px a{background:#6364FF;color:#fff}
+.lightbox{position:fixed;inset:0;background:rgba(73,73,73,.95);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility .22s ease}.lightbox.active{opacity:1;visibility:visible;pointer-events:auto}.lightbox-main{position:relative;width:100%;max-width:95%;display:flex;flex-direction:column;align-items:center}.lightbox-center{width:100%;max-height:80vh;display:flex;align-items:center;justify-content:center}.lightbox-center img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 40px rgba(0,0,0,.7);opacity:0;transform:scale(.965);transition:opacity 360ms ease,transform 360ms ease}.lightbox.active .lightbox-center img{opacity:1;transform:scale(1)}
+.lightbox-side{position:absolute;top:50%;transform:translateY(-50%);width:15%;max-width:150px;opacity:.4;filter:brightness(.6);cursor:pointer;border-radius:4px;overflow:hidden;z-index:5;transition:opacity .22s ease,filter .22s ease}.lightbox-side img{width:100%;display:block}.lightbox-side:hover{opacity:.75;filter:brightness(.9)}.lightbox-prev{left:2%}.lightbox-next{right:2%}
+.close-lightbox{position:fixed;top:20px;right:20px;font-size:2rem;background:rgba(0,0,0,0.6);color:#fff;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:20;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.3);transition:transform .2s}
+.close-lightbox:hover{transform:scale(1.1)}
+.lightbox-caption{text-align:center;color:#fff;font-size:1rem;margin-top:1.1rem;max-width:90vw;padding-bottom:5.25rem}
+.lightbox-nav-mobile{display:none}.lightbox-arrow-btn{display:none}
+.audio-overlay{position:absolute;left:50%;bottom:-.35rem;transform:translateX(-50%);display:flex;align-items:center;gap:.65rem;padding:.65rem .9rem;border-radius:999px;background:rgba(20,20,20,.45);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.18);opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:30}.audio-overlay.visible{opacity:1;pointer-events:auto}.audio-overlay input[type=range]{width:120px;accent-color:#fff}.audio-close-btn, .audio-play-btn{width:42px;height:42px;border:none;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;font-size:1rem;display:inline-flex;align-items:center;justify-content:center}
+.audio-controls-mobile{display:none;align-items:center;gap:.5rem}
+/* Botón MENÚ */
+.menu-btn{display:none;background:transparent;border:1px solid var(--text);color:var(--text);padding:.5rem 1rem;border-radius:4px;cursor:pointer;font-size:.9rem;letter-spacing:1px;text-transform:uppercase;z-index:1001}
+/* Menú desplegable */
+.mobile-menu{position:fixed;top:70px;right:0;width:50%;background:rgba(73,73,73,.98);backdrop-filter:blur(20px);z-index:999;transform:translateX(100%);transition:transform 0.3s ease-in-out;padding:2rem 1rem;border-left:1px solid rgba(255,255,255,.15);height:auto;max-height:calc(100vh - 70px);overflow-y:auto}
 .mobile-menu.open{transform:translateX(0)}
-.mobile-menu .nav-links-mobile{
-  list-style:none;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:1.5rem;
-}
-.mobile-menu .nav-links-mobile a{
-  color:var(--text);
-  font-size:1.2rem;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  padding:.5rem;
-  display:block;
-  width:100%;
-  text-align:center;
-}
-.mobile-menu .lang-switcher-mobile{
-  margin-top:1rem;
-  display:flex;
-  justify-content:center;
-}
-
-.hero{
-  height:100vh;
-  min-height:600px;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  overflow:hidden;
-}
-.hero::before{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:url('portada.jpg') center/cover no-repeat;
-  transform:scale(1.18);
-  animation:heroZoom 15s ease-in-out forwards;
-  z-index:0;
-}
-.hero::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.45);
-  z-index:1;
-}
-.hero-content{
-  position:relative;
-  z-index:2;
-  max-width:900px;
-  padding:0 1rem;
-  animation:fadeUp 2s ease-out;
-}
-@keyframes heroZoom{
-  0%{transform:scale(1.18)}
-  100%{transform:scale(1)}
-}
-@keyframes fadeUp{
-  0%{opacity:0;transform:translateY(28px)}
-  100%{opacity:1;transform:translateY(0)}
-}
-.hero h1{
-  font-size:3.5rem;
-  line-height:1.15;
-  margin-bottom:1rem;
-}
-.hero p{
-  font-size:1.8rem;
-  font-weight:300;
-  color:rgba(255,255,255,.9);
-  margin-bottom:2rem;
-}
-.hero .procedencia{
-  font-size:1.2rem;
-  color:rgba(255,255,255,.75);
-  margin-bottom:1rem;
-}
-.btn{
-  display:inline-block;
-  padding:.9rem 2.5rem;
-  border:2px solid #fff;
-  color:#fff;
-  letter-spacing:2px;
-  text-transform:uppercase;
-  font-size:.85rem;
-  background:transparent;
-  cursor:pointer;
-}
-.btn:hover{
-  background:#fff;
-  color:#333;
-}
-
-section{padding:5rem 0}
-.section-eyebrow{
-  text-align:center;
-  color:#fff;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:.9rem;
-  margin-bottom:.25rem;
-  font-weight:600;
-}
-.section-title{
-  text-align:center;
-  font-size:2.5rem;
-  margin-bottom:.5rem;
-}
-.section-title::after{
-  content:'';
-  display:block;
-  width:60px;
-  height:2px;
-  background:#fff;
-  margin:.8rem auto 0;
-}
-.section-subtitle{
-  text-align:center;
-  font-size:1.2rem;
-  color:var(--muted);
-  margin-bottom:2.5rem;
-  font-weight:300;
-}
-
-.filter-buttons{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:1rem;
-  margin-bottom:2rem;
-}
-.filter-btn,
-.show-all-btn{
-  background:transparent;
-  border:1px solid #fff;
-  color:#fff;
-  padding:.5rem 1.5rem;
-  border-radius:30px;
-  font-family:var(--font-body);
-  font-size:.9rem;
-  cursor:pointer;
-  letter-spacing:1px;
-  text-transform:uppercase;
-}
-.filter-btn.active,
-.filter-btn:hover,
-.show-all-btn:hover{
-  background:#fff;
-  color:#333;
-}
-.show-all-btn:disabled{
-  opacity:.5;
-  cursor:not-allowed;
-}
-
-.gallery-masonry{
-  column-count:4;
-  column-gap:1.5rem;
-}
-.gallery-item{
-  break-inside:avoid;
-  margin-bottom:1.5rem;
-  border-radius:6px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  cursor:pointer;
-  background:#3a3a3a;
-  transition:transform .3s ease,opacity .35s ease;
-}
-.gallery-item img{
-  width:100%;
-  display:block;
-  transition:transform .3s ease;
-}
-.gallery-item:hover img{transform:scale(1.03)}
-.gallery-caption{
-  padding:.65rem .8rem;
-  font-size:.85rem;
-  color:var(--muted);
-  text-align:center;
-}
-.gallery-message{
-  text-align:center;
-  color:var(--muted);
-  padding:2rem;
-  font-size:1.05rem;
-}
-
-.about-content{
-  display:flex;
-  gap:4rem;
-  align-items:center;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-.about-image{
-  flex:1 1 300px;
-  max-width:400px;
-  border-radius:6px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-}
-.about-image img{
-  width:100%;
-  display:block;
-}
-.about-text{
-  flex:1 1 500px;
-  max-width:700px;
-}
-.about-text h3{
-  font-size:2rem;
-  margin-bottom:1rem;
-}
-.about-text p{
-  margin-bottom:1rem;
-  color:var(--muted);
-  font-weight:300;
-}
-
-.news-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:2rem;
-  margin-top:2rem;
-}
-.news-card,
-.collab-card{
-  background:var(--surface);
-  border-radius:8px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  border:1px solid rgba(255,255,255,.1);
-}
-.news-card-image,
-.collab-card img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  display:block;
-}
-.news-card-body{padding:1.5rem}
-.news-card h3{font-size:1.25rem;margin-bottom:.5rem}
-.news-date{
-  font-size:.8rem;
-  color:var(--muted);
-  margin-bottom:1rem;
-  text-transform:uppercase;
-  letter-spacing:1px;
-}
-
-.contact-content{
-  max-width:600px;
-  margin:0 auto;
-}
-.contact-form{
-  background:var(--surface);
-  padding:2.5rem;
-  border-radius:8px;
-  box-shadow:var(--shadow);
-}
-.form-group{margin-bottom:1.5rem}
-.form-group label{
-  display:block;
-  margin-bottom:.5rem;
-  font-weight:600;
-  color:#fff;
-}
-.form-group input,
-.form-group textarea{
-  width:100%;
-  padding:.9rem 1rem;
-  border:1px solid #555;
-  border-radius:4px;
-  font-family:var(--font-body);
-  font-size:1rem;
-  background:#4a4a4a;
-  color:var(--text);
-}
-.form-group textarea{
-  min-height:120px;
-  resize:vertical;
-}
-.submit-btn{
-  background:#fff;
-  color:#333;
-  border:none;
-  padding:1rem 2.5rem;
-  font-size:.9rem;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  cursor:pointer;
-  border-radius:4px;
-  width:100%;
-  font-weight:600;
-}
-
-.visitors-section{
-  text-align:center;
-  margin:2rem 0;
-  color:var(--muted);
-  font-size:.9rem;
-}
-.btn-like{
-  background:transparent;
-  border:1px solid #fff;
-  color:#fff;
-  padding:.6rem 1.5rem;
-  border-radius:30px;
-  font-family:var(--font-body);
-  font-size:.9rem;
-  cursor:pointer;
-  letter-spacing:1px;
-  text-transform:uppercase;
-  margin:.5rem;
-  display:inline-flex;
-  align-items:center;
-  gap:.5rem;
-}
-
-footer{
-  background:#2a2a2a;
-  color:rgba(255,255,255,.6);
-  text-align:center;
-  padding:2rem 0;
-  font-size:.9rem;
-  border-top:1px solid rgba(255,255,255,.15);
-}
-.social-links{
-  display:flex;
-  justify-content:center;
-  gap:1.2rem;
-  margin:1.5rem 0;
-  flex-wrap:wrap;
-}
-.social-item{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:.35rem;
-}
-.social-links a{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  width:58px;
-  height:58px;
-  border-radius:50%;
-  background:rgba(255,255,255,.08);
-  color:var(--text-strong);
-  border:1px solid rgba(255,255,255,.18);
-  transition:transform .2s ease,background .2s ease;
-}
-.social-links a:hover{
-  transform:scale(1.06);
-  background:rgba(255,255,255,.16);
-}
-.social-links svg{
-  width:28px;
-  height:28px;
-  fill:currentColor;
-}
-.social-name{
-  font-size:.82rem;
-  color:rgba(255,255,255,.8);
-  text-align:center;
-  line-height:1.1;
-  max-width:76px;
-}
-.social-item.fb1 a,
-.social-item.fb2 a{background:#1877F2;color:#fff}
-.social-item.ig a{background:#E1306C;color:#fff}
-.social-item.px a{background:#6364FF;color:#fff}
-
-.lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(73,73,73,.95);
-  z-index:2000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  visibility:hidden;
-  pointer-events:none;
-  transition:opacity .22s ease,visibility .22s ease;
-}
-.lightbox.active{
-  opacity:1;
-  visibility:visible;
-  pointer-events:auto;
-}
-.lightbox-main{
-  position:relative;
-  width:100%;
-  max-width:95%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-.lightbox-center{
-  width:100%;
-  max-height:80vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.lightbox-center img{
-  max-width:100%;
-  max-height:80vh;
-  object-fit:contain;
-  border-radius:4px;
-  box-shadow:0 20px 40px rgba(0,0,0,.7);
-}
-.lightbox-caption{
-  text-align:center;
-  color:#fff;
-  font-size:1rem;
-  margin-top:1.1rem;
-  max-width:90vw;
-  padding-bottom:5.25rem;
-}
-.close-lightbox{
-  position:fixed;
-  top:20px;
-  right:20px;
-  font-size:2rem;
-  background:rgba(0,0,0,.6);
-  color:#fff;
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  cursor:pointer;
-  z-index:20;
-  backdrop-filter:blur(8px);
-  border:1px solid rgba(255,255,255,.3);
-}
-.lightbox-side{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  width:15%;
-  max-width:150px;
-  opacity:.4;
-  filter:brightness(.6);
-  cursor:pointer;
-  border-radius:4px;
-  overflow:hidden;
-  z-index:5;
-}
-.lightbox-side img{
-  width:100%;
-  display:block;
-}
-.lightbox-side:hover{
-  opacity:.75;
-  filter:brightness(.9);
-}
-.lightbox-prev{left:2%}
-.lightbox-next{right:2%}
-.lightbox-nav-mobile{display:none}
-.lightbox-arrow-btn{display:none}
-
-.audio-overlay{
-  position:absolute;
-  left:50%;
-  bottom:-.35rem;
-  transform:translateX(-50%);
-  display:flex;
-  align-items:center;
-  gap:.65rem;
-  padding:.65rem .9rem;
-  border-radius:999px;
-  background:rgba(20,20,20,.45);
-  backdrop-filter:blur(10px);
-  border:1px solid rgba(255,255,255,.18);
-  opacity:0;
-  pointer-events:none;
-  transition:opacity .35s ease;
-  z-index:30;
-}
-.audio-overlay.visible{
-  opacity:1;
-  pointer-events:auto;
-}
-.audio-overlay input[type=range]{width:120px;accent-color:#fff}
-.audio-close-btn,
-.audio-play-btn{
-  width:42px;
-  height:42px;
-  border:none;
-  border-radius:999px;
-  background:rgba(255,255,255,.14);
-  color:#fff;
-  cursor:pointer;
-  font-size:1rem;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-}
-.audio-controls-mobile{
-  display:none;
-  align-items:center;
-  gap:.5rem;
-}
-
-@media (max-width:900px){
-  .gallery-masonry{column-count:2}
-}
+.mobile-menu .nav-links-mobile{list-style:none;display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+.mobile-menu .nav-links-mobile a{color:var(--text);font-size:1.2rem;text-transform:uppercase;letter-spacing:2px;padding:.5rem;display:block;width:100%;text-align:center}
+.mobile-menu .lang-switcher-mobile{margin-top:1rem;display:flex;justify-content:center}
+@media (max-width:900px){.gallery-masonry{column-count:2}}
 @media (max-width:768px){
   .nav-right{display:none}
   .menu-btn{display:block}
-  .hero h1{font-size:2.5rem}
-  .hero p{font-size:1.2rem}
-  section{padding:3rem 0}
-  .section-title{font-size:1.8rem}
-  .about-content{
-    flex-direction:column;
-    text-align:center;
-  }
-  .about-image{
-    max-width:250px;
-    margin:0 auto;
-  }
-  .mobile-menu{width:75%}
-  .lightbox-side{display:none}
-  .lightbox-main{padding:0 1rem}
-  .lightbox-caption{
-    padding-bottom:0;
-    margin-top:.8rem;
-  }
-  .lightbox-nav-mobile{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    width:100%;
-    max-width:520px;
-    margin-top:1rem;
-    gap:.5rem;
-  }
-  .lightbox-arrow-btn{
-    display:inline-flex;
-    width:48px;
-    height:48px;
-    border:1px solid rgba(255,255,255,.35);
-    border-radius:999px;
-    background:rgba(255,255,255,.08);
-    color:#fff;
-    align-items:center;
-    justify-content:center;
-    font-size:1.4rem;
-    line-height:1;
-    cursor:pointer;
-    backdrop-filter:blur(10px);
-    flex:0 0 48px;
-  }
+  .hero h1{font-size:2.5rem}.hero p{font-size:1.2rem}section{padding:3rem 0}.section-title{font-size:1.8rem}.about-content{flex-direction:column;text-align:center}.about-image{max-width:250px;margin:0 auto}
+  .lightbox-side{display:none}.lightbox-main{padding:0 1rem}.lightbox-caption{padding-bottom:0;margin-top:.8rem}
+  .lightbox-nav-mobile{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:520px;margin-top:1rem;gap:.5rem}
+  .lightbox-arrow-btn{display:inline-flex;width:48px;height:48px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(255,255,255,.08);color:#fff;align-items:center;justify-content:center;font-size:1.4rem;line-height:1;cursor:pointer;backdrop-filter:blur(10px);flex:0 0 48px}
+  .lightbox-arrow-btn:active{transform:scale(.96)}
   .audio-overlay{display:none!important}
   .audio-controls-mobile{display:flex}
-  .close-lightbox{
-    top:15px;
-    right:15px;
-    width:40px;
-    height:40px;
-    font-size:1.8rem;
-  }
+  footer{padding-bottom:2rem}
+  .close-lightbox{top:15px;right:15px;width:40px;height:40px;font-size:1.8rem}
 }
-@media (max-width:600px){
-  .gallery-masonry{column-count:1}
-}
+@media (max-width:600px){.gallery-masonry{column-count:1}}
 </style>
 </head>
-
 <body>
-
 <nav class="navbar">
   <div class="container">
     <a href="#inicio" class="logo"><img src="Logo.png" alt="Logo"></a>
-
     <button class="menu-btn" id="menuBtn" aria-label="Menú">MENÚ</button>
-
     <div class="nav-right">
       <ul class="nav-links" id="navLinks">
         <li><a href="#inicio" data-i18n="nav_inicio">Inici</a></li>
@@ -752,7 +91,6 @@ footer{
         <li><a href="#noticies" data-i18n="nav_noticies">Notícies</a></li>
         <li><a href="#contacto" data-i18n="nav_contacto">Contacte</a></li>
       </ul>
-
       <div class="lang-switcher" id="langSwitcherDesktop">
         <button type="button" class="active" data-lang="ca" aria-label="Canviar a català">CAT</button><span>|</span>
         <button type="button" data-lang="es" aria-label="Cambiar a español">ES</button><span>|</span>
@@ -760,7 +98,6 @@ footer{
       </div>
     </div>
   </div>
-
   <div class="mobile-menu" id="mobileMenu">
     <ul class="nav-links-mobile">
       <li><a href="#inicio" data-i18n="nav_inicio">Inici</a></li>
@@ -770,7 +107,6 @@ footer{
       <li><a href="#noticies" data-i18n="nav_noticies">Notícies</a></li>
       <li><a href="#contacto" data-i18n="nav_contacto">Contacte</a></li>
     </ul>
-
     <div class="lang-switcher lang-switcher-mobile" id="langSwitcherMobile">
       <button type="button" class="active" data-lang="ca" aria-label="Canviar a català">CAT</button><span>|</span>
       <button type="button" data-lang="es" aria-label="Cambiar a español">ES</button><span>|</span>
@@ -779,639 +115,244 @@ footer{
   </div>
 </nav>
 
-<section id="inicio" class="hero">
-  <div class="hero-content">
-    <p class="procedencia" data-i18n="hero_procedencia">Des de València</p>
-    <h1 data-i18n="hero_title">Fotografia per als sentits</h1>
-    <p data-i18n="hero_subtitle">Benvingut al món visual de Fermí Bruna - fotografia</p>
-    <a href="#galeria" class="btn" data-i18n="hero_btn">Galeria</a>
-  </div>
-</section>
+<section id="inicio" class="hero"><div class="hero-content"><p class="procedencia" data-i18n="hero_procedencia">Des de València</p><h1 data-i18n="hero_title">Fotografia per als sentits</h1><p data-i18n="hero_subtitle">Benvingut al món visual de Fermí Bruna - fotografia</p><a href="#galeria" class="btn" data-i18n="hero_btn">Galeria</a></div></section>
 
 <section id="galeria" class="container">
   <p class="section-eyebrow" data-i18n="gal_eyebrow">Galeria</p>
   <h2 class="section-title" data-i18n="gal_title">Un passeig visual</h2>
   <p class="section-subtitle" data-i18n="gal_subtitle">Un mosaic inicial amb una selecció de fotografies. Pots punxar qualsevol imatge per veure-la en gran.</p>
-
   <div class="filter-buttons">
     <button class="filter-btn" data-filter="astro" data-i18n="filter_astro" aria-label="Filtrar astrofotografia">Astrofotografia</button>
-    <button class="filter-btn" data-filter="paisatge" data-i18n="filter_land" aria-label="Filtrar paisatge">Paisatge</button>
+    <button class="filter-btn" data-filter="paisatge" data-i18n="filter_land" aria-label="Filtrar paisatges">Paisatge</button>
     <button class="filter-btn" data-filter="macro" data-i18n="filter_macro" aria-label="Filtrar macro">Macro</button>
     <button class="filter-btn" data-filter="moments" data-i18n="filter_moments" aria-label="Filtrar moments">Moments</button>
     <button class="show-all-btn" id="showAllBtn" data-i18n="show_all" aria-label="Mostrar totes les fotografies">Veure totes</button>
   </div>
-
   <div class="gallery-masonry" id="galleryGrid"></div>
 </section>
 
-<section id="sobre-mi" class="container">
-  <h2 class="section-title" data-i18n="about_title">Sobre mi</h2>
+<section id="sobre-mi" class="container"><h2 class="section-title" data-i18n="about_title">Sobre mi</h2><div class="about-content"><div class="about-image"><img src="jo.jpg" alt="Fermí Bruna" loading="lazy"></div><div class="about-text"><h3 data-i18n="about_hi">Hola, soc Fermí Bruna</h3><p data-i18n="about_quote">“Ets tu i la teua càmera. Les limitacions que n´hi ha a les teues fotografies són les mateixes que pugues tenir com a persona, perquè el que veiem és el que som.”</p><p data-i18n="about_p1">Fotògraf aficionat apassionat per capturar la bellesa del quotidià. Aquest espai és el meu quadern visual, on compartesc paisatges, retrats i moments que m'inspiren. No busque vendre, només connectar a través de la imatge.</p><p data-i18n="about_p2">Cada fotografia té una història. Espere que en recórrer la galeria pugues sentir una mica del que jo vaig experimentar en disparar.</p></div></div></section>
 
-  <div class="about-content">
-    <div class="about-image">
-      <img src="jo.jpg" alt="Fermí Bruna" loading="lazy">
-    </div>
+<section id="mirades" class="container"><p class="section-eyebrow" data-i18n="mirades_eyebrow">Mirades amigues</p><h2 class="section-title" data-i18n="mirades_title">Altres maneres de mirar</h2><p class="section-subtitle" data-i18n="mirades_subtitle">Companys i companyes de fotografia amb qui compartisc camins, converses i aprenentatges.</p><div class="news-grid" id="collab-container"><div class="collab-card"><img src="https://picsum.photos/id/177/400/300" alt="Amic Joan" loading="lazy"><div class="news-card-body"><h3 data-i18n="collab1_title">Amic Joan</h3><p data-i18n="collab1_text">Fotògraf de natura i amic de llargues caminades per la serra.</p></div></div><div class="collab-card"><img src="https://picsum.photos/id/319/400/300" alt="Amiga Maria" loading="lazy"><div class="news-card-body"><h3 data-i18n="collab2_title">Amiga Maria</h3><p data-i18n="collab2_text">Especialista en retrats urbans amb una mirada única.</p></div></div></div></section>
 
-    <div class="about-text">
-      <h3 data-i18n="about_hi">Hola, soc Fermí Bruna</h3>
-      <p data-i18n="about_quote">“Ets tu i la teua càmera. Les limitacions que n´hi ha a les teues fotografies són les mateixes que pugues tenir com a persona, perquè el que veiem és el que som.”</p>
-      <p data-i18n="about_p1">Fotògraf aficionat apassionat per capturar la bellesa del quotidià. Aquest espai és el meu quadern visual, on compartesc paisatges, retrats i moments que m'inspiren. No busque vendre, només connectar a través de la imatge.</p>
-      <p data-i18n="about_p2">Cada fotografia té una història. Espere que en recórrer la galeria pugues sentir una mica del que jo vaig experimentar en disparar.</p>
-    </div>
-  </div>
-</section>
+<section id="noticies" class="container"><p class="section-eyebrow" data-i18n="news_eyebrow">Notícies</p><h2 class="section-title" data-i18n="news_title">Actualitat fotogràfica</h2><p class="section-subtitle" data-i18n="news_subtitle">Esdeveniments, cites visuals i notícies relacionades amb la fotografia, el cel i la cultura visual.</p><div class="news-grid" id="news-container"><div class="news-card"><img class="news-card-image" src="img/eclipsi_noticia.jpg" alt="Eclipsi total de sol" loading="lazy"><div class="news-card-body"><h3 data-i18n="news1_title">Eclipsi total de sol el 12 d'agost de 2026</h3><div class="news-date" data-i18n="news1_date">Maig 2026</div><p data-i18n="news1_text">El pròxim 12 d'agost, un eclipsi total de sol serà visible des de la península ibèrica.</p></div></div><div class="news-card"><img class="news-card-image" src="img/wordpres_noticia.jpg" alt="World Press Photo 2026" loading="lazy"><div class="news-card-body"><h3 data-i18n="news2_title">Carol Guzy guanya el World Press Photo 2026</h3><div class="news-date" data-i18n="news2_date">Abril 2026</div><p data-i18n="news2_text">La fotoperiodista nord-americana Carol Guzy ha sigut guardonada amb el prestigiós premi.</p></div></div><div class="news-card"><img class="news-card-image" src="img/valencia_photo.jpg" alt="ValenciaPhoto 2026" loading="lazy"><div class="news-card-body"><h3 data-i18n="news3_title">ValenciaPhoto 2026: el Mediterrani com a pont fotogràfic</h3><div class="news-date" data-i18n="news3_date">Maig 2026</div><p data-i18n="news3_text">La cinquena edició d'este festival internacional de fotografia se celebra a València fins al 31 de juliol.</p></div></div></div></section>
 
-<section id="mirades" class="container">
-  <p class="section-eyebrow" data-i18n="mirades_eyebrow">Mirades amigues</p>
-  <h2 class="section-title" data-i18n="mirades_title">Altres maneres de mirar</h2>
-  <p class="section-subtitle" data-i18n="mirades_subtitle">Companys i companyes de fotografia amb qui compartisc camins, converses i aprenentatges.</p>
+<section id="contacto" class="container"><h2 class="section-title" data-i18n="contact_title">Contacte</h2><p class="section-subtitle" data-i18n="contact_subtitle">Deixa'm un missatge</p><div class="contact-content"><form class="contact-form" id="contactForm"><input type="hidden" name="access_key" value="77cecff0-5540-4e90-adb8-6bf326f88f52"><input type="hidden" name="subject" value="Nou missatge des del portfolio de Fermí Bruna"><input type="hidden" name="from_name" value="Portfolio Fermí Bruna"><div class="form-group"><label for="nombre" data-i18n="form_name_label">Nom</label><input type="text" id="nombre" name="Nom" placeholder="Deixa el teu nom" data-i18n-placeholder="form_name_ph" required></div><div class="form-group"><label for="email" data-i18n="form_email_label">Correu electrònic</label><input type="email" id="email" name="Email" placeholder="exemple@correu.com" data-i18n-placeholder="form_email_ph" required></div><div class="form-group"><label for="mensaje" data-i18n="form_msg_label">Missatge</label><textarea id="mensaje" name="Missatge" placeholder="Escriu el teu missatge..." data-i18n-placeholder="form_msg_ph" required></textarea></div><button type="submit" class="submit-btn" data-i18n="form_submit">Enviar missatge</button><div id="form-message"></div></form></div></section>
 
-  <div class="news-grid" id="collab-container">
-    <div class="collab-card">
-      <img src="https://picsum.photos/id/177/400/300" alt="Amic Joan" loading="lazy">
-      <div class="news-card-body">
-        <h3 data-i18n="collab1_title">Amic Joan</h3>
-        <p data-i18n="collab1_text">Fotògraf de natura i amic de llargues caminades per la serra.</p>
-      </div>
-    </div>
+<div class="visitors-section container" id="visitorsContainer"><p><span data-i18n="visits_label">Visites</span>: <span id="visitCounter">0</span></p><button class="btn-like" id="likeButton" aria-label="M'agrada"><span id="likeIcon">❤️</span><span data-i18n="like_btn">M'agrada</span> (<span id="likeCounter">0</span>)</button></div>
 
-    <div class="collab-card">
-      <img src="https://picsum.photos/id/319/400/300" alt="Amiga Maria" loading="lazy">
-      <div class="news-card-body">
-        <h3 data-i18n="collab2_title">Amiga Maria</h3>
-        <p data-i18n="collab2_text">Especialista en retrats urbans amb una mirada única.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="noticies" class="container">
-  <p class="section-eyebrow" data-i18n="news_eyebrow">Notícies</p>
-  <h2 class="section-title" data-i18n="news_title">Actualitat fotogràfica</h2>
-  <p class="section-subtitle" data-i18n="news_subtitle">Esdeveniments, cites visuals i notícies relacionades amb la fotografia, el cel i la cultura visual.</p>
-
-  <div class="news-grid" id="news-container">
-    <div class="news-card">
-      <img class="news-card-image" src="img/eclipsi_noticia.jpg" alt="Eclipsi total de sol" loading="lazy">
-      <div class="news-card-body">
-        <h3 data-i18n="news1_title">Eclipsi total de sol el 12 d'agost de 2026</h3>
-        <div class="news-date" data-i18n="news1_date">Maig 2026</div>
-        <p data-i18n="news1_text">El pròxim 12 d'agost, un eclipsi total de sol serà visible des de la península ibèrica.</p>
-      </div>
-    </div>
-
-    <div class="news-card">
-      <img class="news-card-image" src="img/wordpres_noticia.jpg" alt="World Press Photo 2026" loading="lazy">
-      <div class="news-card-body">
-        <h3 data-i18n="news2_title">Carol Guzy guanya el World Press Photo 2026</h3>
-        <div class="news-date" data-i18n="news2_date">Abril 2026</div>
-        <p data-i18n="news2_text">La fotoperiodista nord-americana Carol Guzy ha sigut guardonada amb el prestigiós premi.</p>
-      </div>
-    </div>
-
-    <div class="news-card">
-      <img class="news-card-image" src="img/valencia_photo.jpg" alt="ValenciaPhoto 2026" loading="lazy">
-      <div class="news-card-body">
-        <h3 data-i18n="news3_title">ValenciaPhoto 2026: el Mediterrani com a pont fotogràfic</h3>
-        <div class="news-date" data-i18n="news3_date">Maig 2026</div>
-        <p data-i18n="news3_text">La cinquena edició d'este festival internacional de fotografia se celebra a València fins al 31 de juliol.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contacto" class="container">
-  <h2 class="section-title" data-i18n="contact_title">Contacte</h2>
-  <p class="section-subtitle" data-i18n="contact_subtitle">Deixa'm un missatge</p>
-
-  <div class="contact-content">
-    <form class="contact-form" id="contactForm">
-      <input type="hidden" name="access_key" value="77cecff0-5540-4e90-adb8-6bf326f88f52">
-      <input type="hidden" name="subject" value="Nou missatge des del portfolio de Fermí Bruna">
-      <input type="hidden" name="from_name" value="Portfolio Fermí Bruna">
-
-      <div class="form-group">
-        <label for="nombre" data-i18n="form_name_label">Nom</label>
-        <input type="text" id="nombre" name="Nom" placeholder="Deixa el teu nom" data-i18n-placeholder="form_name_ph" required>
-      </div>
-
-      <div class="form-group">
-        <label for="email" data-i18n="form_email_label">Correu electrònic</label>
-        <input type="email" id="email" name="Email" placeholder="exemple@correu.com" data-i18n-placeholder="form_email_ph" required>
-      </div>
-
-      <div class="form-group">
-        <label for="mensaje" data-i18n="form_msg_label">Missatge</label>
-        <textarea id="mensaje" name="Missatge" placeholder="Escriu el teu missatge..." data-i18n-placeholder="form_msg_ph" required></textarea>
-      </div>
-
-      <button type="submit" class="submit-btn" data-i18n="form_submit">Enviar missatge</button>
-      <div id="form-message"></div>
-    </form>
-  </div>
-</section>
-
-<div class="visitors-section container" id="visitorsContainer">
-  <p><span data-i18n="visits_label">Visites</span>: <span id="visitCounter">0</span></p>
-  <button class="btn-like" id="likeButton" aria-label="M'agrada">
-    <span id="likeIcon">❤️</span>
-    <span data-i18n="like_btn">M'agrada</span>
-    (<span id="likeCounter">0</span>)
-  </button>
-</div>
-
-<footer>
-  <div class="container">
-    <div class="social-links">
-      <div class="social-item fb1">
-        <a href="https://www.facebook.com/profile.php?id=61581810340143" target="_blank" rel="noopener" aria-label="Facebook FB-fotografia">
-          <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
-        </a>
-        <div class="social-name">FB-Fotografia</div>
-      </div>
-
-      <div class="social-item fb2">
-        <a href="https://www.facebook.com/ducgris/" target="_blank" rel="noopener" aria-label="Facebook Duc Gris">
-          <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
-        </a>
-        <div class="social-name">Duc Gris</div>
-      </div>
-
-      <div class="social-item ig">
-        <a href="https://www.instagram.com/ducgris/?hl=es" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2m-.2 2A3.6 3.6 0 004 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 003.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 010 2.5 1.25 1.25 0 010-2.5M12 7a5 5 0 015 5 5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5m0 2a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3z"/></svg>
-        </a>
-        <div class="social-name">Instagram</div>
-      </div>
-
-      <div class="social-item px">
-        <a href="https://pixelfed.social/Ducgris" target="_blank" rel="noopener" aria-label="Pixelfed">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-5h2v2h-2zm3.07-5.93c.53-.53.93-1.24.93-2.07a3 3 0 00-6 0c0 .83.4 1.54.93 2.07L9 13h6l-.93-3.93z"/></svg>
-        </a>
-        <div class="social-name">Pixelfed</div>
-      </div>
-    </div>
-
-    <p>&copy; 2026 Fermí Bruna. Tots els drets reservats.</p>
-    <p>Crèdits de la cançó: BSO <em>Interstellar Soundtrack</em> de Hans Zimmer.</p>
-  </div>
-</footer>
+<footer><div class="container"><div class="social-links"><div class="social-item fb1"><a href="https://www.facebook.com/profile.php?id=61581810340143" target="_blank" rel="noopener" aria-label="Facebook FB-fotografia"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a><div class="social-name">FB-Fotografia</div></div><div class="social-item fb2"><a href="https://www.facebook.com/ducgris/" target="_blank" rel="noopener" aria-label="Facebook Duc Gris"><svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a><div class="social-name">Duc Gris</div></div><div class="social-item ig"><a href="https://www.instagram.com/ducgris/?hl=es" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2m-.2 2A3.6 3.6 0 004 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 003.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 010 2.5 1.25 1.25 0 010-2.5M12 7a5 5 0 015 5 5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5m0 2a3 3 0 00-3 3 3 3 0 003 3 3 3 0 003-3 3 3 0 00-3-3z"/></svg></a><div class="social-name">Instagram</div></div><div class="social-item px"><a href="https://pixelfed.social/Ducgris" target="_blank" rel="noopener" aria-label="Pixelfed"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-5h2v2h-2zm3.07-5.93c.53-.53.93-1.24.93-2.07a3 3 0 00-6 0c0 .83.4 1.54.93 2.07L9 13h6l-.93-3.93z"/></svg></a><div class="social-name">Pixelfed</div></div></div><p>&copy; 2026 Fermí Bruna. Tots els drets reservats.</p><p>Crèdits de la cançó: BSO <em>Interstellar Soundtrack</em> de Hans Zimmer.</p></div></footer>
 
 <div class="lightbox" id="lightbox">
   <span class="close-lightbox" id="closeLightbox" aria-label="Tancar">×</span>
-
   <div class="lightbox-main">
     <div class="lightbox-side lightbox-prev" id="lightboxPrev"><img src="" alt="Foto anterior"></div>
     <div class="lightbox-center" id="lightboxCurrent"><img src="" alt="Foto actual"></div>
     <div class="lightbox-side lightbox-next" id="lightboxNext"><img src="" alt="Foto següent"></div>
-
     <div class="lightbox-nav-mobile">
       <button class="lightbox-arrow-btn" id="mobilePrev" aria-label="Foto anterior">‹</button>
-
       <div class="audio-controls-mobile" id="audioControlsMobile">
         <button id="audioPlayPauseMobile" class="audio-play-btn" aria-label="Reproduir/Pausa">🎵</button>
         <input id="audioVolumeMobile" type="range" min="0" max="1" step="0.05" value="1" aria-label="Volum">
         <button id="audioCloseBtnMobile" class="audio-close-btn" aria-label="Aturar àudio">✕</button>
       </div>
-
       <button class="lightbox-arrow-btn" id="mobileNext" aria-label="Foto següent">›</button>
     </div>
-
     <div class="lightbox-caption" id="lightboxCaption"></div>
   </div>
-
   <div class="audio-overlay" id="audioOverlay">
     <button id="audioPlayPause" class="audio-play-btn" aria-label="Reproduir/Pausa">🎵</button>
     <input id="audioVolume" type="range" min="0" max="1" step="0.05" value="1" aria-label="Volum">
     <button id="audioCloseBtn" class="audio-close-btn" aria-label="Aturar àudio">✕</button>
   </div>
 </div>
-
-<audio id="audioGaleria" loop>
-  <source src="interstellar.m4a" type="audio/mp4">
-</audio>
+<audio id="audioGaleria" loop><source src="interstellar.m4a" type="audio/mp4"></audio>
 
 <script>
 (function(){
-
-  let galleryData = [];
-  let currentVisibleItems = [];
-  let currentIndex = 0;
-  let audioOverlayTimer;
-  let currentLang = 'ca';
+  let currentVisibleItems=[], currentIndex=0, audioOverlayTimer, currentLang='ca';
   let audioPlaying = false;
+  const lightbox=document.getElementById('lightbox');
+  const audio=document.getElementById('audioGaleria');
+  const audioOverlay=document.getElementById('audioOverlay');
+  const audioVolume=document.getElementById('audioVolume');
+  const audioVolumeMobile=document.getElementById('audioVolumeMobile');
+  const audioCloseBtn=document.getElementById('audioCloseBtn');
+  const audioCloseBtnMobile=document.getElementById('audioCloseBtnMobile');
+  const audioPlayPause=document.getElementById('audioPlayPause');
+  const audioPlayPauseMobile=document.getElementById('audioPlayPauseMobile');
 
-  const lightbox = document.getElementById('lightbox');
-  const audio = document.getElementById('audioGaleria');
-  const audioOverlay = document.getElementById('audioOverlay');
-  const audioVolume = document.getElementById('audioVolume');
-  const audioVolumeMobile = document.getElementById('audioVolumeMobile');
-  const audioCloseBtn = document.getElementById('audioCloseBtn');
-  const audioCloseBtnMobile = document.getElementById('audioCloseBtnMobile');
-  const audioPlayPause = document.getElementById('audioPlayPause');
-  const audioPlayPauseMobile = document.getElementById('audioPlayPauseMobile');
-  const showAllBtn = document.getElementById('showAllBtn');
+  const galleryData = [
+    { archivo: "anell-lira.jpg", categoria: "astro", descripcion: "Nebulosa Anell de Lira", fecha: "2026-04" },
+    { archivo: "anima.jpg", categoria: "astro", descripcion: "Nebulosa de l'Ànima", fecha: "2026-03" },
+    { archivo: "cap-cavall.jpg", categoria: "astro", descripcion: "Nebuloses del Cap de Cavall i de la Flama a la constel·lació d’Orió", fecha: "2025-11" },
+    { archivo: "lluna-matinera.jpg", categoria: "astro", descripcion: "Lluna Matinera", fecha: "2026-05" },
+    { archivo: "m27-dumbell.jpg", categoria: "astro", descripcion: "Nebulosa Messier 27, Dumbell", fecha: "2026-04" },
+    { archivo: "medusa.jpg", categoria: "astro", descripcion: "Sh2-274 —la Medusa", fecha: "2026-04" },
+    { archivo: "orio.jpg", categoria: "astro", descripcion: "Constel·lació d'Orió", fecha: "2024-08" },
+    { archivo: "barranc-encantada.jpg", categoria: "paisatge", descripcion: "Barranc de l'Encantada i tardor al Comtat", fecha: "2025-11" },
+    { archivo: "miravet1.jpg", categoria: "paisatge", descripcion: "Miravet, Ribera d'Ebre", fecha: "2026-04" },
+    { archivo: "triador.jpg", categoria: "paisatge", descripcion: "Carrer del Triador, València", fecha: "2026-03" },
+    { archivo: "collrates.jpg", categoria: "paisatge", descripcion: "Vall de Pop, Marina Alta", fecha: "2024-01" },
+    { archivo: "lluna-montgo.jpg", categoria: "paisatge", descripcion: "Lluna pel Montgó", fecha: "2024-08" },
+    { archivo: "bocairent.jpg", categoria: "paisatge", descripcion: "Bocairent, La Vall d'Albaida", fecha: "2024-05" },
+    { archivo: "dones-mon.jpg", categoria: "moments", descripcion: "Dones en lluita", fecha: "2026-05" },
+    { archivo: "albufera.jpg", categoria: "moments", descripcion: "Pescadors", fecha: "2024-01" },
+    { archivo: "manuela.jpg", categoria: "moments", descripcion: "Manuela", fecha: "2024-06" },
+    { archivo: "desgavell.jpg", categoria: "moments", descripcion: "Desgavell", fecha: "2024-08" },
+    { archivo: "carrer-miquelet-pluja.jpg", categoria: "moments", descripcion: "Carrer Miquelet", fecha: "2024-05" },
+    { archivo: "trench.jpg", categoria: "moments", descripcion: "Carrer del Trench", fecha: "2024-05" },
+    { archivo: "mur-cigne.jpg", categoria: "astro", descripcion: "Mur del Cigne a la nebulosa d´Amèrica del Nord", fecha: "2026-04" },
+    { archivo: "sanvalentin.jpg", categoria: "astro", descripcion: "Sh2-174 Rosa de Sant Valentí", fecha: "2026-05" },
+    { archivo: "via.jpg", categoria: "paisatge", descripcion: "La primera Via Làctia de la temporada a Xulella", fecha: "2026-05" },
+    { archivo: "escorpi.jpg", categoria: "astro", descripcion: "Via Làctia i Escorpi, Xulella", fecha: "2026-05" },
+    { archivo: "osa.jpg", categoria: "astro", descripcion: "Ursa Major, Xulella", fecha: "2026-05" },
+    { archivo: "trifida.jpg", categoria: "astro", descripcion: "M20 Nebulosa Trifida, València", fecha: "2026-04" },
+    { archivo: "ullnegrem64.jpg", categoria: "astro", descripcion: "M64 Galàxia Ull Negre, Xulella", fecha: "2026-05" },
+    { archivo: "veldelest.jpg", categoria: "astro", descripcion: "NGC6992 Vel de l'Est, Xulella", fecha: "2026-05" },
+    { archivo: "passejant.jpg", categoria: "moments", descripcion: "Passejant", fecha: "2026-05" }
+  ];
 
-  const texts = {
-    ca: {
-      nav_inicio:'Inici',
-      nav_galeria:'Galeria',
-      nav_sobre:'Sobre mi',
-      nav_mirades:'Mirades amigues',
-      nav_noticies:'Notícies',
-      nav_contacto:'Contacte',
-      show_all:'Veure totes',
-      hero_procedencia:'Des de València',
-      hero_title:'Fotografia per als sentits',
-      hero_subtitle:'Benvingut al món visual de Fermí Bruna - fotografia',
-      hero_btn:'Galeria',
-      gal_eyebrow:'Galeria',
-      gal_title:'Un passeig visual',
-      gal_subtitle:'Un mosaic inicial amb una selecció de fotografies. Pots punxar qualsevol imatge per veure-la en gran.',
-      filter_astro:'Astrofotografia',
-      filter_land:'Paisatge',
-      filter_macro:'Macro',
-      filter_moments:'Moments',
-      about_title:'Sobre mi',
-      about_hi:'Hola, soc Fermí Bruna',
-      about_quote:'“Ets tu i la teua càmera. Les limitacions que n´hi ha a les teues fotografies són les mateixes que pugues tenir com a persona, perquè el que veiem és el que som.”',
-      about_p1:'Fotògraf aficionat apassionat per capturar la bellesa del quotidià. Aquest espai és el meu quadern visual, on compartesc paisatges, retrats i moments que m\\'inspiren. No busque vendre, només connectar a través de la imatge.',
-      about_p2:'Cada fotografia té una història. Espere que en recórrer la galeria pugues sentir una mica del que jo vaig experimentar en disparar.',
-      mirades_eyebrow:'Mirades amigues',
-      mirades_title:'Altres maneres de mirar',
-      mirades_subtitle:'Companys i companyes de fotografia amb qui compartisc camins, converses i aprenentatges.',
-      collab1_title:'Amic Joan',
-      collab1_text:'Fotògraf de natura i amic de llargues caminades per la serra.',
-      collab2_title:'Amiga Maria',
-      collab2_text:'Especialista en retrats urbans amb una mirada única.',
-      news_eyebrow:'Notícies',
-      news_title:'Actualitat fotogràfica',
-      news_subtitle:'Esdeveniments, cites visuals i notícies relacionades amb la fotografia, el cel i la cultura visual.',
-      news1_title:'Eclipsi total de sol el 12 d\\'agost de 2026',
-      news1_date:'Maig 2026',
-      news1_text:'El pròxim 12 d\\'agost, un eclipsi total de sol serà visible des de la península ibèrica.',
-      news2_title:'Carol Guzy guanya el World Press Photo 2026',
-      news2_date:'Abril 2026',
-      news2_text:'La fotoperiodista nord-americana Carol Guzy ha sigut guardonada amb el prestigiós premi.',
-      news3_title:'ValenciaPhoto 2026: el Mediterrani com a pont fotogràfic',
-      news3_date:'Maig 2026',
-      news3_text:'La cinquena edició d\\'este festival internacional de fotografia se celebra a València fins al 31 de juliol.',
-      contact_title:'Contacte',
-      contact_subtitle:'Deixa\\'m un missatge',
-      form_name_label:'Nom',
-      form_name_ph:'Deixa el teu nom',
-      form_email_label:'Correu electrònic',
-      form_email_ph:'exemple@correu.com',
-      form_msg_label:'Missatge',
-      form_msg_ph:'Escriu el teu missatge...',
-      form_submit:'Enviar missatge',
-      visits_label:'Visites',
-      like_btn:'M\\'agrada'
+  const texts={
+    ca: { nav_inicio:'Inici',nav_galeria:'Galeria',nav_sobre:'Sobre mi',nav_mirades:'Mirades amigues',nav_noticies:'Notícies',nav_contacto:'Contacte', show_all:'Veure totes',
+      hero_procedencia:'Des de València',hero_title:'Fotografia per als sentits',hero_subtitle:'Benvingut al món visual de Fermí Bruna - fotografia',hero_btn:'Galeria',
+      gal_eyebrow:'Galeria',gal_title:'Un passeig visual',gal_subtitle:'Un mosaic inicial amb una selecció de fotografies. Pots punxar qualsevol imatge per veure-la en gran.',
+      filter_astro:'Astrofotografia',filter_land:'Paisatge',filter_macro:'Macro',filter_moments:'Moments',
+      about_title:'Sobre mi',about_hi:'Hola, soc Fermí Bruna',about_quote:'“Ets tu i la teua càmera. Les limitacions que n´hi ha a les teues fotografies són les mateixes que pugues tenir com a persona, perquè el que veiem és el que som.”',about_p1:'Fotògraf aficionat apassionat per capturar la bellesa del quotidià. Aquest espai és el meu quadern visual, on compartesc paisatges, retrats i moments que m\'inspiren. No busque vendre, només connectar a través de la imatge.',about_p2:'Cada fotografia té una història. Espere que en recórrer la galeria pugues sentir una mica del que jo vaig experimentar en disparar.',
+      mirades_eyebrow:'Mirades amigues',mirades_title:'Altres maneres de mirar',mirades_subtitle:'Companys i companyes de fotografia amb qui compartisc camins, converses i aprenentatges.',
+      collab1_title:'Amic Joan',collab1_text:'Fotògraf de natura i amic de llargues caminades per la serra.',collab2_title:'Amiga Maria',collab2_text:'Especialista en retrats urbans amb una mirada única.',
+      news_eyebrow:'Notícies',news_title:'Actualitat fotogràfica',news_subtitle:'Esdeveniments, cites visuals i notícies relacionades amb la fotografia, el cel i la cultura visual.',
+      news1_title:'Eclipsi total de sol el 12 d\'agost de 2026',news1_date:'Maig 2026',news1_text:'El pròxim 12 d\'agost, un eclipsi total de sol serà visible des de la península ibèrica.',
+      news2_title:'Carol Guzy guanya el World Press Photo 2026',news2_date:'Abril 2026',news2_text:'La fotoperiodista nord-americana Carol Guzy ha sigut guardonada amb el prestigiós premi.',
+      news3_title:'ValenciaPhoto 2026: el Mediterrani com a pont fotogràfic',news3_date:'Maig 2026',news3_text:'La cinquena edició d\'este festival internacional de fotografia se celebra a València fins al 31 de juliol.',
+      contact_title:'Contacte',contact_subtitle:'Deixa\'m un missatge',form_name_label:'Nom',form_name_ph:'Deixa el teu nom',form_email_label:'Correu electrònic',form_email_ph:'exemple@correu.com',form_msg_label:'Missatge',form_msg_ph:'Escriu el teu missatge...',form_submit:'Enviar missatge',visits_label:'Visites',like_btn:'M\'agrada'
     },
-    es: {
-      nav_inicio:'Inicio',
-      nav_galeria:'Galería',
-      nav_sobre:'Sobre mí',
-      nav_mirades:'Miradas amigas',
-      nav_noticies:'Noticias',
-      nav_contacto:'Contacto',
-      show_all:'Ver todas',
-      hero_procedencia:'Desde València',
-      hero_title:'Fotografía para los sentidos',
-      hero_subtitle:'Bienvenido al mundo visual de Fermí Bruna - fotografía',
-      hero_btn:'Galería',
-      gal_eyebrow:'Galería',
-      gal_title:'Un paseo visual',
-      gal_subtitle:'Un mosaico inicial con una selección de fotografías. Puedes pulsar cualquier imagen para verla en grande.',
-      filter_astro:'Astrofotografía',
-      filter_land:'Paisaje',
-      filter_macro:'Macro',
-      filter_moments:'Momentos',
-      about_title:'Sobre mí',
-      about_hi:'Hola, soy Fermí Bruna',
-      about_quote:'“Eres tú y tu cámara. Las limitaciones que hay en tus fotografías son las mismas que puedes tener como persona, porque lo que vemos es lo que somos.”',
-      about_p1:'Fotógrafo aficionado apasionado por capturar la belleza de lo cotidiano. Este espacio es mi cuaderno visual, donde comparto paisajes, retratos y momentos que me inspiran. No busco vender, solo conectar a través de la imagen.',
-      about_p2:'Cada fotografía tiene una historia. Espero que al recorrer la galería puedas sentir un poco de lo que yo experimenté al disparar.',
-      mirades_eyebrow:'Miradas amigas',
-      mirades_title:'Otras maneras de mirar',
-      mirades_subtitle:'Compañeros y compañeras de fotografía con quienes comparto caminos, conversaciones y aprendizajes.',
-      collab1_title:'Amigo Joan',
-      collab1_text:'Fotógrafo de naturaleza y amigo de largas caminatas por la sierra.',
-      collab2_title:'Amiga Maria',
-      collab2_text:'Especialista en retratos urbanos con una mirada única.',
-      news_eyebrow:'Noticias',
-      news_title:'Actualidad fotográfica',
-      news_subtitle:'Eventos, citas visuales y noticias relacionadas con la fotografía, el cielo y la cultura visual.',
-      news1_title:'Eclipse total de sol el 12 de agosto de 2026',
-      news1_date:'Mayo 2026',
-      news1_text:'El próximo 12 de agosto, un eclipse total de sol será visible desde la península ibérica.',
-      news2_title:'Carol Guzy gana el World Press Photo 2026',
-      news2_date:'Abril 2026',
-      news2_text:'La fotoperiodista estadounidense Carol Guzy ha sido galardonada con el prestigioso premio.',
-      news3_title:'ValenciaPhoto 2026: el Mediterráneo como puente fotográfico',
-      news3_date:'Mayo 2026',
-      news3_text:'La quinta edición de este festival internacional de fotografía se celebra en València hasta el 31 de julio.',
-      contact_title:'Contacto',
-      contact_subtitle:'Déjame un mensaje',
-      form_name_label:'Nombre',
-      form_name_ph:'Deja tu nombre',
-      form_email_label:'Correo electrónico',
-      form_email_ph:'ejemplo@correo.com',
-      form_msg_label:'Mensaje',
-      form_msg_ph:'Escribe tu mensaje...',
-      form_submit:'Enviar mensaje',
-      visits_label:'Visitas',
-      like_btn:'Me gusta'
+    es: { nav_inicio:'Inicio',nav_galeria:'Galería',nav_sobre:'Sobre mí',nav_mirades:'Miradas amigas',nav_noticies:'Noticias',nav_contacto:'Contacto', show_all:'Ver todas',
+      hero_procedencia:'Desde València',hero_title:'Fotografía para los sentidos',hero_subtitle:'Bienvenido al mundo visual de Fermí Bruna - fotografía',hero_btn:'Galería',
+      gal_eyebrow:'Galería',gal_title:'Un paseo visual',gal_subtitle:'Un mosaico inicial con una selección de fotografías. Puedes pulsar cualquier imagen para verla en grande.',
+      filter_astro:'Astrofotografía',filter_land:'Paisaje',filter_macro:'Macro',filter_moments:'Momentos',
+      about_title:'Sobre mí',about_hi:'Hola, soy Fermí Bruna',about_quote:'“Eres tú y tu cámara. Las limitaciones que hay en tus fotografías son las mismas que puedes tener como persona, porque lo que vemos es lo que somos.”',about_p1:'Fotógrafo aficionado pasado por capturar la belleza de lo cotidiano. Este espacio es mi cuaderno visual, donde comparto paisajes, retratos y momentos que me inspiran. No busco vender, solo conectar a través de la imagen.',about_p2:'Cada fotografía tiene una historia. Espero que al recorrer la galería puedas sentir un poco de lo que yo experimenté al disparar.',
+      mirades_eyebrow:'Miradas amigas',mirades_title:'Otras maneras de mirar',mirades_subtitle:'Compañeros y compañeras de fotografía con quienes comparto caminos, conversaciones y aprendizajes.',
+      collab1_title:'Amigo Joan',collab1_text:'Fotógrafo de naturaleza y amigo de largas caminatas por la sierra.',collab2_title:'Amiga Maria',collab2_text:'Especialista en retratos urbanos con una mirada única.',
+      news_eyebrow:'Noticias',news_title:'Actualidad fotográfica',news_subtitle:'Eventos, citas visuales y noticias relacionadas con la fotografía, el cielo y la cultura visual.',
+      news1_title:'Eclipse total de sol el 12 de agosto de 2026',news1_date:'Mayo 2026',news1_text:'El próximo 12 de agosto, un eclipse total de sol será visible desde la península ibérica.',
+      news2_title:'Carol Guzy gana el World Press Photo 2026',news2_date:'Abril 2026',news2_text:'La fotoperiodista estadounidense Carol Guzy ha sido galardonada con el prestigioso premio.',
+      news3_title:'ValenciaPhoto 2026: el Mediterráneo como puente fotográfico',news3_date:'Mayo 2026',news3_text:'La quinta edición de este festival internacional de fotografía se celebra en València hasta el 31 de julio.',
+      contact_title:'Contacto',contact_subtitle:'Déjame un mensaje',form_name_label:'Nombre',form_name_ph:'Deja tu nombre',form_email_label:'Correo electrónico',form_email_ph:'ejemplo@correo.com',form_msg_label:'Mensaje',form_msg_ph:'Escribe tu mensaje...',form_submit:'Enviar mensaje',visits_label:'Visites',like_btn:'Me gusta'
     },
-    en: {
-      nav_inicio:'Home',
-      nav_galeria:'Gallery',
-      nav_sobre:'About me',
-      nav_mirades:'Fellow looks',
-      nav_noticies:'News',
-      nav_contacto:'Contact',
-      show_all:'View all',
-      hero_procedencia:'From València',
-      hero_title:'Photography for the senses',
-      hero_subtitle:'Welcome to the visual world of Fermí Bruna - photography',
-      hero_btn:'Gallery',
-      gal_eyebrow:'Gallery',
-      gal_title:'A visual stroll',
-      gal_subtitle:'An initial mosaic with a selection of photographs. You can click any image to view it larger.',
-      filter_astro:'Astrophotography',
-      filter_land:'Landscape',
-      filter_macro:'Macro',
-      filter_moments:'Moments',
-      about_title:'About me',
-      about_hi:'Hi, I am Fermí Bruna',
-      about_quote:'“You and your camera. The limitations in your photographs are the same ones you may have as a person, because what we see is what we are.”',
-      about_p1:'An amateur photographer passionate about capturing the beauty of everyday life. This space is my visual notebook, where I share landscapes, portraits and moments that inspire me. I do not try to sell, only to connect through images.',
-      about_p2:'Every photograph has a story. I hope that as you browse the gallery you can feel a little of what I experienced when taking them.',
-      mirades_eyebrow:'Fellow looks',
-      mirades_title:'Other ways of seeing',
-      mirades_subtitle:'Photography friends with whom I share paths, conversations and learning.',
-      collab1_title:'Friend Joan',
-      collab1_text:'Nature photographer and friend on long walks through the hills.',
-      collab2_title:'Friend Maria',
-      collab2_text:'Specialist in urban portraits with a unique eye.',
-      news_eyebrow:'News',
-      news_title:'Photo current affairs',
-      news_subtitle:'Events, visual appointments and news related to photography, the sky and visual culture.',
-      news1_title:'Total solar eclipse on 12 August 2026',
-      news1_date:'May 2026',
-      news1_text:'On 12 August, a total solar eclipse will be visible from the Iberian Peninsula.',
-      news2_title:'Carol Guzy wins World Press Photo 2026',
-      news2_date:'April 2026',
-      news2_text:'American photojournalist Carol Guzy has been awarded the prestigious prize.',
-      news3_title:'ValenciaPhoto 2026: the Mediterranean as a bridge',
-      news3_date:'May 2026',
-      news3_text:'The fifth edition of this international photography festival is taking place in València until 31 July.',
-      contact_title:'Contact',
-      contact_subtitle:'Leave me a message',
-      form_name_label:'Name',
-      form_name_ph:'Leave your name',
-      form_email_label:'Email',
-      form_email_ph:'example@email.com',
-      form_msg_label:'Message',
-      form_msg_ph:'Write your message...',
-      form_submit:'Send message',
-      visits_label:'Visits',
-      like_btn:'Like'
+    en: { nav_inicio:'Home',nav_galeria:'Gallery',nav_sobre:'About me',nav_mirades:'Fellow looks',nav_noticies:'News',nav_contacto:'Contact', show_all:'View all',
+      hero_procedencia:'From València',hero_title:'Photography for the senses',hero_subtitle:'Welcome to the visual world of Fermí Bruna - photography',hero_btn:'Gallery',
+      gal_eyebrow:'Gallery',gal_title:'A visual stroll',gal_subtitle:'An initial mosaic with a selection of photographs. You can click any image to view it larger.',
+      filter_astro:'Astrophotography',filter_land:'Landscape',filter_macro:'Macro',filter_moments:'Moments',
+      about_title:'About me',about_hi:'Hi, I am Fermí Bruna',about_quote:'“You and your camera. The limitations in your photographs are the same ones you may have as a person, because what we see is what we are.”',about_p1:'An amateur photographer passionate about capturing the beauty of everyday life. This space is my visual notebook, where I share landscapes, portraits, and moments that inspire me. I do not try to sell, only to connect through images.',about_p2:'Every photograph has a story. I hope that as you browse the gallery you can feel a little of what I experienced when taking them.',
+      mirades_eyebrow:'Fellow looks',mirades_title:'Other ways of seeing',mirades_subtitle:'Photography friends with whom I share paths, conversations, and learning.',
+      collab1_title:'Friend Joan',collab1_text:'Nature photographer and friend on long walks through the hills.',collab2_title:'Friend Maria',collab2_text:'Specialist in urban portraits with a unique eye.',
+      news_eyebrow:'News',news_title:'Photo current affairs',news_subtitle:'Events, visual appointments and news related to photography, the sky, and visual culture.',
+      news1_title:'Total solar eclipse on 12 August 2026',news1_date:'May 2026',news1_text:'On 12 August, a total solar eclipse will be visible from the Iberian Peninsula.',
+      news2_title:'Carol Guzy wins World Press Photo 2026',news2_date:'April 2026',news2_text:'American photojournalist Carol Guzy has been awarded the prestigious prize.',
+      news3_title:'ValenciaPhoto 2026: the Mediterranean as a bridge',news3_date:'May 2026',news3_text:'The fifth edition of this international photography festival is taking place in València until 31 July.',
+      contact_title:'Contact',contact_subtitle:'Leave me a message',form_name_label:'Name',form_name_ph:'Leave your name',form_email_label:'Email',form_email_ph:'example@email.com',form_msg_label:'Message',form_msg_ph:'Write your message...',form_submit:'Send message',visits_label:'Visits',like_btn:'Like'
     }
   };
 
-  function applyLanguage(lang){
-    currentLang = lang;
-    document.documentElement.lang = lang;
-
-    document.querySelectorAll('[data-i18n]').forEach(el => {
-      const key = el.getAttribute('data-i18n');
-      if(texts[lang] && texts[lang][key]){
-        el.textContent = texts[lang][key];
-      }
-    });
-
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-      const key = el.getAttribute('data-i18n-placeholder');
-      if(texts[lang] && texts[lang][key]){
-        el.placeholder = texts[lang][key];
-      }
-    });
-
-    document.querySelectorAll('#langSwitcherDesktop button, #langSwitcherMobile button').forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.lang === lang);
-    });
-  }
-
-  function formatDate(fecha){
-    if(!fecha) return '';
-    const fechaParts = fecha.split('-');
-    const meses = {
-      '01':'gener',
-      '02':'febrer',
-      '03':'març',
-      '04':'abril',
-      '05':'maig',
-      '06':'juny',
-      '07':'juliol',
-      '08':'agost',
-      '09':'setembre',
-      '10':'octubre',
-      '11':'novembre',
-      '12':'desembre'
-    };
-    if(fechaParts.length >= 2){
-      return `${meses[fechaParts[1]] || fechaParts[1]} ${fechaParts[0]}`;
-    }
-    return fecha;
-  }
-
-  function bindGalleryClicks(){
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      const img = item.querySelector('img');
-      if(img){
-        img.addEventListener('click', () => openLightbox(item));
-      }
-    });
-  }
-
-  function getVisibleItems(){
-    return Array.from(document.querySelectorAll('.gallery-item'));
-  }
-
-  function buildGallery(items, filter){
-    const galleryGrid = document.getElementById('galleryGrid');
-    galleryGrid.innerHTML = '';
-
-    if(!Array.isArray(items) || items.length === 0){
-      galleryGrid.innerHTML = '<div class="gallery-message">No s’han pogut carregar les fotografies.</div>';
-      return;
-    }
-
-    let sourceItems = [];
-    const sortedItems = [...items].sort((a,b) => {
-      const fa = a.fecha || '';
-      const fb = b.fecha || '';
-      return fb.localeCompare(fa);
-    });
-
-    if(filter === 'initial'){
-      sourceItems = sortedItems.slice(0, 12);
-    } else if(filter && filter !== 'tots'){
-      sourceItems = sortedItems.filter(item => item.categoria === filter);
-    } else {
-      sourceItems = sortedItems;
-    }
-
-    if(sourceItems.length === 0){
-      galleryGrid.innerHTML = '<div class="gallery-message">No hi ha fotografies en aquesta categoria.</div>';
-      return;
-    }
-
-    sourceItems.forEach(item => {
-      const div = document.createElement('div');
-      div.className = 'gallery-item';
-      div.setAttribute('data-category', item.categoria || '');
-
-      const img = document.createElement('img');
-      img.src = `img/${item.archivo}`;
-      img.alt = item.descripcion || '';
-      img.loading = 'lazy';
-
-      img.onerror = function(){
-        if(this.src.endsWith('.jpg')){
-          this.src = this.src.replace('.jpg', '.JPG');
-        } else if(this.src.endsWith('.JPG')){
-          this.src = this.src.replace('.JPG', '.jpeg');
-        } else if(this.src.endsWith('.jpeg')){
-          this.src = this.src.replace('.jpeg', '.JPEG');
-        }
-      };
-
-      const cap = document.createElement('div');
-      cap.className = 'gallery-caption';
-
-      const fechaLegible = formatDate(item.fecha);
-      cap.textContent = fechaLegible ? `${item.descripcion || ''} · ${fechaLegible}` : (item.descripcion || '');
-
-      div.appendChild(img);
-      div.appendChild(cap);
-      galleryGrid.appendChild(div);
-    });
-
-    bindGalleryClicks();
-  }
-
-  async function carregarFotosDesDeJson(){
-    try{
-      const response = await fetch('datos.json?v=' + new Date().getTime());
-
-      if(!response.ok){
-        throw new Error('No s’ha pogut carregar datos.json');
-      }
-
-      const data = await response.json();
-
-      if(data && Array.isArray(data.fotos)){
-        galleryData = data.fotos;
-      } else if(Array.isArray(data)){
-        galleryData = data;
-      } else {
-        galleryData = [];
-        console.error('El format de datos.json no és correcte');
-      }
-
-      buildGallery(galleryData, 'initial');
-
-    } catch(error){
-      console.error('Error carregant datos.json:', error);
-      galleryData = [];
-      buildGallery(galleryData, 'initial');
-    }
-  }
-
-  function syncAudioControls(value){
-    if(audioVolume) audioVolume.value = value;
-    if(audioVolumeMobile) audioVolumeMobile.value = value;
-  }
-
-  function updateAudioButtonState(playing){
+  function bindGalleryClicks(){ document.querySelectorAll('.gallery-item').forEach(item=>{ item.querySelector('img').addEventListener('click',()=>openLightbox(item)); }); }
+  function getVisibleItems(){ return Array.from(document.querySelectorAll('.gallery-item')).filter(el=>!el.classList.contains('hidden')); }
+  function syncAudioControls(value){ audioVolume.value=value; if(audioVolumeMobile) audioVolumeMobile.value=value; }
+  function updateAudioButtonState(playing){ 
     const icon = playing ? '🔊' : '🎵';
     if(audioPlayPause) audioPlayPause.textContent = icon;
     if(audioPlayPauseMobile) audioPlayPauseMobile.textContent = icon;
   }
-
-  function showAudioOverlay(duration = 6000){
-    const target = window.innerWidth <= 768 ? document.getElementById('audioControlsMobile') : audioOverlay;
+  function showAudioOverlay(duration=6000){
+    const target=window.innerWidth<=768 ? document.getElementById('audioControlsMobile') : audioOverlay;
     if(target) target.classList.add('visible');
-
     clearTimeout(audioOverlayTimer);
-
-    audioOverlayTimer = setTimeout(() => {
-      if(target) target.classList.remove('visible');
-    }, duration);
+    audioOverlayTimer=setTimeout(()=>{ if(target) target.classList.remove('visible'); }, duration);
   }
-
   function updateLightboxViews(){
     if(!currentVisibleItems.length) return;
-
-    const len = currentVisibleItems.length;
-    const prev = (currentIndex - 1 + len) % len;
-    const next = (currentIndex + 1) % len;
-
-    const prevImg = document.querySelector('#lightboxPrev img');
-    const nextImg = document.querySelector('#lightboxNext img');
-    const caption = document.getElementById('lightboxCaption');
-
-    if(prevImg) prevImg.src = currentVisibleItems[prev].querySelector('img').src;
-    if(nextImg) nextImg.src = currentVisibleItems[next].querySelector('img').src;
-    if(caption) caption.textContent = currentVisibleItems[currentIndex].querySelector('.gallery-caption').textContent;
+    const len=currentVisibleItems.length;
+    const prev=(currentIndex-1+len)%len;
+    const next=(currentIndex+1)%len;
+    document.querySelector('#lightboxPrev img').src=currentVisibleItems[prev].querySelector('img').src;
+    document.querySelector('#lightboxNext img').src=currentVisibleItems[next].querySelector('img').src;
+    document.getElementById('lightboxCaption').textContent=currentVisibleItems[currentIndex].querySelector('.gallery-caption').textContent;
   }
-
   function showCurrentImage(){
-    const img = document.querySelector('#lightboxCurrent img');
-    if(!img || !currentVisibleItems.length) return;
-    img.src = currentVisibleItems[currentIndex].querySelector('img').src;
+    const img=document.querySelector('#lightboxCurrent img');
+    img.style.opacity='0';
+    img.style.transform='scale(.965)';
+    requestAnimationFrame(()=>{
+      img.src=currentVisibleItems[currentIndex].querySelector('img').src;
+      img.onload=()=>{ img.style.opacity='1'; img.style.transform='scale(1)'; };
+    });
   }
-
   function openLightbox(item){
-    currentVisibleItems = getVisibleItems();
-    currentIndex = currentVisibleItems.indexOf(item);
-
+    currentVisibleItems=getVisibleItems();
+    currentIndex=currentVisibleItems.indexOf(item);
     updateLightboxViews();
     lightbox.classList.add('active');
     showCurrentImage();
-
-    const currentVol = parseFloat(window.innerWidth <= 768 && audioVolumeMobile ? audioVolumeMobile.value : audioVolume.value);
+    const currentVol=parseFloat(window.innerWidth<=768 ? audioVolumeMobile.value : audioVolume.value);
     syncAudioControls(currentVol);
-    audio.volume = currentVol;
-    audio.muted = audio.volume === 0;
-
-    if(!audioPlaying){
-      audio.play().then(() => {
-        audioPlaying = true;
-        updateAudioButtonState(true);
-      }).catch(() => {});
-    } else {
-      audio.play().catch(() => {});
-    }
-
+    audio.volume=currentVol;
+    audio.muted=audio.volume===0;
+    if(!audioPlaying) { audio.play().then(()=>{ audioPlaying=true; updateAudioButtonState(true); }).catch(()=>{}); }
+    else { audio.play().catch(()=>{}); }
     showAudioOverlay(7000);
   }
-
   function navigateTo(newIndex){
     if(!currentVisibleItems.length) return;
-
-    currentIndex = (newIndex + currentVisibleItems.length) % currentVisibleItems.length;
-
+    currentIndex=(newIndex+currentVisibleItems.length)%currentVisibleItems.length;
     updateLightboxViews();
     showCurrentImage();
     showAudioOverlay(5000);
   }
+  function closeLightbox(){ lightbox.classList.remove('active'); }
 
-  function closeLightbox(){
-    lightbox.classList.remove('active');
+  // LÓGICA AUTOMÁTICA POR FECHA
+  function buildGallery(items, filter) {
+    const galleryGrid = document.getElementById('galleryGrid');
+    galleryGrid.innerHTML = '';
+    let sourceItems = [];
+    const sortedItems = [...items].sort((a,b) => b.fecha.localeCompare(a.fecha));
+
+    if (filter === 'initial') {
+      sourceItems = sortedItems.slice(0, 12);
+    } else if (filter && filter !== 'tots') {
+      sourceItems = sortedItems.filter(i => i.categoria === filter);
+    } else {
+      sourceItems = sortedItems;
+    }
+    
+    sourceItems.forEach(item => {
+      const div = document.createElement('div');
+      div.className = 'gallery-item';
+      div.setAttribute('data-category', item.categoria);
+      const img = document.createElement('img');
+      img.src = `img/${item.archivo}`;
+      img.alt = item.descripcion || '';
+      img.loading = 'lazy';
+      img.onerror = function() {
+        if (this.src.endsWith('.jpg')) this.src = this.src.replace('.jpg', '.JPG');
+        else if (this.src.endsWith('.JPG')) this.src = this.src.replace('.JPG', '.jpeg');
+        else if (this.src.endsWith('.jpeg')) this.src = this.src.replace('.jpeg', '.JPEG');
+      };
+      const cap = document.createElement('div');
+      cap.className = 'gallery-caption';
+      const fechaParts = item.fecha.split('-');
+      const meses = { '01':'gener','02':'febrer','03':'març','04':'abril','05':'maig','06':'juny','07':'juliol','08':'agost','09':'setembre','10':'octubre','11':'novembre','12':'desembre'};
+      const fechaLegible = `${meses[fechaParts[1]]} ${fechaParts[0]}`;
+      cap.textContent = `${item.descripcion} · ${fechaLegible}`;
+      div.appendChild(img);
+      div.appendChild(cap);
+      galleryGrid.appendChild(div);
+    });
+    bindGalleryClicks();
   }
+
+  buildGallery(galleryData, 'initial');
+  const showAllBtn = document.getElementById('showAllBtn');
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1422,7 +363,7 @@ footer{
       document.getElementById('galeria').scrollIntoView({behavior:'smooth'});
     });
   });
-
+  
   showAllBtn.addEventListener('click', () => {
     buildGallery(galleryData, 'tots');
     document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -1432,183 +373,100 @@ footer{
 
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
-
-  function toggleMenu(){
-    mobileMenu.classList.toggle('open');
-  }
-
+  function toggleMenu() { mobileMenu.classList.toggle('open'); }
   menuBtn.addEventListener('click', toggleMenu);
-
   document.querySelectorAll('.mobile-menu .nav-links-mobile a').forEach(link => {
-    link.addEventListener('click', () => {
-      if(mobileMenu.classList.contains('open')){
-        toggleMenu();
-      }
-    });
+    link.addEventListener('click', () => { if(mobileMenu.classList.contains('open')) toggleMenu(); });
   });
 
-  document.getElementById('lightboxPrev').addEventListener('click', () => navigateTo(currentIndex - 1));
-  document.getElementById('lightboxNext').addEventListener('click', () => navigateTo(currentIndex + 1));
-  document.getElementById('mobilePrev').addEventListener('click', () => navigateTo(currentIndex - 1));
-  document.getElementById('mobileNext').addEventListener('click', () => navigateTo(currentIndex + 1));
-  document.getElementById('closeLightbox').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxPrev').addEventListener('click',()=>navigateTo(currentIndex-1));
+  document.getElementById('lightboxNext').addEventListener('click',()=>navigateTo(currentIndex+1));
+  document.getElementById('mobilePrev').addEventListener('click',()=>navigateTo(currentIndex-1));
+  document.getElementById('mobileNext').addEventListener('click',()=>navigateTo(currentIndex+1));
+  document.getElementById('closeLightbox').addEventListener('click',closeLightbox);
+  lightbox.addEventListener('click',e=>{ if(e.target===lightbox) closeLightbox(); });
 
-  lightbox.addEventListener('click', e => {
-    if(e.target === lightbox){
-      closeLightbox();
-    }
-  });
-
-  function setAudioVolume(vol){
-    audio.volume = vol;
-    audio.muted = vol === 0;
-    syncAudioControls(vol);
+  function setAudioVolume(vol) { audio.volume = vol; audio.muted = (vol === 0); syncAudioControls(vol); }
+  audioVolume.addEventListener('input',()=>{ setAudioVolume(parseFloat(audioVolume.value)); showAudioOverlay(5000); });
+  if(audioVolumeMobile){ audioVolumeMobile.addEventListener('input',()=>{ setAudioVolume(parseFloat(audioVolumeMobile.value)); showAudioOverlay(5000); }); }
+  function togglePlayPause() {
+    if(audioPlaying) { audio.pause(); audioPlaying = false; }
+    else { audio.play().then(()=>{ audioPlaying=true; }).catch(()=>{}); }
+    updateAudioButtonState(audioPlaying); showAudioOverlay(5000);
   }
+  if(audioPlayPause) audioPlayPause.addEventListener('click', togglePlayPause);
+  if(audioPlayPauseMobile) audioPlayPauseMobile.addEventListener('click', togglePlayPause);
+  audioCloseBtn.addEventListener('click', ()=>{ audio.pause(); audio.currentTime=0; audioPlaying=false; updateAudioButtonState(false); audioOverlay.classList.remove('visible'); });
+  if(audioCloseBtnMobile) audioCloseBtnMobile.addEventListener('click', ()=>{ audio.pause(); audio.currentTime=0; audioPlaying=false; updateAudioButtonState(false); document.getElementById('audioControlsMobile').classList.remove('visible'); });
 
-  audioVolume.addEventListener('input', () => {
-    setAudioVolume(parseFloat(audioVolume.value));
-    showAudioOverlay(5000);
-  });
-
-  if(audioVolumeMobile){
-    audioVolumeMobile.addEventListener('input', () => {
-      setAudioVolume(parseFloat(audioVolumeMobile.value));
-      showAudioOverlay(5000);
-    });
+  function applyLanguage(lang){
+    currentLang=lang; document.documentElement.lang=lang;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{ const key=el.getAttribute('data-i18n'); if(texts[lang][key]) el.textContent=texts[lang][key]; });
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{ const key=el.getAttribute('data-i18n-placeholder'); if(texts[lang][key]) el.placeholder=texts[lang][key]; });
+    document.querySelectorAll('#langSwitcherDesktop button, #langSwitcherMobile button').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
   }
-
-  function togglePlayPause(){
-    if(audioPlaying){
-      audio.pause();
-      audioPlaying = false;
-    } else {
-      audio.play().then(() => {
-        audioPlaying = true;
-      }).catch(() => {});
-    }
-
-    updateAudioButtonState(audioPlaying);
-    showAudioOverlay(5000);
-  }
-
-  if(audioPlayPause){
-    audioPlayPause.addEventListener('click', togglePlayPause);
-  }
-
-  if(audioPlayPauseMobile){
-    audioPlayPauseMobile.addEventListener('click', togglePlayPause);
-  }
-
-  audioCloseBtn.addEventListener('click', () => {
-    audio.pause();
-    audio.currentTime = 0;
-    audioPlaying = false;
-    updateAudioButtonState(false);
-    audioOverlay.classList.remove('visible');
-  });
-
-  if(audioCloseBtnMobile){
-    audioCloseBtnMobile.addEventListener('click', () => {
-      audio.pause();
-      audio.currentTime = 0;
-      audioPlaying = false;
-      updateAudioButtonState(false);
-      document.getElementById('audioControlsMobile').classList.remove('visible');
-    });
-  }
-
-  document.querySelectorAll('#langSwitcherDesktop button, #langSwitcherMobile button').forEach(btn => {
-    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
-  });
-
+  document.querySelectorAll('#langSwitcherDesktop button, #langSwitcherMobile button').forEach(btn=>btn.addEventListener('click',()=>applyLanguage(btn.dataset.lang)));
   applyLanguage('ca');
 
   const contactForm = document.getElementById('contactForm');
   const formMessage = document.getElementById('form-message');
-
-  contactForm.addEventListener('submit', async e => {
+  contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-
     const formData = new FormData(contactForm);
     formMessage.innerHTML = '<p>Enviant...</p>';
-
-    try{
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method:'POST',
-        body:formData
-      });
-
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData });
       const data = await response.json();
-
-      if(data.success){
-        formMessage.innerHTML = '<p style="color:lightgreen;">✅ Missatge enviat correctament. Gràcies!</p>';
-        contactForm.reset();
-      } else {
-        formMessage.innerHTML = '<p style="color:salmon;">❌ Error. Torneu a provar.</p>';
-      }
-    } catch(err){
-      formMessage.innerHTML = '<p style="color:salmon;">❌ Error de connexió.</p>';
-    }
+      if(data.success) { formMessage.innerHTML = '<p style="color:lightgreen;">✅ Missatge enviat correctament. Gràcies!</p>'; contactForm.reset(); }
+      else { formMessage.innerHTML = '<p style="color:salmon;">❌ Error. Torneu a provar.</p>'; }
+    } catch(err) { formMessage.innerHTML = '<p style="color:salmon;">❌ Error de connexió.</p>'; }
   });
 
-  async function updateVisitCounter(){
-    try{
+  async function updateVisitCounter() {
+    try {
+      const response = await fetch('https://ipapi.co/json/');
+      const data = await response.json();
+      const ip = data.ip;
       const today = new Date().toISOString().slice(0,10);
-      const visitKey = 'visit_today';
+      const visitKey = `visit_${ip}`;
       const lastVisit = localStorage.getItem(visitKey);
       let totalVisits = parseInt(localStorage.getItem('totalVisits') || '0');
-
-      if(lastVisit !== today){
-        totalVisits++;
-        localStorage.setItem('totalVisits', totalVisits);
-        localStorage.setItem(visitKey, today);
-      }
-
+      if(lastVisit !== today) { totalVisits++; localStorage.setItem('totalVisits', totalVisits); localStorage.setItem(visitKey, today); }
       document.getElementById('visitCounter').innerText = totalVisits;
-    } catch(e){
-      let fallback = parseInt(localStorage.getItem('totalVisits') || '0');
-      document.getElementById('visitCounter').innerText = fallback;
-    }
+    } catch(e) { let fallback = parseInt(localStorage.getItem('totalVisits') || '0'); document.getElementById('visitCounter').innerText = fallback; }
   }
-
   updateVisitCounter();
 
   let likeCount = parseInt(localStorage.getItem('likeCount') || '0');
   const likeButton = document.getElementById('likeButton');
   const likeCounterSpan = document.getElementById('likeCounter');
-
   likeCounterSpan.innerText = likeCount;
-
-  if(localStorage.getItem('liked') === 'true'){
-    likeButton.style.opacity = '0.6';
-  }
-
+  if(localStorage.getItem('liked') === 'true') likeButton.style.opacity = '0.6';
   likeButton.style.cursor = 'pointer';
-
   likeButton.addEventListener('click', () => {
     if(localStorage.getItem('liked') === 'true') return;
+    likeCount++; localStorage.setItem('likeCount', likeCount); localStorage.setItem('liked', 'true');
+    likeCounterSpan.innerText = likeCount; likeButton.style.opacity = '0.6';
+  });
+})();
+</script>
 
-    likeCount++;
-    localStorage.setItem('likeCount', likeCount);
-    localStorage.setItem('liked', 'true');
-
-    likeCounterSpan.innerText = likeCount;
-    likeButton.style.opacity = '0.6';
+<script>
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on("init", user => {
+    if (!user && window.location.hash) {
+      window.netlifyIdentity.open();
+    }
   });
 
-  if(window.netlifyIdentity){
-    window.netlifyIdentity.on('init', user => {
-      if(!user){
-        window.netlifyIdentity.on('login', () => {
-          document.location.href = '/admin/';
-        });
-      }
-    });
-  }
+  window.netlifyIdentity.on("login", () => {
+    document.location.href = "/admin/";
+  });
 
-  carregarFotosDesDeJson();
-
-})();
+  window.netlifyIdentity.on("signup", () => {
+    document.location.href = "/admin/";
+  });
+}
 </script>
 
 </body>
