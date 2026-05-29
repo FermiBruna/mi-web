@@ -131,7 +131,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   <div class="gallery-masonry" id="galleryGrid"></div>
 </section>
 
-<section id="sobre-mi" class="container"><h2 class="section-title" data-i18n="about_title">Sobre mi</h2><div class="about-content"><div class="about-image"><img src="jo.jpg" alt="Fermí Bruna" loading="lazy"></div><div class="about-text"><h3 data-i18n="about_hi">Hola, soc Fermí Bruna</h3><p data-i18n="about_quote">“Ets tu i la teua càmera. Les limitacions que n´hi ha a les teues fotografies són les mateixes que pugues tenir com a persona, perquè el que veiem és el que som.”</p><p data-i18n="about_p1">Fotògraf aficionat apassionat per capturar la bellesa del quotidià. Aquest espai és el meu quadern visual, on compartesc paisatges, retrats i moments que m'inspiren. No busque vendre, només connectar a través de la imatge.</p><p data-i18n="about_p2">Cada fotografia té una història. Espere que en recórrer la galeria pugues sentir una mica del que jo vaig experimentar en disparar.</p></div></div></section>
+<section id="sobre-mi" class="container"><h2 class="section-title" data-i18n="about_title">Sobre mi</h2><div class="about-content"><div class="about-image"><img src="jo.jpg" alt="Fermí Bruna" loading="lazy"></div><div class="about-text"><h3 data-i18n="about_hi">Hola, soc Fermí Bruna</h3><p data-i18n="about_quote">"Ets tu i la teua càmera. Les limitacions que n´hi ha a les teues fotografies són les mateixes que pugues tenir com a persona, perquè el que veiem és el que som."</p><p data-i18n="about_p1">Fotògraf aficionat apassionat per capturar la bellesa del quotidià. Aquest espai és el meu quadern visual, on compartesc paisatges, retrats i moments que m'inspiren. No busque vendre, només connectar a través de la imatge.</p><p data-i18n="about_p2">Cada fotografia té una història. Espere que en recórrer la galeria pugues sentir una mica del que jo vaig experimentar en disparar.</p></div></div></section>
 
 <section id="mirades" class="container"><p class="section-eyebrow" data-i18n="mirades_eyebrow">Mirades amigues</p><h2 class="section-title" data-i18n="mirades_title">Altres maneres de mirar</h2><p class="section-subtitle" data-i18n="mirades_subtitle">Companys i companyes de fotografia amb qui compartisc camins, converses i aprenentatges.</p><div class="news-grid" id="collab-container"><div class="collab-card"><img src="https://picsum.photos/id/177/400/300" alt="Amic Joan" loading="lazy"><div class="news-card-body"><h3 data-i18n="collab1_title">Amic Joan</h3><p data-i18n="collab1_text">Fotògraf de natura i amic de llargues caminades per la serra.</p></div></div><div class="collab-card"><img src="https://picsum.photos/id/319/400/300" alt="Amiga Maria" loading="lazy"><div class="news-card-body"><h3 data-i18n="collab2_title">Amiga Maria</h3><p data-i18n="collab2_text">Especialista en retrats urbans amb una mirada única.</p></div></div></div></section>
 
@@ -181,44 +181,14 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   const audioCloseBtnMobile=document.getElementById('audioCloseBtnMobile');
   const audioPlayPause=document.getElementById('audioPlayPause');
   const audioPlayPauseMobile=document.getElementById('audioPlayPauseMobile');
-
-  const galleryData = [
-    { archivo: "anell-lira.jpg", categoria: "astro", descripcion: "Nebulosa Anell de Lira", fecha: "2026-04" },
-    { archivo: "anima.jpg", categoria: "astro", descripcion: "Nebulosa de l'Ànima", fecha: "2026-03" },
-    { archivo: "cap-cavall.jpg", categoria: "astro", descripcion: "Nebuloses del Cap de Cavall i de la Flama a la constel·lació d’Orió", fecha: "2025-11" },
-    { archivo: "lluna-matinera.jpg", categoria: "astro", descripcion: "Lluna Matinera", fecha: "2026-05" },
-    { archivo: "m27-dumbell.jpg", categoria: "astro", descripcion: "Nebulosa Messier 27, Dumbell", fecha: "2026-04" },
-    { archivo: "medusa.jpg", categoria: "astro", descripcion: "Sh2-274 —la Medusa", fecha: "2026-04" },
-    { archivo: "orio.jpg", categoria: "astro", descripcion: "Constel·lació d'Orió", fecha: "2024-08" },
-    { archivo: "barranc-encantada.jpg", categoria: "paisatge", descripcion: "Barranc de l'Encantada i tardor al Comtat", fecha: "2025-11" },
-    { archivo: "miravet1.jpg", categoria: "paisatge", descripcion: "Miravet, Ribera d'Ebre", fecha: "2026-04" },
-    { archivo: "triador.jpg", categoria: "paisatge", descripcion: "Carrer del Triador, València", fecha: "2026-03" },
-    { archivo: "collrates.jpg", categoria: "paisatge", descripcion: "Vall de Pop, Marina Alta", fecha: "2024-01" },
-    { archivo: "lluna-montgo.jpg", categoria: "paisatge", descripcion: "Lluna pel Montgó", fecha: "2024-08" },
-    { archivo: "bocairent.jpg", categoria: "paisatge", descripcion: "Bocairent, La Vall d'Albaida", fecha: "2024-05" },
-    { archivo: "dones-mon.jpg", categoria: "moments", descripcion: "Dones en lluita", fecha: "2026-05" },
-    { archivo: "albufera.jpg", categoria: "moments", descripcion: "Pescadors", fecha: "2024-01" },
-    { archivo: "manuela.jpg", categoria: "moments", descripcion: "Manuela", fecha: "2024-06" },
-    { archivo: "desgavell.jpg", categoria: "moments", descripcion: "Desgavell", fecha: "2024-08" },
-    { archivo: "carrer-miquelet-pluja.jpg", categoria: "moments", descripcion: "Carrer Miquelet", fecha: "2024-05" },
-    { archivo: "trench.jpg", categoria: "moments", descripcion: "Carrer del Trench", fecha: "2024-05" },
-    { archivo: "mur-cigne.jpg", categoria: "astro", descripcion: "Mur del Cigne a la nebulosa d´Amèrica del Nord", fecha: "2026-04" },
-    { archivo: "sanvalentin.jpg", categoria: "astro", descripcion: "Sh2-174 Rosa de Sant Valentí", fecha: "2026-05" },
-    { archivo: "via.jpg", categoria: "paisatge", descripcion: "La primera Via Làctia de la temporada a Xulella", fecha: "2026-05" },
-    { archivo: "escorpi.jpg", categoria: "astro", descripcion: "Via Làctia i Escorpi, Xulella", fecha: "2026-05" },
-    { archivo: "osa.jpg", categoria: "astro", descripcion: "Ursa Major, Xulella", fecha: "2026-05" },
-    { archivo: "trifida.jpg", categoria: "astro", descripcion: "M20 Nebulosa Trifida, València", fecha: "2026-04" },
-    { archivo: "ullnegrem64.jpg", categoria: "astro", descripcion: "M64 Galàxia Ull Negre, Xulella", fecha: "2026-05" },
-    { archivo: "veldelest.jpg", categoria: "astro", descripcion: "NGC6992 Vel de l'Est, Xulella", fecha: "2026-05" },
-    { archivo: "passejant.jpg", categoria: "moments", descripcion: "Passejant", fecha: "2026-05" }
-  ];
+  let galleryData = [];
 
   const texts={
     ca: { nav_inicio:'Inici',nav_galeria:'Galeria',nav_sobre:'Sobre mi',nav_mirades:'Mirades amigues',nav_noticies:'Notícies',nav_contacto:'Contacte', show_all:'Veure totes',
       hero_procedencia:'Des de València',hero_title:'Fotografia per als sentits',hero_subtitle:'Benvingut al món visual de Fermí Bruna - fotografia',hero_btn:'Galeria',
       gal_eyebrow:'Galeria',gal_title:'Un passeig visual',gal_subtitle:'Un mosaic inicial amb una selecció de fotografies. Pots punxar qualsevol imatge per veure-la en gran.',
       filter_astro:'Astrofotografia',filter_land:'Paisatge',filter_macro:'Macro',filter_moments:'Moments',
-      about_title:'Sobre mi',about_hi:'Hola, soc Fermí Bruna',about_quote:'“Ets tu i la teua càmera. Les limitacions que n´hi ha a les teues fotografies són les mateixes que pugues tenir com a persona, perquè el que veiem és el que som.”',about_p1:'Fotògraf aficionat apassionat per capturar la bellesa del quotidià. Aquest espai és el meu quadern visual, on compartesc paisatges, retrats i moments que m\'inspiren. No busque vendre, només connectar a través de la imatge.',about_p2:'Cada fotografia té una història. Espere que en recórrer la galeria pugues sentir una mica del que jo vaig experimentar en disparar.',
+      about_title:'Sobre mi',about_hi:'Hola, soc Fermí Bruna',about_quote:'"Ets tu i la teua càmera. Les limitacions que n´hi ha a les teues fotografies són les mateixes que pugues tenir com a persona, perquè el que veiem és el que som."',about_p1:'Fotògraf aficionat apassionat per capturar la bellesa del quotidià. Aquest espai és el meu quadern visual, on compartesc paisatges, retrats i moments que m\'inspiren. No busque vendre, només connectar a través de la imatge.',about_p2:'Cada fotografia té una història. Espere que en recórrer la galeria pugues sentir una mica del que jo vaig experimentar en disparar.',
       mirades_eyebrow:'Mirades amigues',mirades_title:'Altres maneres de mirar',mirades_subtitle:'Companys i companyes de fotografia amb qui compartisc camins, converses i aprenentatges.',
       collab1_title:'Amic Joan',collab1_text:'Fotògraf de natura i amic de llargues caminades per la serra.',collab2_title:'Amiga Maria',collab2_text:'Especialista en retrats urbans amb una mirada única.',
       news_eyebrow:'Notícies',news_title:'Actualitat fotogràfica',news_subtitle:'Esdeveniments, cites visuals i notícies relacionades amb la fotografia, el cel i la cultura visual.',
@@ -231,7 +201,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       hero_procedencia:'Desde València',hero_title:'Fotografía para los sentidos',hero_subtitle:'Bienvenido al mundo visual de Fermí Bruna - fotografía',hero_btn:'Galería',
       gal_eyebrow:'Galería',gal_title:'Un paseo visual',gal_subtitle:'Un mosaico inicial con una selección de fotografías. Puedes pulsar cualquier imagen para verla en grande.',
       filter_astro:'Astrofotografía',filter_land:'Paisaje',filter_macro:'Macro',filter_moments:'Momentos',
-      about_title:'Sobre mí',about_hi:'Hola, soy Fermí Bruna',about_quote:'“Eres tú y tu cámara. Las limitaciones que hay en tus fotografías son las mismas que puedes tener como persona, porque lo que vemos es lo que somos.”',about_p1:'Fotógrafo aficionado pasado por capturar la belleza de lo cotidiano. Este espacio es mi cuaderno visual, donde comparto paisajes, retratos y momentos que me inspiran. No busco vender, solo conectar a través de la imagen.',about_p2:'Cada fotografía tiene una historia. Espero que al recorrer la galería puedas sentir un poco de lo que yo experimenté al disparar.',
+      about_title:'Sobre mí',about_hi:'Hola, soy Fermí Bruna',about_quote:'"Eres tú y tu cámara. Las limitaciones que hay en tus fotografías son las mismas que puedes tener como persona, porque lo que vemos es lo que somos."',about_p1:'Fotógrafo aficionado pasado por capturar la belleza de lo cotidiano. Este espacio es mi cuaderno visual, donde comparto paisajes, retratos y momentos que me inspiran. No busco vender, solo conectar a través de la imagen.',about_p2:'Cada fotografía tiene una historia. Espero que al recorrer la galería puedas sentir un poco de lo que yo experimenté al disparar.',
       mirades_eyebrow:'Miradas amigas',mirades_title:'Otras maneras de mirar',mirades_subtitle:'Compañeros y compañeras de fotografía con quienes comparto caminos, conversaciones y aprendizajes.',
       collab1_title:'Amigo Joan',collab1_text:'Fotógrafo de naturaleza y amigo de largas caminatas por la sierra.',collab2_title:'Amiga Maria',collab2_text:'Especialista en retratos urbanos con una mirada única.',
       news_eyebrow:'Noticias',news_title:'Actualidad fotográfica',news_subtitle:'Eventos, citas visuales y noticias relacionadas con la fotografía, el cielo y la cultura visual.',
@@ -244,7 +214,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       hero_procedencia:'From València',hero_title:'Photography for the senses',hero_subtitle:'Welcome to the visual world of Fermí Bruna - photography',hero_btn:'Gallery',
       gal_eyebrow:'Gallery',gal_title:'A visual stroll',gal_subtitle:'An initial mosaic with a selection of photographs. You can click any image to view it larger.',
       filter_astro:'Astrophotography',filter_land:'Landscape',filter_macro:'Macro',filter_moments:'Moments',
-      about_title:'About me',about_hi:'Hi, I am Fermí Bruna',about_quote:'“You and your camera. The limitations in your photographs are the same ones you may have as a person, because what we see is what we are.”',about_p1:'An amateur photographer passionate about capturing the beauty of everyday life. This space is my visual notebook, where I share landscapes, portraits, and moments that inspire me. I do not try to sell, only to connect through images.',about_p2:'Every photograph has a story. I hope that as you browse the gallery you can feel a little of what I experienced when taking them.',
+      about_title:'About me',about_hi:'Hi, I am Fermí Bruna',about_quote:'"You and your camera. The limitations in your photographs are the same ones you may have as a person, because what we see is what we are."',about_p1:'An amateur photographer passionate about capturing the beauty of everyday life. This space is my visual notebook, where I share landscapes, portraits, and moments that inspire me. I do not try to sell, only to connect through images.',about_p2:'Every photograph has a story. I hope that as you browse the gallery you can feel a little of what I experienced when taking them.',
       mirades_eyebrow:'Fellow looks',mirades_title:'Other ways of seeing',mirades_subtitle:'Photography friends with whom I share paths, conversations, and learning.',
       collab1_title:'Friend Joan',collab1_text:'Nature photographer and friend on long walks through the hills.',collab2_title:'Friend Maria',collab2_text:'Specialist in urban portraits with a unique eye.',
       news_eyebrow:'News',news_title:'Photo current affairs',news_subtitle:'Events, visual appointments and news related to photography, the sky, and visual culture.',
@@ -330,7 +300,8 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       div.className = 'gallery-item';
       div.setAttribute('data-category', item.categoria);
       const img = document.createElement('img');
-      img.src = `img/${item.archivo}`;
+      const archivoNormalizado = String(item.archivo || '').replace(/^\/?img\//i, '');
+      img.src = `img/${archivoNormalizado}`;
       img.alt = item.descripcion || '';
       img.loading = 'lazy';
       img.onerror = function() {
@@ -340,10 +311,15 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       };
       const cap = document.createElement('div');
       cap.className = 'gallery-caption';
-      const fechaParts = item.fecha.split('-');
+      const fechaTexto = String(item.fecha || '');
+      const fechaParts = fechaTexto.includes('-') ? fechaTexto.split('-') : [];
       const meses = { '01':'gener','02':'febrer','03':'març','04':'abril','05':'maig','06':'juny','07':'juliol','08':'agost','09':'setembre','10':'octubre','11':'novembre','12':'desembre'};
-      const fechaLegible = `${meses[fechaParts[1]]} ${fechaParts[0]}`;
-      cap.textContent = `${item.descripcion} · ${fechaLegible}`;
+      const fechaLegible = (fechaParts.length === 2 && meses[fechaParts[1]])
+        ? `${meses[fechaParts[1]]} ${fechaParts[0]}`
+        : fechaTexto;
+      cap.textContent = fechaLegible
+        ? `${item.descripcion} · ${fechaLegible}`
+        : `${item.descripcion}`;
       div.appendChild(img);
       div.appendChild(cap);
       galleryGrid.appendChild(div);
@@ -351,7 +327,24 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     bindGalleryClicks();
   }
 
-  buildGallery(galleryData, 'initial');
+  async function carregarFotosDesDeJson(){
+    try{
+      const response = await fetch('datos.json?v=' + new Date().getTime(), { cache: 'no-store' });
+      if(!response.ok) throw new Error("No s'ha pogut carregar datos.json");
+
+      const data = await response.json();
+      if(data && Array.isArray(data.fotos)) galleryData = data.fotos;
+      else if(Array.isArray(data)) galleryData = data;
+      else galleryData = [];
+    } catch(error){
+      console.error('Error carregant datos.json:', error);
+      galleryData = [];
+    }
+
+    buildGallery(galleryData, 'initial');
+  }
+
+  carregarFotosDesDeJson();
   const showAllBtn = document.getElementById('showAllBtn');
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
