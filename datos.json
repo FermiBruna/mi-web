@@ -1,32 +1,178 @@
 {
   "fotos": [
-    { "archivo": "anell-lira.jpg", "categoria": "astro", "descripcion": "Nebulosa Anell de Lira", "fecha": "2026-04" },
-    { "archivo": "anima.jpg", "categoria": "astro", "descripcion": "Nebulosa de l'Ànima", "fecha": "2026-03" },
-    { "archivo": "cap-cavall.jpg", "categoria": "astro", "descripcion": "Nebuloses del Cap de Cavall i de la Flama a la constel·lació d’Orió", "fecha": "2025-11" },
-    { "archivo": "lluna-matinera.jpg", "categoria": "astro", "descripcion": "Lluna Matinera", "fecha": "2026-05" },
-    { "archivo": "m27-dumbell.jpg", "categoria": "astro", "descripcion": "Nebulosa Messier 27, Dumbell", "fecha": "2026-04" },
-    { "archivo": "medusa.jpg", "categoria": "astro", "descripcion": "Sh2-274 —la Medusa", "fecha": "2026-04" },
-    { "archivo": "orio.jpg", "categoria": "astro", "descripcion": "Constel·lació d'Orió", "fecha": "2024-08" },
-    { "archivo": "barranc-encantada.jpg", "categoria": "paisatge", "descripcion": "Barranc de l'Encantada i tardor al Comtat", "fecha": "2025-11" },
-    { "archivo": "miravet1.jpg", "categoria": "paisatge", "descripcion": "Miravet, Ribera d'Ebre", "fecha": "2026-04" },
-    { "archivo": "triador.jpg", "categoria": "paisatge", "descripcion": "Carrer del Triador, València", "fecha": "2026-03" },
-    { "archivo": "collrates.jpg", "categoria": "paisatge", "descripcion": "Vall de Pop, Marina Alta", "fecha": "2024-01" },
-    { "archivo": "lluna-montgo.jpg", "categoria": "paisatge", "descripcion": "Lluna pel Montgó", "fecha": "2024-08" },
-    { "archivo": "bocairent.jpg", "categoria": "paisatge", "descripcion": "Bocairent, La Vall d'Albaida", "fecha": "2024-05" },
-    { "archivo": "dones-mon.jpg", "categoria": "moments", "descripcion": "Dones en lluita", "fecha": "2026-05" },
-    { "archivo": "albufera.jpg", "categoria": "moments", "descripcion": "Pescadors", "fecha": "2024-01" },
-    { "archivo": "manuela.jpg", "categoria": "moments", "descripcion": "Manuela", "fecha": "2024-06" },
-    { "archivo": "desgavell.jpg", "categoria": "moments", "descripcion": "Desgavell", "fecha": "2024-08" },
-    { "archivo": "carrer-miquelet-pluja.jpg", "categoria": "moments", "descripcion": "Carrer Miquelet", "fecha": "2024-05" },
-    { "archivo": "trench.jpg", "categoria": "moments", "descripcion": "Carrer del Trench", "fecha": "2024-05" },
-    { "archivo": "mur-cigne.jpg", "categoria": "astro", "descripcion": "Mur del Cigne a la nebulosa d´Amèrica del Nord", "fecha": "2026-04" },
-    { "archivo": "sanvalentin.jpg", "categoria": "astro", "descripcion": "Sh2-174 Rosa de Sant Valentí", "fecha": "2026-05" },
-    { "archivo": "via.jpg", "categoria": "paisatge", "descripcion": "La primera Via Làctia de la temporada a Xulella", "fecha": "2026-05" },
-    { "archivo": "escorpi.jpg", "categoria": "astro", "descripcion": "Via Làctia i Escorpi, Xulella", "fecha": "2026-05" },
-    { "archivo": "osa.jpg", "categoria": "astro", "descripcion": "Ursa Major, Xulella", "fecha": "2026-05" },
-    { "archivo": "trifida.jpg", "categoria": "astro", "descripcion": "M20 Nebulosa Trifida, València", "fecha": "2026-04" },
-    { "archivo": "ullnegrem64.jpg", "categoria": "astro", "descripcion": "M64 Galàxia Ull Negre, Xulella", "fecha": "2026-05" },
-    { "archivo": "veldelest.jpg", "categoria": "astro", "descripcion": "NGC6992 Vel de l'Est, Xulella", "fecha": "2026-05" },
-    { "archivo": "passejant.jpg", "categoria": "moments", "descripcion": "Passejant", "fecha": "2026-05" }
+    {
+      "archivo": "anell-lira.jpg",
+      "categoria": "astro",
+      "descripcion": "Nebulosa Anell de Lira",
+      "fecha": "2026-04"
+    },
+    {
+      "archivo": "anima.jpg",
+      "categoria": "astro",
+      "descripcion": "Nebulosa de l'Ànima",
+      "fecha": "2026-03"
+    },
+    {
+      "archivo": "cap-cavall.jpg",
+      "categoria": "astro",
+      "descripcion": "Nebuloses del Cap de Cavall i de la Flama a la constel·lació d’Orió",
+      "fecha": "2025-11"
+    },
+    {
+      "archivo": "lluna-matinera.jpg",
+      "categoria": "astro",
+      "descripcion": "Lluna Matinera",
+      "fecha": "2026-05"
+    },
+    {
+      "archivo": "m27-dumbell.jpg",
+      "categoria": "astro",
+      "descripcion": "Nebulosa Messier 27, Dumbell",
+      "fecha": "2026-04"
+    },
+    {
+      "archivo": "medusa.jpg",
+      "categoria": "astro",
+      "descripcion": "Sh2-274 —la Medusa",
+      "fecha": "2026-04"
+    },
+    {
+      "archivo": "orio.jpg",
+      "categoria": "astro",
+      "descripcion": "Constel·lació d'Orió",
+      "fecha": "2024-08"
+    },
+    {
+      "archivo": "barranc-encantada.jpg",
+      "categoria": "paisatge",
+      "descripcion": "Barranc de l'Encantada i tardor al Comtat",
+      "fecha": "2025-11"
+    },
+    {
+      "archivo": "miravet1.jpg",
+      "categoria": "paisatge",
+      "descripcion": "Miravet, Ribera d'Ebre",
+      "fecha": "2026-04"
+    },
+    {
+      "archivo": "triador.jpg",
+      "categoria": "paisatge",
+      "descripcion": "Carrer del Triador, València",
+      "fecha": "2026-03"
+    },
+    {
+      "archivo": "collrates.jpg",
+      "categoria": "paisatge",
+      "descripcion": "Vall de Pop, Marina Alta",
+      "fecha": "2024-01"
+    },
+    {
+      "archivo": "lluna-montgo.jpg",
+      "categoria": "paisatge",
+      "descripcion": "Lluna pel Montgó",
+      "fecha": "2024-08"
+    },
+    {
+      "archivo": "bocairent.jpg",
+      "categoria": "paisatge",
+      "descripcion": "Bocairent, La Vall d'Albaida",
+      "fecha": "2024-05"
+    },
+    {
+      "archivo": "dones-mon.jpg",
+      "categoria": "moments",
+      "descripcion": "Dones en lluita",
+      "fecha": "2026-05"
+    },
+    {
+      "archivo": "albufera.jpg",
+      "categoria": "moments",
+      "descripcion": "Pescadors",
+      "fecha": "2024-01"
+    },
+    {
+      "archivo": "manuela.jpg",
+      "categoria": "moments",
+      "descripcion": "Manuela",
+      "fecha": "2024-06"
+    },
+    {
+      "archivo": "desgavell.jpg",
+      "categoria": "moments",
+      "descripcion": "Desgavell",
+      "fecha": "2024-08"
+    },
+    {
+      "archivo": "carrer-miquelet-pluja.jpg",
+      "categoria": "moments",
+      "descripcion": "Carrer Miquelet",
+      "fecha": "2024-05"
+    },
+    {
+      "archivo": "trench.jpg",
+      "categoria": "moments",
+      "descripcion": "Carrer del Trench",
+      "fecha": "2024-05"
+    },
+    {
+      "archivo": "mur-cigne.jpg",
+      "categoria": "astro",
+      "descripcion": "Mur del Cigne a la nebulosa d´Amèrica del Nord",
+      "fecha": "2026-04"
+    },
+    {
+      "archivo": "sanvalentin.jpg",
+      "categoria": "astro",
+      "descripcion": "Sh2-174 Rosa de Sant Valentí",
+      "fecha": "2026-05"
+    },
+    {
+      "archivo": "via.jpg",
+      "categoria": "paisatge",
+      "descripcion": "La primera Via Làctia de la temporada a Xulella",
+      "fecha": "2026-05"
+    },
+    {
+      "archivo": "escorpi.jpg",
+      "categoria": "astro",
+      "descripcion": "Via Làctia i Escorpi, Xulella",
+      "fecha": "2026-05"
+    },
+    {
+      "archivo": "osa.jpg",
+      "categoria": "astro",
+      "descripcion": "Ursa Major, Xulella",
+      "fecha": "2026-05"
+    },
+    {
+      "archivo": "trifida.jpg",
+      "categoria": "astro",
+      "descripcion": "M20 Nebulosa Trifida, València",
+      "fecha": "2026-04"
+    },
+    {
+      "archivo": "ullnegrem64.jpg",
+      "categoria": "astro",
+      "descripcion": "M64 Galàxia Ull Negre, Xulella",
+      "fecha": "2026-05"
+    },
+    {
+      "archivo": "veldelest.jpg",
+      "categoria": "astro",
+      "descripcion": "NGC6992 Vel de l'Est, Xulella",
+      "fecha": "2026-05"
+    },
+    {
+      "archivo": "passejant.jpg",
+      "categoria": "moments",
+      "descripcion": "Passejant",
+      "fecha": "2026-05"
+    },
+    {
+      "archivo": "/img/polaris.jpg",
+      "categoria": "paisatge",
+      "descripcion": "Polaris - Estrela Polar",
+      "fecha": "2026-05"
+    }
   ]
 }
