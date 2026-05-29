@@ -173,6 +173,12 @@
       "categoria": "paisatge",
       "descripcion": "Polaris - Estrela Polar",
       "fecha": "2024-08"
+    },
+    {
+      "archivo": "/img/buterfly.jpg",
+      "categoria": "astro",
+      "descripcion": "Nebula Butterfly - Papallona O Gamma Cigni - Almenara",
+      "fecha": "2026-05"
     }
   ]
 }
