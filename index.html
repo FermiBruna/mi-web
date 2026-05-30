@@ -123,7 +123,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   <p class="section-subtitle" data-i18n="gal_subtitle">Un mosaic inicial amb una selecció de fotografies. Pots punxar qualsevol imatge per veure-la en gran.</p>
   <div class="filter-buttons">
     <button class="filter-btn" data-filter="astro" data-i18n="filter_astro" aria-label="Filtrar astrofotografia">Astrofotografia</button>
-    <button class="filter-btn" data-filter="paisatge" data-i18n="filter_land" aria-label="Filtrar paisatges">Paisatge</button>
+    <button class="filter-btn" data-filter="paisatge" data-i18n="filter_land" aria-label="Filtrar paisatges">Paissatge</button>
     <button class="filter-btn" data-filter="macro" data-i18n="filter_macro" aria-label="Filtrar macro">Macro</button>
     <button class="filter-btn" data-filter="moments" data-i18n="filter_moments" aria-label="Filtrar moments">Moments</button>
     <button class="show-all-btn" id="showAllBtn" data-i18n="show_all" aria-label="Mostrar totes les fotografies">Veure totes</button>
@@ -187,7 +187,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     ca: { nav_inicio:'Inici',nav_galeria:'Galeria',nav_sobre:'Sobre mi',nav_mirades:'Mirades amigues',nav_noticies:'Notícies',nav_contacto:'Contacte', show_all:'Veure totes',
       hero_procedencia:'Des de València',hero_title:'Fotografia per als sentits',hero_subtitle:'Benvingut al món visual de Fermí Bruna - fotografia',hero_btn:'Galeria',
       gal_eyebrow:'Galeria',gal_title:'Un passeig visual',gal_subtitle:'Un mosaic inicial amb una selecció de fotografies. Pots punxar qualsevol imatge per veure-la en gran.',
-      filter_astro:'Astrofotografia',filter_land:'Paisatge',filter_macro:'Macro',filter_moments:'Moments',
+      filter_astro:'Astrofotografia',filter_land:'Paissatge',filter_macro:'Macro',filter_moments:'Moments',
       about_title:'Sobre mi',about_hi:'Hola, soc Fermí Bruna',about_quote:'"Ets tu i la teua càmera. Les limitacions que n´hi ha a les teues fotografies són les mateixes que pugues tenir com a persona, perquè el que veiem és el que som."',about_p1:'Fotògraf aficionat apassionat per capturar la bellesa del quotidià. Aquest espai és el meu quadern visual, on compartesc paisatges, retrats i moments que m\'inspiren. No busque vendre, només connectar a través de la imatge.',about_p2:'Cada fotografia té una història. Espere que en recórrer la galeria pugues sentir una mica del que jo vaig experimentar en disparar.',
       mirades_eyebrow:'Mirades amigues',mirades_title:'Altres maneres de mirar',mirades_subtitle:'Companys i companyes de fotografia amb qui compartisc camins, converses i aprenentatges.',
       collab1_title:'Amic Joan',collab1_text:'Fotògraf de natura i amic de llargues caminades per la serra.',collab2_title:'Amiga Maria',collab2_text:'Especialista en retrats urbans amb una mirada única.',
@@ -201,7 +201,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       hero_procedencia:'Desde València',hero_title:'Fotografía para los sentidos',hero_subtitle:'Bienvenido al mundo visual de Fermí Bruna - fotografía',hero_btn:'Galería',
       gal_eyebrow:'Galería',gal_title:'Un paseo visual',gal_subtitle:'Un mosaico inicial con una selección de fotografías. Puedes pulsar cualquier imagen para verla en grande.',
       filter_astro:'Astrofotografía',filter_land:'Paisaje',filter_macro:'Macro',filter_moments:'Momentos',
-      about_title:'Sobre mí',about_hi:'Hola, soy Fermí Bruna',about_quote:'"Eres tú y tu cámara. Las limitaciones que hay en tus fotografías son las mismas que puedes tener como persona, porque lo que vemos es lo que somos."',about_p1:'Fotógrafo aficionado pasado por capturar la belleza de lo cotidiano. Este espacio es mi cuaderno visual, donde comparto paisajes, retratos y momentos que me inspiran. No busco vender, solo conectar a través de la imagen.',about_p2:'Cada fotografía tiene una historia. Espero que al recorrer la galería puedas sentir un poco de lo que yo experimenté al disparar.',
+      about_title:'Sobre mí',about_hi:'Hola, soy Fermí Bruna',about_quote:'"Eres tú y tu cámara. Las limitaciones que hay en tus fotografías son las mismas que puedes tener como persona, porque lo que vemos es lo que somos."',about_p1:'Fotógrafo aficionado apasionado por capturar la belleza de lo cotidiano. Este espacio es mi cuaderno visual, donde comparto paisajes, retratos y momentos que me inspiran. No busco vender, solo conectar a través de la imagen.',about_p2:'Cada fotografía tiene una historia. Espero que al recorrer la galería puedas sentir un poco de lo que yo experimenté al disparar.',
       mirades_eyebrow:'Miradas amigas',mirades_title:'Otras maneras de mirar',mirades_subtitle:'Compañeros y compañeras de fotografía con quienes comparto caminos, conversaciones y aprendizajes.',
       collab1_title:'Amigo Joan',collab1_text:'Fotógrafo de naturaleza y amigo de largas caminatas por la sierra.',collab2_title:'Amiga Maria',collab2_text:'Especialista en retratos urbans con una mirada única.',
       news_eyebrow:'Noticias',news_title:'Actualidad fotográfica',news_subtitle:'Eventos, citas visuales y noticias relacionadas con la fotografía, el cielo y la cultura visual.',
@@ -288,7 +288,48 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     const sortedItems = [...items].sort((a,b) => b.fecha.localeCompare(a.fecha));
 
     if (filter === 'initial') {
-      sourceItems = sortedItems.slice(0, 12);
+      // Barreja aleatòria (Fisher-Yates)
+      const shuffle = (arr) => {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      };
+
+      // 4 fotografies més recents
+      const recents = sortedItems.slice(0, 4);
+      const recentsSet = new Set(recents);
+
+      // Candidates per a la part aleatòria (excloent les recents)
+      const restants = sortedItems.filter(i => !recentsSet.has(i));
+
+      // Agrupem per categoria perquè totes les seccions hi estiguen representades
+      const perCategoria = {};
+      restants.forEach(i => {
+        (perCategoria[i.categoria] = perCategoria[i.categoria] || []).push(i);
+      });
+
+      const aleatories = [];
+      const usades = new Set();
+
+      // 1r: una foto aleatòria de cada categoria (representació de totes les seccions)
+      shuffle(Object.keys(perCategoria)).forEach(cat => {
+        if (aleatories.length >= 8) return;
+        const pool = shuffle(perCategoria[cat]);
+        if (pool.length) { aleatories.push(pool[0]); usades.add(pool[0]); }
+      });
+
+      // 2n: omplim la resta de buits fins a 8 amb fotos aleatòries de qualsevol categoria
+      const sobrants = shuffle(restants.filter(i => !usades.has(i)));
+      for (const item of sobrants) {
+        if (aleatories.length >= 8) break;
+        aleatories.push(item);
+      }
+
+      // 4 recents + fins a 8 aleatòries (la part aleatòria també es barreja)
+      sourceItems = [...recents, ...shuffle(aleatories).slice(0, 8)];
     } else if (filter && filter !== 'tots') {
       sourceItems = sortedItems.filter(i => i.categoria === filter);
     } else {
@@ -447,17 +488,16 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
 <script>
 if (window.netlifyIdentity) {
   window.netlifyIdentity.on("init", user => {
-    if (!user && window.location.hash) {
-      window.netlifyIdentity.open();
+    // Només registrem la redirecció a l'admin per a usuaris NO autenticats
+    // que completen el flux d'invitació/recuperació de contrasenya des de la
+    // pàgina principal. Així evitem que una visita normal a la home (per exemple
+    // amb àncores com #galeria o amb una sessió activa) acabe redirigint a
+    // /admin/#/collections/fotos.
+    if (!user) {
+      window.netlifyIdentity.on("login", () => {
+        document.location.href = "/admin/";
+      });
     }
-  });
-
-  window.netlifyIdentity.on("login", () => {
-    document.location.href = "/admin/";
-  });
-
-  window.netlifyIdentity.on("signup", () => {
-    document.location.href = "/admin/";
   });
 }
 </script>
