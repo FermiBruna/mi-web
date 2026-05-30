@@ -285,7 +285,23 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     const galleryGrid = document.getElementById('galleryGrid');
     galleryGrid.innerHTML = '';
     let sourceItems = [];
-    const sortedItems = [...items].sort((a,b) => b.fecha.localeCompare(a.fecha));
+
+    // Admet formats de data AAAA-MM i AAAA-MM-DD.
+    // Si una data no és vàlida, la considerem molt antiga.
+    const getSortableDate = (fechaRaw) => {
+      const fecha = String(fechaRaw || '').trim();
+      const match = fecha.match(/^(\d{4})-(\d{2})(?:-(\d{2}))?$/);
+      if (!match) return new Date(0);
+      const year = Number(match[1]);
+      const month = Number(match[2]);
+      const day = match[3] ? Number(match[3]) : 1;
+      const parsed = new Date(year, month - 1, day);
+      return Number.isNaN(parsed.getTime()) ? new Date(0) : parsed;
+    };
+
+    const sortedItems = [...items].sort((a, b) => {
+      return getSortableDate(b.fecha).getTime() - getSortableDate(a.fecha).getTime();
+    });
 
     if (filter === 'initial') {
       // Barreja aleatòria (Fisher-Yates)
@@ -352,12 +368,15 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       };
       const cap = document.createElement('div');
       cap.className = 'gallery-caption';
-      const fechaTexto = String(item.fecha || '');
+      const fechaTexto = String(item.fecha || '').trim();
       const fechaParts = fechaTexto.includes('-') ? fechaTexto.split('-') : [];
       const meses = { '01':'gener','02':'febrer','03':'març','04':'abril','05':'maig','06':'juny','07':'juliol','08':'agost','09':'setembre','10':'octubre','11':'novembre','12':'desembre'};
-      const fechaLegible = (fechaParts.length === 2 && meses[fechaParts[1]])
-        ? `${meses[fechaParts[1]]} ${fechaParts[0]}`
-        : fechaTexto;
+      let fechaLegible = fechaTexto;
+      if (fechaParts.length === 2 && meses[fechaParts[1]]) {
+        fechaLegible = `${meses[fechaParts[1]]} ${fechaParts[0]}`;
+      } else if (fechaParts.length === 3 && meses[fechaParts[1]]) {
+        fechaLegible = `${Number(fechaParts[2])} ${meses[fechaParts[1]]} ${fechaParts[0]}`;
+      }
       cap.textContent = fechaLegible
         ? `${item.descripcion} · ${fechaLegible}`
         : `${item.descripcion}`;
