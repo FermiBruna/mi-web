@@ -38,14 +38,14 @@ section{padding:5rem 0}.section-eyebrow{text-align:center;color:#fff;text-transf
 .filter-btn, .show-all-btn{background:transparent;border:1px solid #fff;color:#fff;padding:.5rem 1.5rem;border-radius:30px;font-family:var(--font-body);font-size:.9rem;cursor:pointer;letter-spacing:1px;text-transform:uppercase}
 .filter-btn.active,.filter-btn:hover, .show-all-btn:hover{background:#fff;color:#333}
 .show-all-btn:disabled{opacity:0.5;cursor:not-allowed}
-.gallery-masonry{column-count:4;column-gap:1.5rem}.gallery-item{break-inside:avoid;margin-bottom:1.5rem;border-radius:6px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;background:#3a3a3a;transition:transform .3s ease,opacity .35s ease;opacity:1}.gallery-item img{width:100%;display:block;transition:transform .3s ease}.gallery-item:hover img{transform:scale(1.03)}.gallery-caption{padding:.65rem .8rem;font-size:.85rem;color:var(--muted);text-align:center}.gallery-item.hidden{display:none}
+.gallery-masonry{column-count:4;column-gap:1.5rem}.gallery-item{break-inside:avoid;margin-bottom:1.5rem;border-radius:6px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;background:#3a3a3a;transition:transform .45s ease-in-out,opacity .55s ease-in-out,box-shadow .45s ease-in-out;opacity:1;will-change:transform,opacity}.gallery-item img{width:100%;display:block;transition:transform .55s ease-in-out,filter .55s ease-in-out;will-change:transform}.gallery-item:hover img{transform:scale(1.02);filter:brightness(1.03)}.gallery-caption{padding:.65rem .8rem;font-size:.85rem;color:var(--muted);text-align:center}.gallery-item.hidden{display:none}
 .about-content{display:flex;gap:4rem;align-items:center;flex-wrap:wrap;justify-content:center}.about-image{flex:1 1 300px;max-width:400px;border-radius:6px;overflow:hidden;box-shadow:var(--shadow)}.about-image img{width:100%;display:block}.about-text{flex:1 1 500px;max-width:700px}.about-text h3{font-size:2rem;margin-bottom:1rem}.about-text p{margin-bottom:1rem;color:var(--muted);font-weight:300}
-.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem;margin-top:2rem}.news-card,.collab-card{background:var(--surface);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.1)}.news-card-image,.collab-card img{width:100%;height:180px;object-fit:cover;display:block}.news-card-body{padding:1.5rem}.news-card h3{font-size:1.25rem;margin-bottom:.5rem}.news-date{font-size:.8rem;color:var(--muted);margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px}.juanjo-toggle-image{cursor:pointer;transition:transform .2s ease,filter .2s ease;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none}.juanjo-toggle-image.is-pressed{transform:scale(.98);filter:brightness(.92)}.juanjo-toggle-image:focus{outline:2px solid #ffd84d;outline-offset:2px}@media (hover:hover){.juanjo-toggle-image:hover{transform:scale(1.02);filter:brightness(1.06)}}@media (hover:none){.juanjo-toggle-image:active{transform:scale(.98);filter:brightness(.92)}}.juanjo-toggle-hint{margin-top:.65rem;font-size:.85rem;color:var(--muted)}.mirades-birds-wrap{margin-top:2.25rem}.mirades-birds-wrap[hidden]{display:none!important}.mirades-birds-title{text-align:left;font-family:var(--font-title);font-size:1.5rem;margin-bottom:1rem;color:var(--text-strong)}.juanjo-masonry .gallery-item img{height:auto;object-fit:contain}
+.news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem;margin-top:2rem}.news-card,.collab-card{background:var(--surface);border-radius:8px;overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.1)}.news-card-image,.collab-card img{width:100%;height:180px;object-fit:cover;display:block}.news-card-body{padding:1.5rem}.news-card h3{font-size:1.25rem;margin-bottom:.5rem}.news-date{font-size:.8rem;color:var(--muted);margin-bottom:1rem;text-transform:uppercase;letter-spacing:1px}.juanjo-toggle-image,.juan-toggle-image{cursor:pointer;transition:transform .38s ease-in-out,filter .38s ease-in-out,opacity .38s ease-in-out;-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none}.juanjo-toggle-image.is-pressed,.juan-toggle-image.is-pressed{transform:scale(.985);filter:brightness(.94)}.juanjo-toggle-image:focus,.juan-toggle-image:focus{outline:2px solid #ffd84d;outline-offset:2px}@media (hover:hover){.juanjo-toggle-image:hover,.juan-toggle-image:hover{transform:scale(1.018);filter:brightness(1.05)}}@media (hover:none){.juanjo-toggle-image:active,.juan-toggle-image:active{transform:scale(.985);filter:brightness(.94)}}.juanjo-toggle-hint,.juan-toggle-hint{margin-top:.65rem;font-size:.85rem;color:var(--muted)}.mirades-birds-wrap{margin-top:2.25rem;animation:fadeInGallery .55s ease-in-out}.mirades-birds-wrap[hidden]{display:none!important}.mirades-birds-title{text-align:left;font-family:var(--font-title);font-size:1.5rem;margin-bottom:1rem;color:var(--text-strong)}.juanjo-masonry .gallery-item img,.juan-masonry .gallery-item img{height:auto;object-fit:contain}@keyframes fadeInGallery{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .contact-content{max-width:600px;margin:0 auto}.contact-form{background:var(--surface);padding:2.5rem;border-radius:8px;box-shadow:var(--shadow)}.form-group{margin-bottom:1.5rem}.form-group label{display:block;margin-bottom:.5rem;font-weight:600;color:#fff}.form-group input,.form-group textarea{width:100%;padding:.9rem 1rem;border:1px solid #555;border-radius:4px;font-family:var(--font-body);font-size:1rem;background:#4a4a4a;color:var(--text)}.form-group textarea{min-height:120px;resize:vertical}.submit-btn{background:#fff;color:#333;border:none;padding:1rem 2.5rem;font-size:.9rem;text-transform:uppercase;letter-spacing:2px;cursor:pointer;border-radius:4px;width:100%;font-weight:600}
 .visitors-section{text-align:center;margin:2rem 0;color:var(--muted);font-size:.9rem}.btn-like{background:transparent;border:1px solid #fff;color:#fff;padding:.6rem 1.5rem;border-radius:30px;font-family:var(--font-body);font-size:.9rem;cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin:.5rem;display:inline-flex;align-items:center;gap:.5rem}
 footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2rem 0;font-size:.9rem;border-top:1px solid rgba(255,255,255,.15)}.social-links{display:flex;justify-content:center;gap:1.2rem;margin:1.5rem 0;flex-wrap:wrap}.social-item{display:flex;flex-direction:column;align-items:center;gap:.35rem}.social-links a{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.08);color:var(--text-strong);border:1px solid rgba(255,255,255,.18);transition:transform .2s ease,background .2s ease}.social-links a:hover{transform:scale(1.06);background:rgba(255,255,255,.16)}.social-links svg{width:28px;height:28px;fill:currentColor}.social-name{font-size:.82rem;color:rgba(255,255,255,.8);text-align:center;line-height:1.1;max-width:76px}.social-item.fb1 a{background:#1877F2;color:#fff}.social-item.fb2 a{background:#1877F2;color:#fff}.social-item.ig a{background:#E1306C;color:#fff}.social-item.px a{background:#6364FF;color:#fff}
-.lightbox{position:fixed;inset:0;background:rgba(73,73,73,.95);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease,visibility .22s ease}.lightbox.active{opacity:1;visibility:visible;pointer-events:auto}.lightbox-main{position:relative;width:100%;max-width:95%;display:flex;flex-direction:column;align-items:center}.lightbox-center{width:100%;max-height:80vh;display:flex;align-items:center;justify-content:center}.lightbox-center img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 40px rgba(0,0,0,.7);opacity:0;transform:scale(.965);transition:opacity 360ms ease,transform 360ms ease}.lightbox.active .lightbox-center img{opacity:1;transform:scale(1)}
-.lightbox-side{position:absolute;top:50%;transform:translateY(-50%);width:15%;max-width:150px;opacity:.4;filter:brightness(.6);cursor:pointer;border-radius:4px;overflow:hidden;z-index:5;transition:opacity .22s ease,filter .22s ease}.lightbox-side img{width:100%;display:block}.lightbox-side:hover{opacity:.75;filter:brightness(.9)}.lightbox-prev{left:2%}.lightbox-next{right:2%}
+.lightbox{position:fixed;inset:0;background:rgba(73,73,73,.95);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s ease-in-out,visibility .4s ease-in-out}.lightbox.active{opacity:1;visibility:visible;pointer-events:auto}.lightbox-main{position:relative;width:100%;max-width:95%;display:flex;flex-direction:column;align-items:center}.lightbox-center{width:100%;max-height:80vh;display:flex;align-items:center;justify-content:center}.lightbox-center img{max-width:100%;max-height:80vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 40px rgba(0,0,0,.7);opacity:0;transform:scale(.972);transition:opacity 480ms ease-in-out,transform 480ms ease-in-out}.lightbox.active .lightbox-center img{opacity:1;transform:scale(1)}
+.lightbox-side{position:absolute;top:50%;transform:translateY(-50%);width:15%;max-width:150px;opacity:.42;filter:brightness(.62);cursor:pointer;border-radius:4px;overflow:hidden;z-index:5;transition:opacity .35s ease-in-out,filter .35s ease-in-out}.lightbox-side img{width:100%;display:block}.lightbox-side:hover{opacity:.78;filter:brightness(.92)}.lightbox-prev{left:2%}.lightbox-next{right:2%}
 .close-lightbox{position:fixed;top:20px;right:20px;font-size:2rem;background:rgba(0,0,0,0.6);color:#fff;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:20;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.3);transition:transform .2s}
 .close-lightbox:hover{transform:scale(1.1)}
 .lightbox-caption{text-align:center;color:#fff;font-size:1rem;margin-top:1.1rem;max-width:90vw;padding-bottom:5.25rem}
@@ -133,7 +133,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
 
 <section id="sobre-mi" class="container"><h2 class="section-title" data-i18n="about_title">Sobre mi</h2><div class="about-content"><div class="about-image"><img src="jo.jpg" alt="Fermí Bruna" loading="lazy"></div><div class="about-text"><h3 data-i18n="about_hi">Hola, soc Fermí Bruna</h3><p data-i18n="about_quote">"Ets tu i la teua càmera. Les limitacions que n´hi ha a les teues fotografies són les mateixes que pugues tenir com a persona, perquè el que veiem és el que som."</p><p data-i18n="about_p1">Fotògraf aficionat apassionat per capturar la bellesa del quotidià. Aquest espai és el meu quadern visual, on compartesc paisatges, retrats i moments que m'inspiren. No busque vendre, només connectar a través de la imatge.</p><p data-i18n="about_p2">Cada fotografia té una història. Espere que en recórrer la galeria pugues sentir una mica del que jo vaig experimentar en disparar.</p></div></div></section>
 
-<section id="mirades" class="container"><p class="section-eyebrow" data-i18n="mirades_eyebrow">Mirades amigues</p><h2 class="section-title" data-i18n="mirades_title">Altres maneres de mirar</h2><p class="section-subtitle" data-i18n="mirades_subtitle">Companys i companyes de fotografia amb qui compartisc camins, converses i aprenentatges.</p><div class="news-grid" id="collab-container"><div class="collab-card"><img src="img/juanjo.jpg" id="juanjoToggleImage" class="juanjo-toggle-image" alt="Juanjo Tamarit" loading="lazy" tabindex="0" role="button" aria-expanded="false" aria-controls="juanjoBirdsWrap"><div class="news-card-body"><h3 data-i18n="collab1_title">Juanjo Tamarit</h3><p data-i18n="collab1_text">Gran amic de Castellar, especialitzat en la captura d'ocells. Un gran fotògraf amb unes fotos bellíssimes.</p><p class="juanjo-toggle-hint" data-i18n="juanjo_toggle_hint">Fes clic a la foto per veure la galeria d'ocells.</p></div></div><div class="collab-card"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Maria_Callas_1958.jpg/1280px-Maria_Callas_1958.jpg" alt="Amiga Maria" loading="lazy"><div class="news-card-body"><h3 data-i18n="collab2_title">Amiga Maria</h3><p data-i18n="collab2_text">Especialista en retrats urbans amb una mirada única.</p></div></div></div><div class="mirades-birds-wrap" id="juanjoBirdsWrap" hidden><h3 class="mirades-birds-title" data-i18n="juanjo_gallery_title">Galeria d'ocells de Juanjo Tamarit</h3><div class="gallery-masonry juanjo-masonry" id="juanjoBirdGrid"><div class="gallery-item juanjo-gallery-item"><img src="img/1aguila.jpg" alt="Hieraaetus pennatus"><div class="gallery-caption" data-i18n="juanjo_cap_1">Hieraaetus pennatus - Àguila calçada</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/2astor.jpg" alt="Accipiter gentilis"><div class="gallery-caption" data-i18n="juanjo_cap_2">Accipiter gentilis - Astor comú</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/3cadernera.jpg" alt="Carduelis carduelis"><div class="gallery-caption" data-i18n="juanjo_cap_3">Carduelis carduelis - Cadernera</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/4cotxablava.jpg" alt="Luscinia svecica"><div class="gallery-caption" data-i18n="juanjo_cap_4">Luscinia svecica - Cotxa blava</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/5cotxablava2.jpg" alt="Luscinia svecica"><div class="gallery-caption" data-i18n="juanjo_cap_5">Luscinia svecica - Cotxa blava</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/6martinetros.jpg" alt="Ardeola ralloides"><div class="gallery-caption" data-i18n="juanjo_cap_6">Ardeola ralloides - Martinet ros</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/7perdiudemar.jpg" alt="Glareola pratincola"><div class="gallery-caption" data-i18n="juanjo_cap_7">Glareola pratincola - Perdiu de mar</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/8picot.jpg" alt="Dendrocopos major"><div class="gallery-caption" data-i18n="juanjo_cap_8">Dendrocopos major - Picot garser gran</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/9pinsa.jpg" alt="Fringilla coelebs"><div class="gallery-caption" data-i18n="juanjo_cap_9">Fringilla coelebs - Pinsà comú</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/10voltors.jpg" alt="Gyps fulvus"><div class="gallery-caption" data-i18n="juanjo_cap_10">Gyps fulvus - Voltor comú</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/11voltorvol.jpg" alt="Gyps fulvus"><div class="gallery-caption" data-i18n="juanjo_cap_11">Gyps fulvus - Voltor comú</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/12xoriguer.jpg" alt="Falco tinnunculus"><div class="gallery-caption" data-i18n="juanjo_cap_12">Falco tinnunculus - Xoriguer comú</div></div></div></div></section>
+<section id="mirades" class="container"><p class="section-eyebrow" data-i18n="mirades_eyebrow">Mirades amigues</p><h2 class="section-title" data-i18n="mirades_title">Altres maneres de mirar</h2><p class="section-subtitle" data-i18n="mirades_subtitle">Companys i companyes de fotografia amb qui compartisc camins, converses i aprenentatges.</p><div class="news-grid" id="collab-container"><div class="collab-card"><img src="img/juanjo.jpg" id="juanjoToggleImage" class="juanjo-toggle-image" alt="Juanjo Tamarit" loading="lazy" tabindex="0" role="button" aria-expanded="false" aria-controls="juanjoBirdsWrap"><div class="news-card-body"><h3 data-i18n="collab1_title">Juanjo Tamarit</h3><p data-i18n="collab1_text">Gran amic de Castellar, especialitzat en la captura d'ocells. Un gran fotògraf amb unes fotos bellíssimes.</p><p class="juanjo-toggle-hint" data-i18n="juanjo_toggle_hint">Fes clic a la foto per veure la galeria d'ocells.</p></div></div><div class="collab-card"><img src="img/juan.jpg" id="juanToggleImage" class="juan-toggle-image" alt="Juan Durá" loading="lazy" tabindex="0" role="button" aria-expanded="false" aria-controls="juanBirdsWrap"><div class="news-card-body"><h3 data-i18n="collab_juan_title">Juan Durá</h3><p data-i18n="collab_juan_text">De Torrent. Gran amic i mentor en els menesters d'astrofotografia. Molta dedicació i imatges meravelloses.</p><p class="juan-toggle-hint" data-i18n="juan_toggle_hint">Fes clic a la foto per veure la seua galeria astrofotogràfica.</p></div></div></div><div class="mirades-birds-wrap" id="juanjoBirdsWrap" hidden><h3 class="mirades-birds-title" data-i18n="juanjo_gallery_title">Galeria d'ocells de Juanjo Tamarit</h3><div class="gallery-masonry juanjo-masonry" id="juanjoBirdGrid"><div class="gallery-item juanjo-gallery-item"><img src="img/1aguila.jpg" alt="Hieraaetus pennatus"><div class="gallery-caption" data-i18n="juanjo_cap_1">Hieraaetus pennatus - Àguila calçada</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/2astor.jpg" alt="Accipiter gentilis"><div class="gallery-caption" data-i18n="juanjo_cap_2">Accipiter gentilis - Astor comú</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/3cadernera.jpg" alt="Carduelis carduelis"><div class="gallery-caption" data-i18n="juanjo_cap_3">Carduelis carduelis - Cadernera</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/4cotxablava.jpg" alt="Luscinia svecica"><div class="gallery-caption" data-i18n="juanjo_cap_4">Luscinia svecica - Cotxa blava</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/5cotxablava2.jpg" alt="Luscinia svecica"><div class="gallery-caption" data-i18n="juanjo_cap_5">Luscinia svecica - Cotxa blava</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/6martinetros.jpg" alt="Ardeola ralloides"><div class="gallery-caption" data-i18n="juanjo_cap_6">Ardeola ralloides - Martinet ros</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/7perdiudemar.jpg" alt="Glareola pratincola"><div class="gallery-caption" data-i18n="juanjo_cap_7">Glareola pratincola - Perdiu de mar</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/8picot.jpg" alt="Dendrocopos major"><div class="gallery-caption" data-i18n="juanjo_cap_8">Dendrocopos major - Picot garser gran</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/9pinsa.jpg" alt="Fringilla coelebs"><div class="gallery-caption" data-i18n="juanjo_cap_9">Fringilla coelebs - Pinsà comú</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/10voltors.jpg" alt="Gyps fulvus"><div class="gallery-caption" data-i18n="juanjo_cap_10">Gyps fulvus - Voltor comú</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/11voltorvol.jpg" alt="Gyps fulvus"><div class="gallery-caption" data-i18n="juanjo_cap_11">Gyps fulvus - Voltor comú</div></div><div class="gallery-item juanjo-gallery-item"><img src="img/12xoriguer.jpg" alt="Falco tinnunculus"><div class="gallery-caption" data-i18n="juanjo_cap_12">Falco tinnunculus - Xoriguer comú</div></div></div></div><div class="mirades-birds-wrap" id="juanBirdsWrap" hidden><h3 class="mirades-birds-title" data-i18n="juan_gallery_title">Galeria d'astrofotografia de Juan Durá</h3><div class="gallery-masonry juan-masonry" id="juanBirdGrid"><div class="gallery-item juan-gallery-item"><img src="img/juan-1cova.jpg" alt="Sh2-155 Nebulosa de la Cova"><div class="gallery-caption" data-i18n="juan_cap_1">Sh2-155 Nebulosa de la Cova</div></div><div class="gallery-item juan-gallery-item"><img src="img/juan-2garra.jpg" alt="Sh2-157 Nebulosa de la Garra i NGC7635 de la Burbuja"><div class="gallery-caption" data-i18n="juan_cap_2">Sh2-157 Nebulosa de la Garra i NGC7635 de la Burbuja</div></div><div class="gallery-item juan-gallery-item"><img src="img/juan-3ic1613.jpg" alt="Galàxia Caldwell 51"><div class="gallery-caption" data-i18n="juan_cap_3">Galàxia Caldwell 51</div></div><div class="gallery-item juan-gallery-item"><img src="img/juan-4alma.jpg" alt="Nebulosa de l'Ànima"><div class="gallery-caption" data-i18n="juan_cap_4">Nebulosa de l'Ànima</div></div><div class="gallery-item juan-gallery-item"><img src="img/juan-5escoba.jpg" alt="Granera de la Bruixa"><div class="gallery-caption" data-i18n="juan_cap_5">Granera de la Bruixa</div></div><div class="gallery-item juan-gallery-item"><img src="img/juan-6creixent.jpg" alt="Nebulosa Creixent"><div class="gallery-caption" data-i18n="juan_cap_6">Nebulosa Creixent</div></div><div class="gallery-item juan-gallery-item"><img src="img/juan-7vel.jpg" alt="Nebulosa del Vel"><div class="gallery-caption" data-i18n="juan_cap_7">Nebulosa del Vel</div></div><div class="gallery-item juan-gallery-item"><img src="img/juan-8cranc.jpg" alt="Nebulosa del Cranc"><div class="gallery-caption" data-i18n="juan_cap_8">Nebulosa del Cranc</div></div><div class="gallery-item juan-gallery-item"><img src="img/juan-9lluna.jpg" alt="Lluna"><div class="gallery-caption" data-i18n="juan_cap_9">Lluna</div></div><div class="gallery-item juan-gallery-item"><img src="img/juan-10america.jpg" alt="Nebulosa d'Amèrica del Nord"><div class="gallery-caption" data-i18n="juan_cap_10">Nebulosa d'Amèrica del Nord</div></div><div class="gallery-item juan-gallery-item"><img src="img/juan-11papallona.jpg" alt="Nebulosa de la Papallona i Estel Sadr"><div class="gallery-caption" data-i18n="juan_cap_11">Nebulosa de la Papallona i Estel Sadr</div></div><div class="gallery-item juan-gallery-item"><img src="img/juan-12elefant.jpg" alt="Nebulosa de la Trompa de l'Elefant"><div class="gallery-caption" data-i18n="juan_cap_12">Nebulosa de la Trompa de l'Elefant</div></div></div></div></section>
 
 <section id="noticies" class="container"><p class="section-eyebrow" data-i18n="news_eyebrow">Notícies</p><h2 class="section-title" data-i18n="news_title">Actualitat fotogràfica</h2><p class="section-subtitle" data-i18n="news_subtitle">Esdeveniments, cites visuals i notícies relacionades amb la fotografia, el cel i la cultura visual.</p><div class="news-grid" id="news-container"><div class="news-card"><img class="news-card-image" src="img/eclipsi_noticia.jpg" alt="Eclipsi total de sol" loading="lazy"><div class="news-card-body"><h3 data-i18n="news1_title">Eclipsi total de sol el 12 d'agost de 2026</h3><div class="news-date" data-i18n="news1_date">Maig 2026</div><p data-i18n="news1_text">El pròxim 12 d'agost, un eclipsi total de sol serà visible des de la península ibèrica.</p></div></div><div class="news-card"><img class="news-card-image" src="img/wordpres_noticia.jpg" alt="World Press Photo 2026" loading="lazy"><div class="news-card-body"><h3 data-i18n="news2_title">Carol Guzy guanya el World Press Photo 2026</h3><div class="news-date" data-i18n="news2_date">Abril 2026</div><p data-i18n="news2_text">La fotoperiodista nord-americana Carol Guzy ha sigut guardonada amb el prestigiós premi.</p></div></div><div class="news-card"><img class="news-card-image" src="img/valencia_photo.jpg" alt="ValenciaPhoto 2026" loading="lazy"><div class="news-card-body"><h3 data-i18n="news3_title">ValenciaPhoto 2026: el Mediterrani com a pont fotogràfic</h3><div class="news-date" data-i18n="news3_date">Maig 2026</div><p data-i18n="news3_text">La cinquena edició d'este festival internacional de fotografia se celebra a València fins al 31 de juliol.</p></div></div></div></section>
 
@@ -190,7 +190,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       filter_astro:'Astrofotografia',filter_land:'Paissatge',filter_macro:'Macro',filter_moments:'Moments',
       about_title:'Sobre mi',about_hi:'Hola, soc Fermí Bruna',about_quote:'"Ets tu i la teua càmera. Les limitacions que n´hi ha a les teues fotografies són les mateixes que pugues tenir com a persona, perquè el que veiem és el que som."',about_p1:'Fotògraf aficionat apassionat per capturar la bellesa del quotidià. Aquest espai és el meu quadern visual, on compartesc paisatges, retrats i moments que m\'inspiren. No busque vendre, només connectar a través de la imatge.',about_p2:'Cada fotografia té una història. Espere que en recórrer la galeria pugues sentir una mica del que jo vaig experimentar en disparar.',
       mirades_eyebrow:'Mirades amigues',mirades_title:'Altres maneres de mirar',mirades_subtitle:'Companys i companyes de fotografia amb qui compartisc camins, converses i aprenentatges.',
-      collab1_title:'Juanjo Tamarit',collab1_text:'Gran amic de Castellar, especialitzat en la captura d\'ocells. Un gran fotògraf amb unes fotos bellíssimes.',collab2_title:'Amiga Maria',collab2_text:'Especialista en retrats urbans amb una mirada única.',juanjo_toggle_hint:'Toca o fes clic a la foto per veure la galeria d\'ocells.',juanjo_gallery_title:'Galeria d\'ocells de Juanjo Tamarit',juanjo_cap_1:'Hieraaetus pennatus - Àguila calçada',juanjo_cap_2:'Accipiter gentilis - Astor comú',juanjo_cap_3:'Carduelis carduelis - Cadernera',juanjo_cap_4:'Luscinia svecica - Cotxa blava',juanjo_cap_5:'Luscinia svecica - Cotxa blava',juanjo_cap_6:'Ardeola ralloides - Martinet ros',juanjo_cap_7:'Glareola pratincola - Perdiu de mar',juanjo_cap_8:'Dendrocopos major - Picot garser gran',juanjo_cap_9:'Fringilla coelebs - Pinsà comú',juanjo_cap_10:'Gyps fulvus - Voltor comú',juanjo_cap_11:'Gyps fulvus - Voltor comú',juanjo_cap_12:'Falco tinnunculus - Xoriguer comú',
+      collab1_title:'Juanjo Tamarit',collab1_text:'Gran amic de Castellar, especialitzat en la captura d\'ocells. Un gran fotògraf amb unes fotos bellíssimes.',collab_juan_title:'Juan Durá',collab_juan_text:'De Torrent. Gran amic i mentor en els menesters d\'astrofotografia. Molta dedicació i imatges meravelloses.',juanjo_toggle_hint:'Toca o fes clic a la foto per veure la galeria d\'ocells.',juanjo_gallery_title:'Galeria d\'ocells de Juanjo Tamarit',juan_toggle_hint:'Toca o fes clic a la foto per veure la seua galeria astrofotogràfica.',juan_gallery_title:'Galeria d\'astrofotografia de Juan Durá',juanjo_cap_1:'Hieraaetus pennatus - Àguila calçada',juanjo_cap_2:'Accipiter gentilis - Astor comú',juanjo_cap_3:'Carduelis carduelis - Cadernera',juanjo_cap_4:'Luscinia svecica - Cotxa blava',juanjo_cap_5:'Luscinia svecica - Cotxa blava',juanjo_cap_6:'Ardeola ralloides - Martinet ros',juanjo_cap_7:'Glareola pratincola - Perdiu de mar',juanjo_cap_8:'Dendrocopos major - Picot garser gran',juanjo_cap_9:'Fringilla coelebs - Pinsà comú',juanjo_cap_10:'Gyps fulvus - Voltor comú',juanjo_cap_11:'Gyps fulvus - Voltor comú',juanjo_cap_12:'Falco tinnunculus - Xoriguer comú',juan_cap_1:'Sh2-155 Nebulosa de la Cova',juan_cap_2:'Sh2-157 Nebulosa de la Garra i NGC7635 de la Burbuja',juan_cap_3:'Galàxia Caldwell 51',juan_cap_4:'Nebulosa de l\'Ànima',juan_cap_5:'Granera de la Bruixa',juan_cap_6:'Nebulosa Creixent',juan_cap_7:'Nebulosa del Vel',juan_cap_8:'Nebulosa del Cranc',juan_cap_9:'Lluna',juan_cap_10:'Nebulosa d\'Amèrica del Nord',juan_cap_11:'Nebulosa de la Papallona i Estel Sadr',juan_cap_12:'Nebulosa de la Trompa de l\'Elefant',
       news_eyebrow:'Notícies',news_title:'Actualitat fotogràfica',news_subtitle:'Esdeveniments, cites visuals i notícies relacionades amb la fotografia, el cel i la cultura visual.',
       news1_title:'Eclipsi total de sol el 12 d\'agost de 2026',news1_date:'Maig 2026',news1_text:'El pròxim 12 d\'agost, un eclipsi total de sol serà visible des de la península ibèrica.',
       news2_title:'Carol Guzy guanya el World Press Photo 2026',news2_date:'Abril 2026',news2_text:'La fotoperiodista nord-americana Carol Guzy ha sigut guardonada amb el prestigiós premi.',
@@ -203,7 +203,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       filter_astro:'Astrofotografía',filter_land:'Paisaje',filter_macro:'Macro',filter_moments:'Momentos',
       about_title:'Sobre mí',about_hi:'Hola, soy Fermí Bruna',about_quote:'"Eres tú y tu cámara. Las limitaciones que hay en tus fotografías son las mismas que puedes tener como persona, porque lo que vemos es lo que somos."',about_p1:'Fotógrafo aficionado apasionado por capturar la belleza de lo cotidiano. Este espacio es mi cuaderno visual, donde comparto paisajes, retratos y momentos que me inspiran. No busco vender, solo conectar a través de la imagen.',about_p2:'Cada fotografía tiene una historia. Espero que al recorrer la galería puedas sentir un poco de lo que yo experimenté al disparar.',
       mirades_eyebrow:'Miradas amigas',mirades_title:'Otras maneras de mirar',mirades_subtitle:'Compañeros y compañeras de fotografía con quienes comparto caminos, conversaciones y aprendizajes.',
-      collab1_title:'Juanjo Tamarit',collab1_text:'Gran amigo de Castellar, especializado en la fotografía de aves. Un gran fotógrafo con imágenes bellísimas.',collab2_title:'Amiga Maria',collab2_text:'Especialista en retratos urbans con una mirada única.',juanjo_toggle_hint:'Toca o haz clic en la foto para ver la galería de aves.',juanjo_gallery_title:'Galería de aves de Juanjo Tamarit',juanjo_cap_1:'Hieraaetus pennatus - Águila calzada',juanjo_cap_2:'Accipiter gentilis - Azor común',juanjo_cap_3:'Carduelis carduelis - Jilguero europeo',juanjo_cap_4:'Luscinia svecica - Pechiazul',juanjo_cap_5:'Luscinia svecica - Pechiazul',juanjo_cap_6:'Ardeola ralloides - Garcilla cangrejera',juanjo_cap_7:'Glareola pratincola - Canastera común',juanjo_cap_8:'Dendrocopos major - Pico picapinos',juanjo_cap_9:'Fringilla coelebs - Pinzón vulgar',juanjo_cap_10:'Gyps fulvus - Buitre leonado',juanjo_cap_11:'Gyps fulvus - Buitre leonado',juanjo_cap_12:'Falco tinnunculus - Cernícalo vulgar',
+      collab1_title:'Juanjo Tamarit',collab1_text:'Gran amigo de Castellar, especializado en la fotografía de aves. Un gran fotógrafo con imágenes bellísimas.',collab_juan_title:'Juan Durá',collab_juan_text:'De Torrent. Gran amigo y mentor en astrofotografía. Mucha dedicación e imágenes maravillosas.',juanjo_toggle_hint:'Toca o haz clic en la foto para ver la galería de aves.',juanjo_gallery_title:'Galería de aves de Juanjo Tamarit',juan_toggle_hint:'Toca o haz clic en la foto para ver su galería de astrofotografía.',juan_gallery_title:'Galería de astrofotografía de Juan Durá',juanjo_cap_1:'Hieraaetus pennatus - Águila calzada',juanjo_cap_2:'Accipiter gentilis - Azor común',juanjo_cap_3:'Carduelis carduelis - Jilguero europeo',juanjo_cap_4:'Luscinia svecica - Pechiazul',juanjo_cap_5:'Luscinia svecica - Pechiazul',juanjo_cap_6:'Ardeola ralloides - Garcilla cangrejera',juanjo_cap_7:'Glareola pratincola - Canastera común',juanjo_cap_8:'Dendrocopos major - Pico picapinos',juanjo_cap_9:'Fringilla coelebs - Pinzón vulgar',juanjo_cap_10:'Gyps fulvus - Buitre leonado',juanjo_cap_11:'Gyps fulvus - Buitre leonado',juanjo_cap_12:'Falco tinnunculus - Cernícalo vulgar',juan_cap_1:'Sh2-155 Nebulosa de la Cueva',juan_cap_2:'Sh2-157 Nebulosa de la Garra y NGC7635 de la Burbuja',juan_cap_3:'Galaxia Caldwell 51',juan_cap_4:'Nebulosa del Alma',juan_cap_5:'Escoba de la Bruja',juan_cap_6:'Nebulosa Creciente',juan_cap_7:'Nebulosa del Velo',juan_cap_8:'Nebulosa del Cangrejo',juan_cap_9:'Luna',juan_cap_10:'Nebulosa de Norteamérica',juan_cap_11:'Nebulosa Mariposa y estrella Sadr',juan_cap_12:'Nebulosa Trompa de Elefante',
       news_eyebrow:'Noticias',news_title:'Actualidad fotográfica',news_subtitle:'Eventos, citas visuales y noticias relacionadas con la fotografía, el cielo y la cultura visual.',
       news1_title:'Eclipse total de sol el 12 de agosto de 2026',news1_date:'Mayo 2026',news1_text:'El próximo 12 de agosto, un eclipse total de sol será visible desde la península ibérica.',
       news2_title:'Carol Guzy gana el World Press Photo 2026',news2_date:'Abril 2026',news2_text:'La fotoperiodista estadounidense Carol Guzy ha sido galardonada con el prestigioso premio.',
@@ -216,7 +216,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       filter_astro:'Astrophotography',filter_land:'Landscape',filter_macro:'Macro',filter_moments:'Moments',
       about_title:'About me',about_hi:'Hi, I am Fermí Bruna',about_quote:'"You and your camera. The limitations in your photographs are the same ones you may have as a person, because what we see is what we are."',about_p1:'An amateur photographer passionate about capturing the beauty of everyday life. This space is my visual notebook, where I share landscapes, portraits, and moments that inspire me. I do not try to sell, only to connect through images.',about_p2:'Every photograph has a story. I hope that as you browse the gallery you can feel a little of what I experienced when taking them.',
       mirades_eyebrow:'Fellow looks',mirades_title:'Other ways of seeing',mirades_subtitle:'Photography friends with whom I share paths, conversations, and learning.',
-      collab1_title:'Juanjo Tamarit',collab1_text:'A great friend from Castellar, specialized in bird photography. A remarkable photographer with truly beautiful images.',collab2_title:'Friend Maria',collab2_text:'Specialist in urban portraits with a unique eye.',juanjo_toggle_hint:'Tap or click the photo to show the bird gallery.',juanjo_gallery_title:'Juanjo Tamarit bird gallery',juanjo_cap_1:'Hieraaetus pennatus - Booted eagle',juanjo_cap_2:'Accipiter gentilis - Northern goshawk',juanjo_cap_3:'Carduelis carduelis - European goldfinch',juanjo_cap_4:'Luscinia svecica - Bluethroat',juanjo_cap_5:'Luscinia svecica - Bluethroat',juanjo_cap_6:'Ardeola ralloides - Squacco heron',juanjo_cap_7:'Glareola pratincola - Collared pratincole',juanjo_cap_8:'Dendrocopos major - Great spotted woodpecker',juanjo_cap_9:'Fringilla coelebs - Common chaffinch',juanjo_cap_10:'Gyps fulvus - Griffon vulture',juanjo_cap_11:'Gyps fulvus - Griffon vulture',juanjo_cap_12:'Falco tinnunculus - Common kestrel',
+      collab1_title:'Juanjo Tamarit',collab1_text:'A great friend from Castellar, specialized in bird photography. A remarkable photographer with truly beautiful images.',collab_juan_title:'Juan Durá',collab_juan_text:'From Torrent. Great friend and mentor in astrophotography. A lot of dedication and wonderful images.',juanjo_toggle_hint:'Tap or click the photo to show the bird gallery.',juanjo_gallery_title:'Juanjo Tamarit bird gallery',juan_toggle_hint:'Tap or click the photo to show his astrophotography gallery.',juan_gallery_title:'Juan Durá astrophotography gallery',juanjo_cap_1:'Hieraaetus pennatus - Booted eagle',juanjo_cap_2:'Accipiter gentilis - Northern goshawk',juanjo_cap_3:'Carduelis carduelis - European goldfinch',juanjo_cap_4:'Luscinia svecica - Bluethroat',juanjo_cap_5:'Luscinia svecica - Bluethroat',juanjo_cap_6:'Ardeola ralloides - Squacco heron',juanjo_cap_7:'Glareola pratincola - Collared pratincole',juanjo_cap_8:'Dendrocopos major - Great spotted woodpecker',juanjo_cap_9:'Fringilla coelebs - Common chaffinch',juanjo_cap_10:'Gyps fulvus - Griffon vulture',juanjo_cap_11:'Gyps fulvus - Griffon vulture',juanjo_cap_12:'Falco tinnunculus - Common kestrel',juan_cap_1:'Sh2-155 Cave Nebula',juan_cap_2:'Sh2-157 Lobster Claw Nebula and NGC7635 Bubble Nebula',juan_cap_3:'Caldwell 51 galaxy',juan_cap_4:'Soul Nebula',juan_cap_5:'Witch\'s Broom',juan_cap_6:'Crescent Nebula',juan_cap_7:'Veil Nebula',juan_cap_8:'Crab Nebula',juan_cap_9:'Moon',juan_cap_10:'North America Nebula',juan_cap_11:'Butterfly Nebula and Sadr star',juan_cap_12:'Elephant Trunk Nebula',
       news_eyebrow:'News',news_title:'Photo current affairs',news_subtitle:'Events, visual appointments and news related to photography, the sky, and visual culture.',
       news1_title:'Total solar eclipse on 12 August 2026',news1_date:'May 2026',news1_text:'On 12 August, a total solar eclipse will be visible from the Iberian Peninsula.',
       news2_title:'Carol Guzy wins World Press Photo 2026',news2_date:'April 2026',news2_text:'American photojournalist Carol Guzy has been awarded the prestigious prize.',
@@ -387,63 +387,66 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
 
   carregarFotosDesDeJson();
 
-  const juanjoToggleImage=document.getElementById('juanjoToggleImage');
-  const juanjoBirdsWrap=document.getElementById('juanjoBirdsWrap');
-  const juanjoToggle=function(forceOpen){
-    if(!juanjoBirdsWrap || !juanjoToggleImage) return;
-    const open = typeof forceOpen==='boolean' ? forceOpen : juanjoBirdsWrap.hasAttribute('hidden');
-    if(open){
-      juanjoBirdsWrap.removeAttribute('hidden');
-      juanjoToggleImage.setAttribute('aria-expanded','true');
-      bindGalleryClicks('#juanjoBirdGrid .gallery-item');
-    } else {
-      juanjoBirdsWrap.setAttribute('hidden','');
-      juanjoToggleImage.setAttribute('aria-expanded','false');
-    }
-  };
-  if(juanjoToggleImage){
-    let lastTouchToggleAt = 0;
+  function setupCollabGalleryToggle({imageId, wrapId, gridSelector}){
+    const toggleImage=document.getElementById(imageId);
+    const galleryWrap=document.getElementById(wrapId);
+    if(!toggleImage || !galleryWrap) return;
 
-    const handleJuanjoToggle = (e) => {
-      if(!e) return juanjoToggle();
+    const toggleGallery=(forceOpen)=>{
+      const open=typeof forceOpen==='boolean' ? forceOpen : galleryWrap.hasAttribute('hidden');
+      if(open){
+        galleryWrap.removeAttribute('hidden');
+        toggleImage.setAttribute('aria-expanded','true');
+        bindGalleryClicks(`${gridSelector} .gallery-item`);
+      } else {
+        galleryWrap.setAttribute('hidden','');
+        toggleImage.setAttribute('aria-expanded','false');
+      }
+    };
+
+    let lastTouchToggleAt = 0;
+    const handleToggle=(e)=>{
+      if(!e) return toggleGallery();
 
       if(e.type === 'touchstart') {
-        juanjoToggleImage.classList.add('is-pressed');
+        toggleImage.classList.add('is-pressed');
         return;
       }
 
       if(e.type === 'touchcancel') {
-        juanjoToggleImage.classList.remove('is-pressed');
+        toggleImage.classList.remove('is-pressed');
         return;
       }
 
       if(e.type === 'touchend') {
         e.preventDefault();
-        juanjoToggleImage.classList.remove('is-pressed');
+        toggleImage.classList.remove('is-pressed');
         lastTouchToggleAt = Date.now();
-        juanjoToggle();
+        toggleGallery();
         return;
       }
 
       if(e.type === 'click') {
-        // Evitem doble toggle en mòbil: touchend + click sintètic posterior
         if(Date.now() - lastTouchToggleAt < 700) return;
-        juanjoToggle();
+        toggleGallery();
         return;
       }
 
       if(e.type === 'keydown' && (e.key==='Enter' || e.key===' ')) {
         e.preventDefault();
-        juanjoToggle();
+        toggleGallery();
       }
     };
 
-    juanjoToggleImage.addEventListener('click', handleJuanjoToggle);
-    juanjoToggleImage.addEventListener('touchstart', handleJuanjoToggle, { passive: true });
-    juanjoToggleImage.addEventListener('touchend', handleJuanjoToggle, { passive: false });
-    juanjoToggleImage.addEventListener('touchcancel', handleJuanjoToggle, { passive: true });
-    juanjoToggleImage.addEventListener('keydown', handleJuanjoToggle);
+    toggleImage.addEventListener('click', handleToggle);
+    toggleImage.addEventListener('touchstart', handleToggle, { passive: true });
+    toggleImage.addEventListener('touchend', handleToggle, { passive: false });
+    toggleImage.addEventListener('touchcancel', handleToggle, { passive: true });
+    toggleImage.addEventListener('keydown', handleToggle);
   }
+
+  setupCollabGalleryToggle({ imageId:'juanjoToggleImage', wrapId:'juanjoBirdsWrap', gridSelector:'#juanjoBirdGrid' });
+  setupCollabGalleryToggle({ imageId:'juanToggleImage', wrapId:'juanBirdsWrap', gridSelector:'#juanBirdGrid' });
 
   const showAllBtn = document.getElementById('showAllBtn');
 
@@ -515,31 +518,75 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     } catch(err) { formMessage.innerHTML = '<p style="color:salmon;">❌ Error de connexió.</p>'; }
   });
 
+  const COUNTER_NAMESPACE='fermibruna-fotografia-com';
+  const VISIT_COUNTER_KEY='visites-web';
+  const LIKE_COUNTER_KEY='magrades-web';
+
+  async function fetchCounterValue(counterKey){
+    const response = await fetch(`https://api.countapi.xyz/get/${COUNTER_NAMESPACE}/${counterKey}`);
+    if(!response.ok) throw new Error('No s\'ha pogut consultar el comptador');
+    const data = await response.json();
+    return Number(data.value || 0);
+  }
+
+  async function hitCounter(counterKey){
+    const response = await fetch(`https://api.countapi.xyz/hit/${COUNTER_NAMESPACE}/${counterKey}`);
+    if(!response.ok) throw new Error('No s\'ha pogut incrementar el comptador');
+    const data = await response.json();
+    return Number(data.value || 0);
+  }
+
   async function updateVisitCounter() {
+    const visitCounterEl = document.getElementById('visitCounter');
+    const today = new Date().toISOString().slice(0,10);
+    const visitKey = `visit_counted_${today}`;
     try {
-      const response = await fetch('https://ipapi.co/json/');
-      const data = await response.json();
-      const ip = data.ip;
-      const today = new Date().toISOString().slice(0,10);
-      const visitKey = `visit_${ip}`;
-      const lastVisit = localStorage.getItem(visitKey);
-      let totalVisits = parseInt(localStorage.getItem('totalVisits') || '0');
-      if(lastVisit !== today) { totalVisits++; localStorage.setItem('totalVisits', totalVisits); localStorage.setItem(visitKey, today); }
-      document.getElementById('visitCounter').innerText = totalVisits;
-    } catch(e) { let fallback = parseInt(localStorage.getItem('totalVisits') || '0'); document.getElementById('visitCounter').innerText = fallback; }
+      let totalVisits;
+      if(localStorage.getItem(visitKey) === '1') totalVisits = await fetchCounterValue(VISIT_COUNTER_KEY);
+      else {
+        totalVisits = await hitCounter(VISIT_COUNTER_KEY);
+        localStorage.setItem(visitKey, '1');
+      }
+      visitCounterEl.innerText = totalVisits;
+      localStorage.setItem('totalVisitsFallback', String(totalVisits));
+    } catch(e) {
+      let fallback = parseInt(localStorage.getItem('totalVisitsFallback') || '0', 10);
+      if(localStorage.getItem(visitKey) !== '1') {
+        fallback += 1;
+        localStorage.setItem('totalVisitsFallback', String(fallback));
+        localStorage.setItem(visitKey, '1');
+      }
+      visitCounterEl.innerText = fallback;
+    }
   }
   updateVisitCounter();
 
-  let likeCount = parseInt(localStorage.getItem('likeCount') || '0');
+  let likeCount = parseInt(localStorage.getItem('likeCountFallback') || '0', 10);
   const likeButton = document.getElementById('likeButton');
   const likeCounterSpan = document.getElementById('likeCounter');
   likeCounterSpan.innerText = likeCount;
   if(localStorage.getItem('liked') === 'true') likeButton.style.opacity = '0.6';
   likeButton.style.cursor = 'pointer';
-  likeButton.addEventListener('click', () => {
+
+  fetchCounterValue(LIKE_COUNTER_KEY)
+    .then(value => {
+      likeCount = value;
+      likeCounterSpan.innerText = likeCount;
+      localStorage.setItem('likeCountFallback', String(likeCount));
+    })
+    .catch(()=>{});
+
+  likeButton.addEventListener('click', async () => {
     if(localStorage.getItem('liked') === 'true') return;
-    likeCount++; localStorage.setItem('likeCount', likeCount); localStorage.setItem('liked', 'true');
-    likeCounterSpan.innerText = likeCount; likeButton.style.opacity = '0.6';
+    try {
+      likeCount = await hitCounter(LIKE_COUNTER_KEY);
+    } catch(e) {
+      likeCount = parseInt(localStorage.getItem('likeCountFallback') || String(likeCount), 10) + 1;
+    }
+    localStorage.setItem('likeCountFallback', String(likeCount));
+    localStorage.setItem('liked', 'true');
+    likeCounterSpan.innerText = likeCount;
+    likeButton.style.opacity = '0.6';
   });
 })();
 </script>
