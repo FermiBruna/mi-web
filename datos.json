@@ -179,6 +179,12 @@
       "categoria": "moments",
       "descripcion": "Passejant",
       "fecha": "2026-05"
+    },
+    {
+      "archivo": "/img/fantasma.jpg",
+      "categoria": "astro",
+      "descripcion": "E Fantasma i Gamma Casssiopeiae - València",
+      "fecha": "2026-05"
     }
   ]
 }
