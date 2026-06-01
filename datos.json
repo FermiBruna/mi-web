@@ -191,6 +191,12 @@
       "categoria": "paisatge",
       "descripcion": "Lluna creixent sobre Almenara i la marjal",
       "fecha": "2026-05"
+    },
+    {
+      "archivo": "/img/marieta.jpg",
+      "categoria": "macro",
+      "descripcion": "Marieta - Serra Calderona",
+      "fecha": "2021-5"
     }
   ]
 }
