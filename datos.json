@@ -203,6 +203,12 @@
       "categoria": "paisatge",
       "descripcion": "Lluna plena de les flors - València",
       "fecha": "maig 2026"
+    },
+    {
+      "archivo": "/img/llunaplenaflors.jpg",
+      "categoria": "astro",
+      "descripcion": "Lluna plena de les flors entre núvols - València",
+      "fecha": "maig 2026"
     }
   ]
 }
