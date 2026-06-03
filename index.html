@@ -528,8 +528,29 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   }
   if(audioPlayPause) audioPlayPause.addEventListener('click', togglePlayPause);
   if(audioPlayPauseMobile) audioPlayPauseMobile.addEventListener('click', togglePlayPause);
-  audioCloseBtn.addEventListener('click', ()=>{ audio.pause(); audio.currentTime=0; audioPlaying=false; updateAudioButtonState(false); hideAudioOverlay(); });
-  if(audioCloseBtnMobile) audioCloseBtnMobile.addEventListener('click', (e)=>{ e.preventDefault(); e.stopPropagation(); hideAudioOverlay(); });
+
+  const handleDesktopAudioClose = ()=>{
+    audio.pause();
+    audio.currentTime=0;
+    audioPlaying=false;
+    updateAudioButtonState(false);
+    hideAudioOverlay();
+  };
+
+  const handleMobileAudioClose = (e)=>{
+    if(e){ e.preventDefault(); e.stopPropagation(); }
+    audio.pause();
+    audio.currentTime=0;
+    audioPlaying=false;
+    updateAudioButtonState(false);
+    hideAudioOverlay();
+  };
+
+  audioCloseBtn.addEventListener('click', handleDesktopAudioClose);
+  if(audioCloseBtnMobile){
+    audioCloseBtnMobile.addEventListener('click', handleMobileAudioClose);
+    audioCloseBtnMobile.addEventListener('touchend', handleMobileAudioClose, { passive: false });
+  }
 
   function applyLanguage(lang){
     currentLang=lang; document.documentElement.lang=lang;
