@@ -227,6 +227,12 @@
       "categoria": "paisatge",
       "descripcion": "Torre del Miquelet de la Seu - València",
       "fecha": "juny 2026"
+    },
+    {
+      "archivo": "/img/tripletlleo.jpg",
+      "categoria": "astro",
+      "descripcion": "Triplet del Lleó",
+      "fecha": "abril 2026"
     }
   ]
 }
