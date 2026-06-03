@@ -233,6 +233,12 @@
       "categoria": "astro",
       "descripcion": "Triplet del Lleó",
       "fecha": "abril 2026"
+    },
+    {
+      "archivo": "/img/cometa.jpg",
+      "categoria": "astro",
+      "descripcion": "Cometa Panstarrs",
+      "fecha": "abril 2026"
     }
   ]
 }
