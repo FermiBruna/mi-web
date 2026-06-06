@@ -257,6 +257,12 @@
       "categoria": "paisatge",
       "descripcion": "Skyline de Benicalap",
       "fecha": "juny 2026"
+    },
+    {
+      "archivo": "/img/bruixot-está.jpg",
+      "categoria": "astro",
+      "descripcion": "NGC 7380, Nebulosa del Bruixot a la constel.lació de Cefeu",
+      "fecha": "febrer 2026"
     }
   ]
 }
