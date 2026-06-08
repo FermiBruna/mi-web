@@ -287,6 +287,12 @@
       "categoria": "moments",
       "descripcion": "La Moma - Corpus Christi - València",
       "fecha": "juny 2026"
+    },
+    {
+      "archivo": "/img/soljuny.jpg",
+      "categoria": "paisatge",
+      "descripcion": "Sol de juny - València",
+      "fecha": "juny 2026"
     }
   ]
 }
