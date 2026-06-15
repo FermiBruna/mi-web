@@ -323,6 +323,12 @@
       "categoria": "paisatge",
       "fecha": "juny 2026",
       "descripcion": "Lluna ixent i minvant quasi nova - Gargallo (Terol)"
+    },
+    {
+      "archivo": "/img/pelica-està.jpg",
+      "categoria": "astro",
+      "descripcion": "IC 5070 - Nebulosa del Pelicà - València i Gargallo (Terol)",
+      "fecha": "juny 2026"
     }
   ]
 }
