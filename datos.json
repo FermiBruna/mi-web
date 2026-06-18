@@ -1,6 +1,12 @@
 {
   "fotos": [
     {
+      "youtube_url": "https://youtu.be/02HlYmEOoUk",
+      "categoria": "paisatge",
+      "descripcion": "LA LLUNA S'AMAGA",
+      "fecha": "2026-06"
+    },
+    {
       "archivo": "/img/buterfly.jpg",
       "categoria": "astro",
       "descripcion": "Nebula Butterfly - Papallona o Gamma Cigni - Almenara",
@@ -259,7 +265,7 @@
       "fecha": "juny 2026"
     },
     {
-      "archivo": "/img/bruixot-está.jpg",
+      "archivo": "/img/bruixot-está.jpg",
       "categoria": "astro",
       "descripcion": "NGC 7380, Nebulosa del Bruixot a la constel.lació de Cefeu",
       "fecha": "febrer 2026"
@@ -277,13 +283,13 @@
       "fecha": "maig - 2026"
     },
     {
-      "archivo": "/img/nadal-está.jpg",
+      "archivo": "/img/nadal-está.jpg",
       "categoria": "astro",
       "descripcion": "NGC 2264, Cúmul de l'Arbre de Nadal i Nebulosa del Con a la Constel·lació de l'Unicorn - València",
       "fecha": "gener 2026"
     },
     {
-      "archivo": "/img/moma-está.jpg",
+      "archivo": "/img/moma-está.jpg",
       "categoria": "moments",
       "descripcion": "La Moma - Corpus Christi - València",
       "fecha": "juny 2026"
@@ -307,37 +313,37 @@
       "fecha": "juny 2026"
     },
     {
-      "archivo": "/img/postaurbana-està.jpg",
+      "archivo": "/img/postaurbana-està.jpg",
       "categoria": "paisatge",
       "descripcion": "Posta urbana    Benicalap - València",
       "fecha": "juny 2026"
     },
     {
-      "archivo": "/img/via-làctia-miraor-deel-campillo-gargallo.jpg",
+      "archivo": "/img/via-làctia-miraor-deel-campillo-gargallo.jpg",
       "categoria": "paisatge",
       "descripcion": "Via Làctia a Gargallo - Terol",
       "fecha": "juny 2026"
     },
     {
-      "archivo": "/img/llunagargallo-esstá.jpg",
+      "archivo": "/img/llunagargallo-esstá.jpg",
       "categoria": "paisatge",
       "fecha": "juny 2026",
       "descripcion": "Lluna ixent i minvant quasi nova - Gargallo (Terol)"
     },
     {
-      "archivo": "/img/pelica-està.jpg",
+      "archivo": "/img/pelica-està.jpg",
       "categoria": "astro",
       "descripcion": "IC 5070 - Nebulosa del Pelicà - València i Gargallo (Terol)",
       "fecha": "juny 2026"
     },
     {
-      "archivo": "/img/llacuna-està.jpg",
+      "archivo": "/img/llacuna-està.jpg",
       "categoria": "astro",
       "descripcion": "Messier 8 - Nebulosa de la Llacuna - Gargallo (Terol)",
       "fecha": "juny 2026"
     },
     {
-      "archivo": "/img/cocoon-está.jpg",
+      "archivo": "/img/cocoon-está.jpg",
       "categoria": "astro",
       "descripcion": "NGC4490 Cocoon Nebula - Gargallo (Terol)",
       "fecha": "juny 2026"
