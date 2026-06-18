@@ -19,10 +19,16 @@ collections:
             widget: "list"
             summary: "{{fields.descripcion}} ({{fields.categoria}})"
             fields:
-              - label: "Arxiu"
+              - label: "Arxiu (imatge o vídeo)"
                 name: "archivo"
-                widget: "image"
+                widget: "file"
                 choose_url: false
+                media_library:
+                  config:
+                    multiple: false
+                pattern:
+                  - '.*\.(jpe?g|png|webp|gif|mp4|webm|mov)$'
+                  - "Nom d'arxiu no vàlid. Extensió permesa: jpg, jpeg, png, webp, gif, mp4, webm, mov"
               - label: "Categoria"
                 name: "categoria"
                 widget: "select"
