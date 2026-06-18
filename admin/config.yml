@@ -19,9 +19,10 @@ collections:
             widget: "list"
             summary: "{{fields.descripcion}} ({{fields.categoria}})"
             fields:
-              - label: "Arxiu (imatge o vídeo)"
+              - label: "Arxiu (imatge o vídeo curt)"
                 name: "archivo"
                 widget: "file"
+                required: false
                 choose_url: false
                 media_library:
                   config:
@@ -29,6 +30,11 @@ collections:
                 pattern:
                   - '.*\.(jpe?g|png|webp|gif|mp4|webm|mov)$'
                   - "Nom d'arxiu no vàlid. Extensió permesa: jpg, jpeg, png, webp, gif, mp4, webm, mov"
+              - label: "URL de YouTube (per vídeos llargs)"
+                name: "youtube_url"
+                widget: "string"
+                required: false
+                hint: "Exemple: https://youtu.be/02HlYmEOoUk o https://www.youtube.com/watch?v=02HlYmEOoUk"
               - label: "Categoria"
                 name: "categoria"
                 widget: "select"
