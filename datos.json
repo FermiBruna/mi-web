@@ -377,6 +377,12 @@
       "categoria": "paisatge",
       "descripcion": "Lluna creixent al 50% - València",
       "fecha": "juny 2026"
+    },
+    {
+      "archivo": "/img/m8m20-esta.jpg",
+      "categoria": "astro",
+      "descripcion": "M8 I M20 Nebuloses Llacuna i Trifida - Morella",
+      "fecha": "juny 2026"
     }
   ]
 }
