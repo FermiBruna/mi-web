@@ -274,12 +274,12 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     }
   }
 
-  function createImageElement(src, alt=''){
+  function createImageElement(src, alt='', { className='gallery-media gallery-media-image', loading='lazy' } = {}){
     const img = document.createElement('img');
     img.src = src;
     img.alt = alt;
-    img.loading = 'lazy';
-    img.className = 'gallery-media gallery-media-image';
+    img.loading = loading;
+    img.className = className;
     img.onerror = function() {
       const tried = JSON.parse(this.dataset.unicodeTried || '[]');
       const unicodeFallbacks = getUnicodeFallbackUrls(this.src).filter(url => !tried.includes(url));
@@ -440,9 +440,10 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       previewVideo.setAttribute('aria-label', altText || 'Vídeo');
       container.appendChild(previewVideo);
     } else {
-      const previewImg = document.createElement('img');
-      previewImg.src = media.src;
-      previewImg.alt = altText || 'Previsualització';
+      const previewImg = createImageElement(media.src, altText || 'Previsualització', {
+        className: 'lightbox-side-image',
+        loading: 'eager'
+      });
       container.appendChild(previewImg);
     }
   }
@@ -483,15 +484,20 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       return;
     }
 
-    const img=document.createElement('img');
-    img.alt = currentItem.querySelector('.gallery-media-image, img')?.alt || 'Foto actual';
+    const img = createImageElement(media.src, currentItem.querySelector('.gallery-media-image, img')?.alt || 'Foto actual', {
+      className: 'lightbox-current-image',
+      loading: 'eager'
+    });
     img.style.opacity='0';
     img.style.transform='scale(.965)';
+    img.onload=()=>{ img.style.opacity='1'; img.style.transform='scale(1)'; };
     container.appendChild(img);
 
     requestAnimationFrame(()=>{
-      img.src=media.src;
-      img.onload=()=>{ img.style.opacity='1'; img.style.transform='scale(1)'; };
+      if (img.complete && img.naturalWidth > 0) {
+        img.style.opacity='1';
+        img.style.transform='scale(1)';
+      }
     });
   }
 
@@ -904,5 +910,6 @@ if (window.netlifyIdentity) {
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"f0f03d0605bf45f1a3b17cf7d5e6861f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
 </html>
+
 
 
