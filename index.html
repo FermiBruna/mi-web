@@ -822,12 +822,19 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
 
   async function updateVisitCounter() {
     const visitCounterEl = document.getElementById('visitCounter');
+    
+    // No contar visites de l'administrador autenticat
+    const isAdmin = window.netlifyIdentity && window.netlifyIdentity.currentUser && window.netlifyIdentity.currentUser();
+    
     const today = new Date().toISOString().slice(0,10);
     const visitKey = `visit_counted_${today}`;
     try {
       let totalVisits;
-      if(localStorage.getItem(visitKey) === '1') totalVisits = await fetchCounterValue(VISIT_COUNTER_KEY);
-      else {
+      if(isAdmin || localStorage.getItem(visitKey) === '1') {
+        // Si és admin o ja s'ha comptat avui, només consultar sense incrementar
+        totalVisits = await fetchCounterValue(VISIT_COUNTER_KEY);
+      } else {
+        // Visitant normal: incrementar
         totalVisits = await hitCounter(VISIT_COUNTER_KEY);
         localStorage.setItem(visitKey, '1');
       }
@@ -835,7 +842,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       localStorage.setItem('totalVisitsFallback', String(totalVisits));
     } catch(e) {
       let fallback = parseInt(localStorage.getItem('totalVisitsFallback') || '0', 10);
-      if(localStorage.getItem(visitKey) !== '1') {
+      if(!isAdmin && localStorage.getItem(visitKey) !== '1') {
         fallback += 1;
         localStorage.setItem('totalVisitsFallback', String(fallback));
         localStorage.setItem(visitKey, '1');
