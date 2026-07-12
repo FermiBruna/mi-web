@@ -401,6 +401,12 @@
       "categoria": "paisatge",
       "descripcion": "Sol ixent - València",
       "fecha": "28 juny 2026"
+    },
+    {
+      "archivo": "/img/polaris2.jpg",
+      "categoria": "astro",
+      "descripcion": "Polaris i voltants - Ermita de Santa Quiteria (Conca)",
+      "fecha": "juliol 2026"
     }
   ]
 }
