@@ -425,6 +425,12 @@
       "categoria": "paisatge",
       "descripcion": "LLuna plena de la Maduixa - València",
       "fecha": "30 juny 2026"
+    },
+    {
+      "archivo": "/img/etadraconis-esta.jpg",
+      "categoria": "astro",
+      "descripcion": "Eta Draconis - LLuna Nova de juny - Xulella",
+      "fecha": "juny 2026"
     }
   ]
 }
