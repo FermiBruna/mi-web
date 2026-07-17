@@ -443,6 +443,12 @@
       "categoria": "astro",
       "descripcion": "LDN1235 - Nebulosa del Tauró - Ermita de Sta. Quiteria",
       "fecha": "juliol 2026"
+    },
+    {
+      "archivo": "/img/gotes.jpg",
+      "categoria": "macro",
+      "descripcion": "Gotes",
+      "fecha": "abril 2021"
     }
   ]
 }
