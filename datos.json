@@ -473,6 +473,12 @@
       "categoria": "paisatge",
       "descripcion": "L´últim sol del dia - Tebar",
       "fecha": "juliol 2026"
+    },
+    {
+      "archivo": "/img/ngc6914.jpg",
+      "categoria": "astro",
+      "descripcion": "Complex NGC6914",
+      "fecha": "juliol 2026"
     }
   ]
 }
