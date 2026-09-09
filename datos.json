@@ -515,6 +515,12 @@
       "categoria": "paisatge",
       "descripcion": "Sol urbà als terrats de València",
       "fecha": "4 Setembre 2026"
+    },
+    {
+      "archivo": "/img/eixidadesoltebar-esta.jpg",
+      "categoria": "paisatge",
+      "descripcion": "Eixida de Sol a Tebar",
+      "fecha": "12 juliol 2026"
     }
   ]
 }
