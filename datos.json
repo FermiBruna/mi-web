@@ -503,6 +503,12 @@
       "categoria": "paisatge",
       "descripcion": "Paisatge de Lluna plena a Morella ",
       "fecha": "Juliol 2026"
+    },
+    {
+      "archivo": "/img/pleiades-esta.jpg",
+      "categoria": "astro",
+      "descripcion": "Les Plèiades",
+      "fecha": "Desembre 2025"
     }
   ]
 }
