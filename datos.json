@@ -509,6 +509,12 @@
       "categoria": "astro",
       "descripcion": "Les Plèiades",
       "fecha": "Desembre 2025"
+    },
+    {
+      "archivo": "/img/solurba-esta.jpg",
+      "categoria": "paisatge",
+      "descripcion": "Sol urbà als terrats de València",
+      "fecha": "4 Setembre 2026"
     }
   ]
 }
