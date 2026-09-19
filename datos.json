@@ -521,6 +521,12 @@
       "categoria": "paisatge",
       "descripcion": "Eixida de Sol a Tebar",
       "fecha": "12 juliol 2026"
+    },
+    {
+      "archivo": "/img/gecko-esta.jpg",
+      "categoria": "astro",
+      "descripcion": "Gecko Nebula - València i Xulella",
+      "fecha": "Setembre 2026"
     }
   ]
 }
