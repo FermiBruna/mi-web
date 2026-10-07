@@ -545,6 +545,12 @@
       "categoria": "paisatge",
       "descripcion": "Via Làctia Cenital - Xulella",
       "fecha": "Setembre - 2026"
+    },
+    {
+      "archivo": "/img/bedollicm-esta.jpg",
+      "categoria": "icm",
+      "descripcion": "Bedoll a la vora del riu Ebrón - Tormón ",
+      "fecha": "Setembre 2026"
     }
   ]
 }
