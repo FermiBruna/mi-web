@@ -44,7 +44,7 @@ collections:
                   - { label: "Natura", value: "natura" }
                   - { label: "Moments", value: "moments" }
                   - { label: "Eclipsis", value: "eclipsis" }
-                  - { label: "ICM - Intentional Camera Movement", value: "icm" }
+                  - { label: "ICM - intentional camera movement", value: "icm" }
               - label: "Descripció"
                 name: "descripcion"
                 widget: "string"
