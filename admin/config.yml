@@ -39,10 +39,12 @@ collections:
                 name: "categoria"
                 widget: "select"
                 options:
-                  - "astro"
-                  - "paisatge"
-                  - "macro"
-                  - "moments"
+                  - { label: "Astrofotografia", value: "astro" }
+                  - { label: "Paisatge", value: "paisatge" }
+                  - { label: "Natura", value: "natura" }
+                  - { label: "Moments", value: "moments" }
+                  - { label: "Eclipsis", value: "eclipsis" }
+                  - { label: "ICM - Intentional Camera Movement", value: "icm" }
               - label: "Descripció"
                 name: "descripcion"
                 widget: "string"
