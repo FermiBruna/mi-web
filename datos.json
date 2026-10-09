@@ -569,6 +569,12 @@
       "categoria": "paisatge",
       "descripcion": "La Rambleta - València",
       "fecha": "7 octubre 2026"
+    },
+    {
+      "archivo": "/img/arbreicm-esta.jpg",
+      "categoria": "icm",
+      "descripcion": "L`Arbre - La Rambleta",
+      "fecha": "7 octubre 2026"
     }
   ]
 }
