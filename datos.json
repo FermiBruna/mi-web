@@ -629,6 +629,12 @@
       "categoria": "paisatge",
       "descripcion": "Sol a Xulella",
       "fecha": "6 juliol 2026"
+    },
+    {
+      "archivo": "/img/llunavalencia2.jpg",
+      "categoria": "paisatge",
+      "descripcion": "Lluna plena sobre València",
+      "fecha": "2 juliol 2026"
     }
   ]
 }
