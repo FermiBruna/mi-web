@@ -623,6 +623,12 @@
       "categoria": "eclipsis",
       "descripcion": "Lluna eclipsada ponent-se per les muntanyes de La Serrania - Xulella",
       "fecha": "27 agost 2027"
+    },
+    {
+      "archivo": "/img/solxulella-esta.jpg",
+      "categoria": "paisatge",
+      "descripcion": "Sol a Xulella",
+      "fecha": "6 juliol 2026"
     }
   ]
 }
