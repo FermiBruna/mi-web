@@ -593,6 +593,12 @@
       "categoria": "moments",
       "descripcion": "9 d´Octubre - Senyeres - València",
       "fecha": "9 octubre 2026"
+    },
+    {
+      "archivo": "/img/eclipsisolar2-.-esta.jpg",
+      "categoria": "eclipsis",
+      "descripcion": "Eclipsi de Sol - Almenara",
+      "fecha": "12 agost 2026"
     }
   ]
 }
