@@ -623,6 +623,12 @@
       "categoria": "paisatge",
       "descripcion": "Blue Moon minvant de juliol - València",
       "fecha": "6 juliol 2026"
+    },
+    {
+      "archivo": "/img/postallunaeclipsad-esta.jpg",
+      "categoria": "eclipsis",
+      "descripcion": "Lluna eclipsada ponent-se per les muntanyes de La Serrania - Xulella",
+      "fecha": "27 agost 2027"
     }
   ]
 }
