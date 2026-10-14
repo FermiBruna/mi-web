@@ -635,6 +635,12 @@
       "categoria": "paisatge",
       "descripcion": "Lluna plena sobre València",
       "fecha": "2 juliol 2026"
+    },
+    {
+      "archivo": "/img/lbn331-esta.jpg",
+      "categoria": "astro",
+      "descripcion": "Porció de LBN331 a la constel.lació del Cigne",
+      "fecha": "9, 10, 11 i 12 d´octubre de 2026"
     }
   ]
 }
