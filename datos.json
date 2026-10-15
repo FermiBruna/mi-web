@@ -653,6 +653,12 @@
       "categoria": "paisatge",
       "descripcion": "Via Làctia cenital a Tramacastiel - Terol",
       "fecha": "24-09-2026"
+    },
+    {
+      "archivo": "/img/orioiroseta-esta.jpg",
+      "categoria": "astro",
+      "descripcion": "Constel.lació d´Orió i nebulosa de la Roseta - Tramacastiel (Terol)",
+      "fecha": "24-09-2026"
     }
   ]
 }
