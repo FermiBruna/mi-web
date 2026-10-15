@@ -707,6 +707,12 @@
       "categoria": "paisatge",
       "descripcion": "Tramacastiel - Terol",
       "fecha": "24-09-2026"
+    },
+    {
+      "archivo": "/img/lligabosc.jpg",
+      "categoria": "natura",
+      "descripcion": "Lligabosc - Tramacastiel (Terol)",
+      "fecha": "23-09-2026"
     }
   ]
 }
