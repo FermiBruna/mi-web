@@ -562,48 +562,27 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     const sortedItems = [...items].sort((a,b) => b.fecha.localeCompare(a.fecha));
 
     if (filter === 'initial') {
-      // Barreja aleatòria (Fisher-Yates)
-      const shuffle = (arr) => {
-        const a = [...arr];
-        for (let i = a.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [a[i], a[j]] = [a[j], a[i]];
-        }
-        return a;
-      };
-
-      // 4 fotografies més recents
-      const recents = sortedItems.slice(0, 4);
+      // 6 últimes incorporacions (les últimes afegides al panell, ordre de datos.json)
+      const recents = items.slice(-6).reverse();
       const recentsSet = new Set(recents);
+      const restants = items.filter(i => !recentsSet.has(i));
 
-      // Candidates per a la part aleatòria (excloent les recents)
-      const restants = sortedItems.filter(i => !recentsSet.has(i));
-
-      // Agrupem per categoria perquè totes les seccions hi estiguen representades
-      const perCategoria = {};
-      restants.forEach(i => {
-        (perCategoria[i.categoria] = perCategoria[i.categoria] || []).push(i);
-      });
-
-      const aleatories = [];
+      // 6 fotos més: la més recent de cada secció (sense repetir les recents)
+      const perRecencia = restants.slice().reverse(); // de la més nova a la més antiga
+      const seccions = ['astro','paisatge','natura','moments','eclipsis','icm'];
+      const representants = [];
       const usades = new Set();
-
-      // 1r: una foto aleatòria de cada categoria (representació de totes les seccions)
-      shuffle(Object.keys(perCategoria)).forEach(cat => {
-        if (aleatories.length >= 8) return;
-        const pool = shuffle(perCategoria[cat]);
-        if (pool.length) { aleatories.push(pool[0]); usades.add(pool[0]); }
+      seccions.forEach(cat => {
+        const darrera = perRecencia.find(i => i.categoria === cat);
+        if (darrera) { representants.push(darrera); usades.add(darrera); }
       });
-
-      // 2n: omplim la resta de buits fins a 8 amb fotos aleatòries de qualsevol categoria
-      const sobrants = shuffle(restants.filter(i => !usades.has(i)));
-      for (const item of sobrants) {
-        if (aleatories.length >= 8) break;
-        aleatories.push(item);
+      // Si alguna secció no té fotos, omplim fins a 6 amb les següents més recents
+      for (const item of perRecencia) {
+        if (representants.length >= 6) break;
+        if (!usades.has(item)) { representants.push(item); usades.add(item); }
       }
 
-      // 4 recents + fins a 8 aleatòries (la part aleatòria també es barreja)
-      sourceItems = [...recents, ...shuffle(aleatories).slice(0, 8)];
+      sourceItems = [...recents, ...representants.slice(0, 6)];
     } else if (filter && filter !== 'tots') {
       sourceItems = sortedItems.filter(i => i.categoria === filter);
     } else {
