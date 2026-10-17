@@ -779,6 +779,12 @@
       "categoria": "eclipsis",
       "descripcion": "La Lluna avança - Eclipsi total de Sol - Almenara",
       "fecha": "12-08-2026"
+    },
+    {
+      "archivo": "/img/coronasolarii-esta.jpg",
+      "categoria": "eclipsis",
+      "descripcion": "Corona solar - Eclipsi total - Almenara",
+      "fecha": "12-08-2026"
     }
   ]
 }
