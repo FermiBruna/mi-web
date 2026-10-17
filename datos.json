@@ -767,6 +767,12 @@
       "categoria": "eclipsis",
       "descripcion": "Perles de Baily - Eclipsi total - Almenara",
       "fecha": "12-08-2026"
+    },
+    {
+      "archivo": "/img/coronasolari-esta.jpg",
+      "categoria": "eclipsis",
+      "descripcion": "Corona solar - Eclipsi solar total - Almenara",
+      "fecha": "12-08-2026"
     }
   ]
 }
