@@ -791,6 +791,12 @@
       "fecha": "12-08-2026",
       "categoria": "eclipsis",
       "archivo": "/img/coronasolariii-esta.jpg"
+    },
+    {
+      "categoria": "eclipsis",
+      "descripcion": "Eclipsi parcial de Lluna - Xulella",
+      "fecha": "27-08-2026",
+      "archivo": "/img/eclipsidellunaii-esta.jpg"
     }
   ]
 }
