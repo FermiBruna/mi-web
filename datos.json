@@ -797,6 +797,12 @@
       "descripcion": "Eclipsi parcial de Lluna - Xulella",
       "fecha": "27-08-2026",
       "archivo": "/img/eclipsidellunaii-esta.jpg"
+    },
+    {
+      "archivo": "/img/llunaeclipsinubolada-esta.jpg",
+      "categoria": "eclipsis",
+      "descripcion": "Nuvolada a l´eclipsi de Lluna - Xulella",
+      "fecha": "27-08-2026"
     }
   ]
 }
