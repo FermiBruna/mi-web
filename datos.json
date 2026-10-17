@@ -809,6 +809,12 @@
       "categoria": "eclipsis",
       "descripcion": "Eclipsi de Sol - Almenara",
       "fecha": "12-08-2026"
+    },
+    {
+      "archivo": "/img/almenaraieclipsi-esta.jpg",
+      "categoria": "eclipsis",
+      "descripcion": "Eclipsi total refectint-se a la Marjal d´Almenara",
+      "fecha": "12-08-2026"
     }
   ]
 }
