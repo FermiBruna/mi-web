@@ -785,6 +785,12 @@
       "categoria": "eclipsis",
       "descripcion": "Corona solar - Eclipsi total - Almenara",
       "fecha": "12-08-2026"
+    },
+    {
+      "descripcion": "Corona solar - Eclipsi solar - Almenara",
+      "fecha": "12-08-2026",
+      "categoria": "eclipsis",
+      "archivo": "/img/coronasolariii-esta.jpg"
     }
   ]
 }
