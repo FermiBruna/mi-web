@@ -827,6 +827,12 @@
       "categoria": "paisatge",
       "descripcion": "Tempesta a Benicalap - València",
       "fecha": "17-10-2026"
+    },
+    {
+      "archivo": "/img/passejar-esta.jpg",
+      "categoria": "icm",
+      "descripcion": "La llum de les nostres passes - València",
+      "fecha": "15-10-2026"
     }
   ]
 }
