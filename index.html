@@ -184,6 +184,27 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   let currentVisibleItems=[], currentIndex=0, audioOverlayTimer, currentLang='ca';
   let audioPlaying = false;
   let musicPausedByVideo = false;
+  function forceMute(v){ v.defaultMuted = true; v.muted = true; v.volume = 0; v.setAttribute('muted',''); }
+  function isMainLightboxVideo(v){ return v.classList.contains('lightbox-current-video'); }
+  function pauseOtherVideos(except){
+    document.querySelectorAll('video').forEach(v=>{ if(v!==except){ v.pause(); if(!isMainLightboxVideo(v)) forceMute(v); } });
+  }
+  function pauseMusicForVideo(){
+    if(!audio.paused || audioPlaying){ musicPausedByVideo = true; }
+    audio.pause(); audioPlaying = false;
+    updateAudioButtonState(false);
+  }
+  function resumeMusicAfterVideo(){
+    if(!musicPausedByVideo) return;
+    musicPausedByVideo = false;
+    audio.play().then(()=>{ audioPlaying = true; updateAudioButtonState(true); }).catch(()=>{});
+  }
+  function currentIsVideo(){
+    const it = currentVisibleItems[currentIndex];
+    if(!it) return false;
+    const t = getMediaFromItem(it).type;
+    return t === 'video' || t === 'youtube';
+  }
   const lightbox=document.getElementById('lightbox');
   const audio=document.getElementById('audioGaleria');
   const audioOverlay=document.getElementById('audioOverlay');
@@ -378,8 +399,11 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       if(!media) return;
 
       if(media.tagName === 'VIDEO'){
-        media.title = 'Doble clic per ampliar';
-        media.addEventListener('dblclick',()=>openLightbox(item, selector));
+        // Miniatura de vídeo: sempre en silenci. Previsualització muda en passar el ratolí; clic per ampliar.
+        forceMute(media);
+        media.addEventListener('mouseenter',()=>{ forceMute(media); media.play().catch(()=>{}); });
+        media.addEventListener('mouseleave',()=>{ media.pause(); });
+        media.addEventListener('click',()=>openLightbox(item, selector));
       } else if(media.tagName === 'IFRAME'){
         item.addEventListener('click',()=>openLightbox(item, selector));
       } else {
@@ -427,6 +451,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   function handleMobileLightboxInteraction(e){
     if(!isMobileLightbox() || !lightbox.classList.contains('active')) return;
     if(mobileAudioControls && mobileAudioControls.contains(e.target)) return;
+    if(currentIsVideo()) return;
     showAudioOverlay(4000);
   }
 
@@ -492,6 +517,13 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
 
     container.innerHTML='';
 
+    if(media.type === 'youtube' || media.type === 'video'){
+      // Un vídeo amb so propi: callar la música de la web i qualsevol altre vídeo ABANS que comence
+      pauseMusicForVideo();
+      pauseOtherVideos(null);
+      hideAudioOverlay();
+    }
+
     if(media.type === 'youtube'){
       const iframe = createYouTubeElement(media.src, { className:'lightbox-current-youtube' });
       container.appendChild(iframe);
@@ -504,6 +536,9 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       container.appendChild(video);
       return;
     }
+
+    // Element sense so propi (foto): si la música s'havia pausat per un vídeo, tornar-la a posar
+    resumeMusicAfterVideo();
 
     const img = createImageElement(media.src, currentItem.querySelector('.gallery-media-image, img')?.alt || 'Foto actual', {
       className: 'lightbox-current-image',
@@ -535,8 +570,8 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     syncAudioControls(currentVol);
     audio.volume=currentVol;
     audio.muted=audio.volume===0;
-    const obreVideo = getMediaFromItem(currentVisibleItems[currentIndex] || item).type === 'video';
-    if(!audioPlaying) { if(!obreVideo && !musicPausedByVideo && !hasSoundingVideo()) audio.play().then(()=>{ audioPlaying=true; updateAudioButtonState(true); }).catch(()=>{}); }
+    if(currentIsVideo()) { hideAudioOverlay(); return; } // vídeo: sense música ni control de música
+    if(!audioPlaying) { if(!musicPausedByVideo) audio.play().then(()=>{ audioPlaying=true; updateAudioButtonState(true); }).catch(()=>{}); }
     else { audio.play().catch(()=>{}); }
     showAudioOverlay(7000);
   }
@@ -547,14 +582,15 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     currentIndex=(newIndex+currentVisibleItems.length)%currentVisibleItems.length;
     updateLightboxViews();
     showCurrentMedia();
-    showAudioOverlay(5000);
+    if(currentIsVideo()) hideAudioOverlay(); else showAudioOverlay(5000);
   }
 
   function closeLightbox(){
     stopLightboxVideos();
     lightbox.classList.remove('active');
     hideAudioOverlay();
-    setTimeout(syncMusicWithVideos, 0);
+    document.getElementById('lightboxCurrent').innerHTML='';
+    resumeMusicAfterVideo();
   }
 
   // LÓGICA AUTOMÁTICA POR FECHA
@@ -610,7 +646,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
         mediaType = getMediaTypeFromFile(archivoNormalizado);
         mediaSrc = `img/${archivoNormalizado}`;
         media = mediaType === 'video'
-          ? createVideoElement(mediaSrc, { controls: true })
+          ? createVideoElement(mediaSrc, { muted: true, loop: true, className: 'gallery-media gallery-media-video gallery-thumb-video' })
           : createImageElement(mediaSrc, item.descripcion || '');
       }
 
@@ -786,34 +822,24 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
 
   audioCloseBtn.addEventListener('click', handleDesktopAudioClose);
 
-  // Pausar la música de la web mentre sona un vídeo amb so propi, i reprendre-la després
-  // (només si estava sonant abans). Els vídeos silenciats (previsualitzacions) no compten.
-  function hasSoundingVideo(){
-    return Array.from(document.querySelectorAll('video')).some(v => v.isConnected && !v.paused && !v.ended && !v.muted && v.volume > 0);
-  }
-  function syncMusicWithVideos(){
-    if(hasSoundingVideo()){
-      if(audioPlaying || !audio.paused){
-        audio.pause();
-        audioPlaying = false;
-        musicPausedByVideo = true;
-        updateAudioButtonState(false);
-        if(lightbox.classList.contains('active')) showAudioOverlay(5000);
-      }
-    } else if(musicPausedByVideo){
-      musicPausedByVideo = false;
-      audio.play().then(()=>{ audioPlaying = true; updateAudioButtonState(true); }).catch(()=>{});
-    }
-  }
-  ['play','playing','pause','ended','volumechange','emptied'].forEach(ev=>{
-    document.addEventListener(ev, e=>{ if(e.target && e.target.tagName === 'VIDEO') syncMusicWithVideos(); }, true);
+  // Xarxa de seguretat: si qualsevol vídeo comença a sonar, callar la resta (només una font de so alhora)
+  document.addEventListener('play', e=>{
+    const v=e.target;
+    if(!v || v.tagName!=='VIDEO') return;
+    if(!isMainLightboxVideo(v)) { forceMute(v); return; }
+    pauseMusicForVideo();
+    pauseOtherVideos(v);
+  }, true);
+  document.addEventListener('volumechange', e=>{
+    const v=e.target;
+    if(!v || v.tagName!=='VIDEO') return;
+    if(!isMainLightboxVideo(v)) { if(!v.muted || v.volume>0) forceMute(v); return; }
+    if(!v.paused && !v.muted && v.volume>0) { pauseMusicForVideo(); pauseOtherVideos(v); }
+  }, true);
+  // Si la música es posa en marxa mentre sona un vídeo, el vídeo es para
+  audio.addEventListener('play', ()=>{
+    document.querySelectorAll('video').forEach(v=>{ if(!v.paused && !v.muted) v.pause(); });
   });
-  // Vídeos eliminats del DOM (tancar el visor, canviar de foto, refer la galeria)
-  new MutationObserver(muts=>{
-    if(muts.some(m=>Array.from(m.removedNodes).some(n=>n.nodeType===1 && (n.tagName==='VIDEO' || n.querySelector?.('video'))))) setTimeout(syncMusicWithVideos, 0);
-  }).observe(document.body, { childList:true, subtree:true });
-  // En ordinador, moure el ratolí dins del visor torna a mostrar el control de música
-  lightbox.addEventListener('mousemove', ()=>{ if(lightbox.classList.contains('active') && !isMobileLightbox()) showAudioOverlay(4000); });
   if(audioCloseBtnMobile){
     audioCloseBtnMobile.addEventListener('click', handleMobileAudioClose);
     audioCloseBtnMobile.addEventListener('touchend', handleMobileAudioClose, { passive: false });
