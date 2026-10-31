@@ -183,6 +183,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
 (function(){
   let currentVisibleItems=[], currentIndex=0, audioOverlayTimer, currentLang='ca';
   let audioPlaying = false;
+  let musicPausedByVideo = false;
   const lightbox=document.getElementById('lightbox');
   const audio=document.getElementById('audioGaleria');
   const audioOverlay=document.getElementById('audioOverlay');
@@ -534,7 +535,8 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     syncAudioControls(currentVol);
     audio.volume=currentVol;
     audio.muted=audio.volume===0;
-    if(!audioPlaying) { audio.play().then(()=>{ audioPlaying=true; updateAudioButtonState(true); }).catch(()=>{}); }
+    const obreVideo = getMediaFromItem(currentVisibleItems[currentIndex] || item).type === 'video';
+    if(!audioPlaying) { if(!obreVideo && !musicPausedByVideo && !hasSoundingVideo()) audio.play().then(()=>{ audioPlaying=true; updateAudioButtonState(true); }).catch(()=>{}); }
     else { audio.play().catch(()=>{}); }
     showAudioOverlay(7000);
   }
@@ -552,6 +554,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     stopLightboxVideos();
     lightbox.classList.remove('active');
     hideAudioOverlay();
+    setTimeout(syncMusicWithVideos, 0);
   }
 
   // LÓGICA AUTOMÁTICA POR FECHA
@@ -754,14 +757,16 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   audioVolume.addEventListener('input',()=>{ setAudioVolume(parseFloat(audioVolume.value)); showAudioOverlay(5000); });
   if(audioVolumeMobile){ audioVolumeMobile.addEventListener('input',()=>{ setAudioVolume(parseFloat(audioVolumeMobile.value)); showAudioOverlay(5000); }); }
   function togglePlayPause() {
+    musicPausedByVideo = false; // explicit user choice wins
     if(audioPlaying) { audio.pause(); audioPlaying = false; }
-    else { audio.play().then(()=>{ audioPlaying=true; }).catch(()=>{}); }
+    else { audio.play().then(()=>{ audioPlaying=true; updateAudioButtonState(true); }).catch(()=>{}); }
     updateAudioButtonState(audioPlaying); showAudioOverlay(5000);
   }
   if(audioPlayPause) audioPlayPause.addEventListener('click', togglePlayPause);
   if(audioPlayPauseMobile) audioPlayPauseMobile.addEventListener('click', togglePlayPause);
 
   const handleDesktopAudioClose = ()=>{
+    musicPausedByVideo = false;
     audio.pause();
     audio.currentTime=0;
     audioPlaying=false;
@@ -771,6 +776,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
 
   const handleMobileAudioClose = (e)=>{
     if(e){ e.preventDefault(); e.stopPropagation(); }
+    musicPausedByVideo = false;
     audio.pause();
     audio.currentTime=0;
     audioPlaying=false;
@@ -779,6 +785,35 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   };
 
   audioCloseBtn.addEventListener('click', handleDesktopAudioClose);
+
+  // Pausar la música de la web mentre sona un vídeo amb so propi, i reprendre-la després
+  // (només si estava sonant abans). Els vídeos silenciats (previsualitzacions) no compten.
+  function hasSoundingVideo(){
+    return Array.from(document.querySelectorAll('video')).some(v => v.isConnected && !v.paused && !v.ended && !v.muted && v.volume > 0);
+  }
+  function syncMusicWithVideos(){
+    if(hasSoundingVideo()){
+      if(audioPlaying || !audio.paused){
+        audio.pause();
+        audioPlaying = false;
+        musicPausedByVideo = true;
+        updateAudioButtonState(false);
+        if(lightbox.classList.contains('active')) showAudioOverlay(5000);
+      }
+    } else if(musicPausedByVideo){
+      musicPausedByVideo = false;
+      audio.play().then(()=>{ audioPlaying = true; updateAudioButtonState(true); }).catch(()=>{});
+    }
+  }
+  ['play','playing','pause','ended','volumechange','emptied'].forEach(ev=>{
+    document.addEventListener(ev, e=>{ if(e.target && e.target.tagName === 'VIDEO') syncMusicWithVideos(); }, true);
+  });
+  // Vídeos eliminats del DOM (tancar el visor, canviar de foto, refer la galeria)
+  new MutationObserver(muts=>{
+    if(muts.some(m=>Array.from(m.removedNodes).some(n=>n.nodeType===1 && (n.tagName==='VIDEO' || n.querySelector?.('video'))))) setTimeout(syncMusicWithVideos, 0);
+  }).observe(document.body, { childList:true, subtree:true });
+  // En ordinador, moure el ratolí dins del visor torna a mostrar el control de música
+  lightbox.addEventListener('mousemove', ()=>{ if(lightbox.classList.contains('active') && !isMobileLightbox()) showAudioOverlay(4000); });
   if(audioCloseBtnMobile){
     audioCloseBtnMobile.addEventListener('click', handleMobileAudioClose);
     audioCloseBtnMobile.addEventListener('touchend', handleMobileAudioClose, { passive: false });
