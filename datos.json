@@ -857,6 +857,12 @@
       "categoria": "astro",
       "descripcion": "Nebulosa Estàtua de la Llibertat - Hemisferi Sud, Autoria; Jymmy Robertson  Edició: Fermí Bruna",
       "fecha": "9 i 10 de maig de 2026"
+    },
+    {
+      "archivo": "/img/eclipsi-timelapse.mp4",
+      "categoria": "eclipsis",
+      "descripcion": "Timelapse eclipsi total de sol - Almenara",
+      "fecha": "12 agost 2026"
     }
   ]
 }
