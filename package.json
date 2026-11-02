@@ -1,0 +1,8 @@
+{
+  "name": "mi-web",
+  "private": true,
+  "description": "Web de fotografia de Fermí Bruna. Les dependències només les fa servir la funció del comptador (netlify/functions).",
+  "dependencies": {
+    "@netlify/blobs": "^10.7.0"
+  }
+}

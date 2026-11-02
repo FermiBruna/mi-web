@@ -880,17 +880,17 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   const LIKE_COUNTER_KEY='fermibruna_fotografia_magrades';
 
   async function fetchCounterValue(counterKey){
-    const response = await fetch(`https://countapi.mileshilliard.com/api/v1/get/${counterKey}`);
+    const response = await fetch(`/api/comptador?clau=${encodeURIComponent(counterKey)}`, { cache: 'no-store' });
     if(!response.ok) throw new Error('No s\'ha pogut consultar el comptador');
     const data = await response.json();
-    return Number(data.value || 0);
+    return Number(data.valor || 0);
   }
 
   async function hitCounter(counterKey){
-    const response = await fetch(`https://countapi.mileshilliard.com/api/v1/hit/${counterKey}`);
+    const response = await fetch(`/api/comptador?clau=${encodeURIComponent(counterKey)}`, { method: 'POST', cache: 'no-store' });
     if(!response.ok) throw new Error('No s\'ha pogut incrementar el comptador');
     const data = await response.json();
-    return Number(data.value || 0);
+    return Number(data.valor || 0);
   }
 
   async function updateVisitCounter() {

@@ -15,31 +15,20 @@
 
 ---
 
-## 2) Comptador de visites
+## 2) Comptador de visites i 3) Botó "M'agrada"
 
-### Estat actual
-- Ara s'ha implementat un comptador compartit entre usuaris amb **CountAPI**:
-  - namespace: `fermibruna-fotografia-com`
-  - key: `visites-web`
-- Es fa increment una vegada al dia per navegador (via `localStorage`) i es mostra el total global.
-- Si CountAPI falla, hi ha *fallback* local amb `localStorage`.
-
-### Dependència externa
-- Servei: `https://api.countapi.xyz`
-
----
-
-## 3) Botó/comptador de "M'agrada"
-
-### Estat actual
-- També s'ha connectat a **CountAPI** per a comptador global:
-  - namespace: `fermibruna-fotografia-com`
-  - key: `magrades-web`
-- El botó només permet un "m'agrada" per navegador (guardat amb `localStorage`).
-- Si CountAPI falla, usa un valor local de reserva.
-
-### Dependència externa
-- Servei: `https://api.countapi.xyz`
+### Estat actual (des de novembre de 2026)
+- Els dos comptadors són **propis**: una funció de Netlify (`netlify/functions/comptador.mjs`)
+  que guarda els números a **Netlify Blobs** (magatzem `comptadors`). No depenen de cap servei extern.
+- Adreça: `/api/comptador?clau=...`
+  - `GET` torna el valor; `POST` suma 1.
+  - Claus: `fermibruna_fotografia_visites` i `fermibruna_fotografia_magrades`.
+- La primera vegada es van inicialitzar amb els valors del servei antic
+  (countapi.mileshilliard.com), que ja no s'utilitza.
+- Visites: es compta una vegada al dia per navegador (via `localStorage`); l'administrador
+  autenticat no compta.
+- M'agrada: un per navegador (via `localStorage`).
+- Si la funció falla, la web mostra un valor local de reserva.
 
 ---
 
@@ -53,6 +42,5 @@
 
 ## 5) Recomanació de producció (opcional)
 
-Per a màxim control i evitar dependències gratuïtes externes, es recomana migrar:
-- comptadors i likes a una funció serverless pròpia (Netlify Functions + base de dades),
-- i mantenir Web3Forms o substituir-lo per una funció pròpia de contacte.
+- Els comptadors ja estan migrats a una funció pròpia (vegeu el punt 2).
+- El formulari continua amb Web3Forms; es podria substituir per una funció pròpia de contacte.
