@@ -594,12 +594,43 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     resumeMusicAfterVideo();
   }
 
+  // Converteix qualsevol format de data escrit al panell en un número ordenable (AAAAMMDD)
+  function fechaOrdenable(text){
+    const s = String(text || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').trim();
+    let m;
+    if ((m = s.match(/^(\d{4})[-\/.](\d{1,2})$/))) return +m[1]*10000 + +m[2]*100;
+    if ((m = s.match(/^(\d{1,2})[-\/.](\d{1,2})[-\/.](\d{4})$/))) return +m[3]*10000 + +m[2]*100 + +m[1];
+    if ((m = s.match(/^(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})$/))) return +m[1]*10000 + +m[2]*100 + +m[3];
+    const anys = s.match(/\b\d{4}\b/g);
+    if (!anys) return 0;
+    const any = +anys[anys.length - 1];
+    const mesos = [
+      [1, /^(gen|ene|jan|hivern|invierno|winter)/], [2, /^feb/], [3, /^mar[cçz]?/], [4, /^(abr|apr|primavera|spring)/],
+      [5, /^(mai|may)/], [6, /^jun/], [7, /^(jul|estiu|verano|summer)/], [8, /^(ago|aug)/],
+      [9, /^(set|sep)/], [10, /^(oc|tardor|otono|autumn)/], [11, /^nov/], [12, /^(des|dic|dec)/]
+    ];
+    const paraules = s.split(/[^a-z0-9]+/).filter(Boolean);
+    let mes = 0, dia = 0;
+    for (let i = 0; i < paraules.length && !mes; i++) {
+      const p = paraules[i];
+      if (/^\d/.test(p) || p.length < 3) continue;
+      const trobat = mesos.find(([, re]) => re.test(p));
+      if (trobat) {
+        mes = trobat[0];
+        paraules.slice(0, i).forEach(x => { if (/^\d{1,2}$/.test(x) && +x >= 1 && +x <= 31) dia = Math.max(dia, +x); });
+      }
+    }
+    return any*10000 + mes*100 + dia;
+  }
+
   // LÓGICA AUTOMÁTICA POR FECHA
   function buildGallery(items, filter) {
     const galleryGrid = document.getElementById('galleryGrid');
     galleryGrid.innerHTML = '';
     let sourceItems = [];
-    const sortedItems = [...items].sort((a,b) => b.fecha.localeCompare(a.fecha));
+    const sortedItems = items.map((item, idx) => ({ item, idx, clau: fechaOrdenable(item.fecha) }))
+      .sort((a, b) => (b.clau - a.clau) || (b.idx - a.idx))
+      .map(x => x.item);
 
     if (filter === 'initial') {
       // 6 últimes incorporacions (les últimes afegides al panell, ordre de datos.json)
