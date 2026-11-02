@@ -860,12 +860,14 @@
     },
     {
       "archivo": "/img/eclipsi-timelapse.mp4",
+      "miniatura": "/img/eclipsi-timelapse-miniatura.jpg",
       "categoria": "eclipsis",
       "descripcion": "Timelapse eclipsi total de sol - Almenara",
       "fecha": "12 agost 2026"
     },
     {
       "archivo": "/img/bluemoon-timelapse-esta.mp4",
+      "miniatura": "/img/bluemoon-timelapse-miniatura.jpg",
       "categoria": "paisatge",
       "descripcion": "Timelapse Lluna d´octubre - València",
       "fecha": "28 octubre 2026"

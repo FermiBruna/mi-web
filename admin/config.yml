@@ -30,6 +30,12 @@ collections:
                 pattern:
                   - '.*\.(jpe?g|png|webp|gif|mp4|webm|mov)$'
                   - "Nom d'arxiu no vàlid. Extensió permesa: jpg, jpeg, png, webp, gif, mp4, webm, mov"
+              - label: "Miniatura (només per a vídeos)"
+                name: "miniatura"
+                widget: "image"
+                required: false
+                choose_url: false
+                hint: "Imatge que es mostra a la galeria abans de reproduir el vídeo. Si la deixes buida, es veu el primer fotograma."
               - label: "URL de YouTube (per vídeos llargs)"
                 name: "youtube_url"
                 widget: "string"

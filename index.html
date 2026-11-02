@@ -340,11 +340,12 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     return img;
   }
 
-  function createVideoElement(src, {controls=false, muted=false, autoplay=false, loop=false, className='gallery-media gallery-media-video'} = {}){
+  function createVideoElement(src, {controls=false, muted=false, autoplay=false, loop=false, className='gallery-media gallery-media-video', poster=''} = {}){
     const video = document.createElement('video');
     video.src = src;
     video.className = className;
-    video.preload = 'metadata';
+    if (poster) video.poster = poster;
+    video.preload = poster ? 'none' : 'metadata';
     video.playsInline = true;
     video.controls = controls;
     video.muted = muted;
@@ -482,7 +483,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       thumbnail.alt = altText || 'Previsualització vídeo YouTube';
       container.appendChild(thumbnail);
     } else if(media.type === 'video'){
-      const previewVideo = createVideoElement(media.src, { muted:true, autoplay:true, loop:true, className:'lightbox-side-video' });
+      const previewVideo = createVideoElement(media.src, { muted:true, autoplay:true, loop:true, className:'lightbox-side-video', poster: item.dataset.mediaPoster || '' });
       previewVideo.setAttribute('aria-label', altText || 'Vídeo');
       container.appendChild(previewVideo);
     } else {
@@ -531,7 +532,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     }
 
     if(media.type === 'video'){
-      const video = createVideoElement(media.src, { controls:true, className:'lightbox-current-video' });
+      const video = createVideoElement(media.src, { controls:true, className:'lightbox-current-video', poster: currentItem.dataset.mediaPoster || '' });
       video.autoplay = true;
       container.appendChild(video);
       return;
@@ -646,12 +647,13 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
         mediaType = getMediaTypeFromFile(archivoNormalizado);
         mediaSrc = `img/${archivoNormalizado}`;
         media = mediaType === 'video'
-          ? createVideoElement(mediaSrc, { muted: true, loop: true, className: 'gallery-media gallery-media-video gallery-thumb-video' })
+          ? createVideoElement(mediaSrc, { muted: true, loop: true, className: 'gallery-media gallery-media-video gallery-thumb-video', poster: item.miniatura ? `img/${normalizarArchivo(item.miniatura)}` : '' })
           : createImageElement(mediaSrc, item.descripcion || '');
       }
 
       div.dataset.mediaType = mediaType;
       div.dataset.mediaSrc = mediaSrc;
+      if (mediaType === 'video' && item.miniatura) div.dataset.mediaPoster = `img/${normalizarArchivo(item.miniatura)}`;
 
       const cap = document.createElement('div');
       cap.className = 'gallery-caption';
