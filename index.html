@@ -177,7 +177,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     <button id="audioCloseBtn" class="audio-close-btn" aria-label="Aturar àudio">✕</button>
   </div>
 </div>
-<audio id="audioGaleria" preload="none"><source src="hymne-a-lamour.mp3?v=2" type="audio/mpeg"></audio>
+<audio id="audioGaleria" preload="none"><source src="hymne-a-lamour-suau.mp3?v=1" type="audio/mpeg"></audio>
 
 <script>
 (function(){
@@ -214,6 +214,12 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   const audioCloseBtnMobile=document.getElementById('audioCloseBtnMobile');
   const audioPlayPause=document.getElementById('audioPlayPause');
   // Volum inicial suau i pausa de 2,5 s abans de tornar a començar la cançó
+  audio.volume = parseFloat(audioVolume.value);
+  // A iPhone/iPad el navegador no deixa canviar el volum des de la web: amaguem el control perquè no confonga
+  audio.volume = 0.5;
+  if (audio.volume !== 0.5) {
+    [audioVolume, audioVolumeMobile].forEach(el => { if (el) el.style.display = 'none'; });
+  }
   audio.volume = parseFloat(audioVolume.value);
   audio.addEventListener('ended', ()=>{
     setTimeout(()=>{
