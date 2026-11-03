@@ -215,12 +215,26 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   const audioPlayPause=document.getElementById('audioPlayPause');
   // Volum inicial suau i pausa de 2,5 s abans de tornar a començar la cançó
   audio.volume = parseFloat(audioVolume.value);
-  // A iPhone/iPad el navegador no deixa canviar el volum des de la web: amaguem el control perquè no confonga
+  // A iPhone/iPad el navegador no deixa canviar audio.volume: allí controlem el volum amb Web Audio
   audio.volume = 0.5;
-  if (audio.volume !== 0.5) {
-    [audioVolume, audioVolumeMobile].forEach(el => { if (el) el.style.display = 'none'; });
-  }
+  const volumFix = audio.volume !== 0.5;
   audio.volume = parseFloat(audioVolume.value);
+  let audioCtx = null, gainNode = null;
+  function prepararVolumIOS(){
+    if (!volumFix) return;
+    try {
+      if (!audioCtx) {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AC();
+        gainNode = audioCtx.createGain();
+        gainNode.gain.value = parseFloat((audioVolumeMobile || audioVolume).value);
+        audioCtx.createMediaElementSource(audio).connect(gainNode).connect(audioCtx.destination);
+      }
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    } catch (e) {}
+  }
+  const playOriginal = audio.play.bind(audio);
+  audio.play = function(){ prepararVolumIOS(); return playOriginal(); };
   audio.addEventListener('ended', ()=>{
     setTimeout(()=>{
       if(audioPlaying && audio.ended){ audio.currentTime = 0; audio.play().catch(()=>{}); }
@@ -835,7 +849,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   lightbox.addEventListener('click', handleMobileLightboxInteraction);
   bindMobileAudioControlActivity();
 
-  function setAudioVolume(vol) { audio.volume = vol; audio.muted = (vol === 0); syncAudioControls(vol); }
+  function setAudioVolume(vol) { audio.volume = vol; if (gainNode) gainNode.gain.value = vol; audio.muted = (vol === 0); syncAudioControls(vol); }
   audioVolume.addEventListener('input',()=>{ setAudioVolume(parseFloat(audioVolume.value)); showAudioOverlay(5000); });
   if(audioVolumeMobile){ audioVolumeMobile.addEventListener('input',()=>{ setAudioVolume(parseFloat(audioVolumeMobile.value)); showAudioOverlay(5000); }); }
   function togglePlayPause() {
