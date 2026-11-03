@@ -178,7 +178,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     <button id="audioCloseBtn" class="audio-close-btn" aria-label="Aturar àudio">✕</button>
   </div>
 </div>
-<audio id="audioGaleria" preload="none"><source src="hymne-a-lamour-suau.mp3?v=1" type="audio/mpeg"></audio>
+<audio id="audioGaleria" preload="none" loop><source src="hymne-a-lamour-web.mp3?v=1" type="audio/mpeg"></audio>
 
 <script>
 (function(){
@@ -214,7 +214,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   const audioCloseBtn=document.getElementById('audioCloseBtn');
   const audioCloseBtnMobile=document.getElementById('audioCloseBtnMobile');
   const audioPlayPause=document.getElementById('audioPlayPause');
-  // Volum inicial suau i pausa de 2,5 s abans de tornar a començar la cançó
+  // Volum inicial
   audio.volume = parseFloat(audioVolume.value);
   // A iPhone/iPad el navegador no deixa canviar audio.volume: allí controlem el volum amb Web Audio
   audio.volume = 0.5;
@@ -236,11 +236,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   }
   const playOriginal = audio.play.bind(audio);
   audio.play = function(){ prepararVolumIOS(); return playOriginal(); };
-  audio.addEventListener('ended', ()=>{
-    setTimeout(()=>{
-      if(audioPlaying && audio.ended){ audio.currentTime = 0; audio.play().catch(()=>{}); }
-    }, 2500);
-  });
+  // La repetició és automàtica (loop); la pausa d'uns 2,5 s entre repeticions ja va dins de l'arxiu
   const audioPlayPauseMobile=document.getElementById('audioPlayPauseMobile');
   let galleryData = [];
 
