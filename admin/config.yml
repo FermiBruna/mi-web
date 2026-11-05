@@ -46,6 +46,7 @@ collections:
                 widget: "select"
                 options:
                   - { label: "Astrofotografia", value: "astro" }
+                  - { label: "Nocturnes", value: "nocturnes" }
                   - { label: "Paisatge", value: "paisatge" }
                   - { label: "Natura", value: "natura" }
                   - { label: "Moments", value: "moments" }
