@@ -889,6 +889,12 @@
       "categoria": "nocturnes",
       "descripcion": "Caserna de les tropes republicanes a l´aeròdrom Llibertat - La nit de l´eclipsi de Lluna - El Villar",
       "fecha": "28 agost 2026"
+    },
+    {
+      "archivo": "/img/orió-esta.jpg",
+      "categoria": "astro",
+      "descripcion": "Constel.lació d´Orió - Tramacastiel",
+      "fecha": "23 setembre 2026"
     }
   ]
 }
