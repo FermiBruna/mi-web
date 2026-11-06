@@ -5,8 +5,8 @@
 // VALORS_INICIALS: els números que portava el comptador de Netlify el dia del canvi.
 
 const VALORS_INICIALS = {
-  fermibruna_fotografia_visites: 0, // s'actualitza el dia de la migració
-  fermibruna_fotografia_magrades: 0,
+  fermibruna_fotografia_visites: 723, // valors de Netlify el 6-11-2026; es revisen el dia del canvi de domini
+  fermibruna_fotografia_magrades: 10,
 };
 
 const respon = (cos, status = 200) =>
