@@ -185,6 +185,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   let currentVisibleItems=[], currentIndex=0, audioOverlayTimer, currentLang='ca';
   let audioPlaying = false;
   let musicPausedByVideo = false;
+  let musicStoppedByUser = false; // el visitant ha parat la música amb 🎵 o ✕
   function forceMute(v){ v.defaultMuted = true; v.muted = true; v.volume = 0; v.setAttribute('muted',''); }
   function isMainLightboxVideo(v){ return v.classList.contains('lightbox-current-video'); }
   function pauseOtherVideos(except){
@@ -198,6 +199,13 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   function resumeMusicAfterVideo(){
     if(!musicPausedByVideo) return;
     musicPausedByVideo = false;
+    audio.play().then(()=>{ audioPlaying = true; updateAudioButtonState(true); }).catch(()=>{});
+  }
+  // En mostrar una foto (o en acabar un vídeo) la música ha de sonar, tret que el visitant l'haja parada
+  function startMusicIfAllowed(){
+    if(musicStoppedByUser) return;
+    musicPausedByVideo = false;
+    if(audioPlaying && !audio.paused) return;
     audio.play().then(()=>{ audioPlaying = true; updateAudioButtonState(true); }).catch(()=>{});
   }
   function currentIsVideo(){
@@ -558,12 +566,18 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     if(media.type === 'video'){
       const video = createVideoElement(media.src, { controls:true, className:'lightbox-current-video', poster: currentItem.dataset.mediaPoster || '' });
       video.autoplay = true;
+      // Quan el vídeo acaba, torna la música de la web
+      video.addEventListener('ended', ()=>{
+        if(!lightbox.classList.contains('active')) return;
+        startMusicIfAllowed();
+        showAudioOverlay(5000);
+      });
       container.appendChild(video);
       return;
     }
 
-    // Element sense so propi (foto): si la música s'havia pausat per un vídeo, tornar-la a posar
-    resumeMusicAfterVideo();
+    // Element sense so propi (foto): la música torna a sonar (encara que la galeria s'haja obert amb un vídeo)
+    startMusicIfAllowed();
 
     const img = createImageElement(media.src, currentItem.querySelector('.gallery-media-image, img')?.alt || 'Foto actual', {
       className: 'lightbox-current-image',
@@ -586,6 +600,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     currentVisibleItems=getVisibleItems(selector);
     currentIndex=currentVisibleItems.indexOf(item);
     if(currentIndex < 0) currentIndex = 0;
+    musicStoppedByUser = false;
 
     stopLightboxVideos();
     updateLightboxViews();
@@ -851,8 +866,8 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   if(audioVolumeMobile){ audioVolumeMobile.addEventListener('input',()=>{ setAudioVolume(parseFloat(audioVolumeMobile.value)); showAudioOverlay(5000); }); }
   function togglePlayPause() {
     musicPausedByVideo = false; // explicit user choice wins
-    if(audioPlaying) { audio.pause(); audioPlaying = false; }
-    else { audio.play().then(()=>{ audioPlaying=true; updateAudioButtonState(true); }).catch(()=>{}); }
+    if(audioPlaying) { audio.pause(); audioPlaying = false; musicStoppedByUser = true; }
+    else { musicStoppedByUser = false; audio.play().then(()=>{ audioPlaying=true; updateAudioButtonState(true); }).catch(()=>{}); }
     updateAudioButtonState(audioPlaying); showAudioOverlay(5000);
   }
   if(audioPlayPause) audioPlayPause.addEventListener('click', togglePlayPause);
@@ -860,6 +875,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
 
   const handleDesktopAudioClose = ()=>{
     musicPausedByVideo = false;
+    musicStoppedByUser = true;
     audio.pause();
     audio.currentTime=0;
     audioPlaying=false;
@@ -870,6 +886,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   const handleMobileAudioClose = (e)=>{
     if(e){ e.preventDefault(); e.stopPropagation(); }
     musicPausedByVideo = false;
+    musicStoppedByUser = true;
     audio.pause();
     audio.currentTime=0;
     audioPlaying=false;
