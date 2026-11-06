@@ -953,7 +953,10 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     const visitCounterEl = document.getElementById('visitCounter');
     
     // No contar visites de l'administrador autenticat
-    const isAdmin = window.netlifyIdentity && window.netlifyIdentity.currentUser && window.netlifyIdentity.currentUser();
+    // No compten: l'administrador autenticat ni els dispositius marcats amb ?yo
+    let noContar = false;
+    try { noContar = localStorage.getItem('fb_no_contar') === '1' || /[?&]yo\b/.test(location.search); } catch(e) {}
+    const isAdmin = noContar || (window.netlifyIdentity && window.netlifyIdentity.currentUser && window.netlifyIdentity.currentUser());
     
     const today = new Date().toISOString().slice(0,10);
     const visitKey = `visit_counted_${today}`;
@@ -1029,11 +1032,11 @@ if (window.netlifyIdentity) {
 </script>
 
 <script>
-/* Contador de visitas (Cloudflare). Abrir la web con ?yo hace que ESTE dispositivo no cuente; ?contar lo vuelve a activar. */
+/* Estadístiques (Cloudflare) i comptador de visites. Obrir la web amb ?yo fa que AQUEST dispositiu no compte en cap dels dos; ?contar ho torna a activar. */
 (function () {
   var q = location.search, KEY = 'fb_no_contar';
   try {
-    if (/[?&]yo\b/.test(q)) { localStorage.setItem(KEY, '1'); alert('Hecho: las visitas desde este dispositivo ya no se cuentan.'); history.replaceState(null, '', location.pathname + location.hash); }
+    if (/[?&]yo\b/.test(q)) { localStorage.setItem(KEY, '1'); alert('Hecho: las visitas desde este dispositivo ya no se cuentan (ni en el contador ni en las estadísticas).'); history.replaceState(null, '', location.pathname + location.hash); }
     else if (/[?&]contar\b/.test(q)) { localStorage.removeItem(KEY); alert('Las visitas desde este dispositivo vuelven a contarse.'); history.replaceState(null, '', location.pathname + location.hash); }
     if (localStorage.getItem(KEY) === '1') return;
   } catch (e) {}
