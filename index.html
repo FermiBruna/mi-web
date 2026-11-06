@@ -21,7 +21,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#494949;--surface:#3a3a3a;--text:#f0f0f0;--text-strong:#fff;--muted:#ccc;--font-title:'Playfair Display',serif;--font-body:'Lato',sans-serif;--shadow:0 10px 30px rgba(0,0,0,.3)}
@@ -953,10 +952,10 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     const visitCounterEl = document.getElementById('visitCounter');
     
     // No contar visites de l'administrador autenticat
-    // No compten: l'administrador autenticat ni els dispositius marcats amb ?yo
+    // No compten els dispositius marcats amb ?yo
     let noContar = false;
     try { noContar = localStorage.getItem('fb_no_contar') === '1' || /[?&]yo\b/.test(location.search); } catch(e) {}
-    const isAdmin = noContar || (window.netlifyIdentity && window.netlifyIdentity.currentUser && window.netlifyIdentity.currentUser());
+    const isAdmin = noContar;
     
     const today = new Date().toISOString().slice(0,10);
     const visitKey = `visit_counted_${today}`;
@@ -1014,22 +1013,6 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
 })();
 </script>
 
-<script>
-if (window.netlifyIdentity) {
-  window.netlifyIdentity.on("init", user => {
-    // Només registrem la redirecció a l'admin per a usuaris NO autenticats
-    // que completen el flux d'invitació/recuperació de contrasenya des de la
-    // pàgina principal. Així evitem que una visita normal a la home (per exemple
-    // amb àncores com #galeria o amb una sessió activa) acabe redirigint a
-    // /admin/#/collections/fotos.
-    if (!user) {
-      window.netlifyIdentity.on("login", () => {
-        document.location.href = "/admin/";
-      });
-    }
-  });
-}
-</script>
 
 <script>
 /* Estadístiques (Cloudflare) i comptador de visites. Obrir la web amb ?yo fa que AQUEST dispositiu no compte en cap dels dos; ?contar ho torna a activar. */
