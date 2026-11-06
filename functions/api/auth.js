@@ -1,12 +1,15 @@
 // Inici de sessió de Decap CMS amb GitHub (pas 1): envia l'usuari a GitHub.
 // Necessita les variables GITHUB_CLIENT_ID i GITHUB_CLIENT_SECRET (Configuració → Variables i secrets).
+// L'ID del client és públic (no és secret); si existeix la variable GITHUB_CLIENT_ID, té prioritat.
+export const CLIENT_ID_PER_DEFECTE = "Ov23liZJnY8hXE97jOIp";
+
 export async function onRequest({ request, env }) {
-  if (!env.GITHUB_CLIENT_ID) return new Response("Falta GITHUB_CLIENT_ID", { status: 500 });
+  const clientId = env.GITHUB_CLIENT_ID || CLIENT_ID_PER_DEFECTE;
   const url = new URL(request.url);
   const state = crypto.randomUUID();
   const scope = url.searchParams.get("scope") || "repo";
   const github = new URL("https://github.com/login/oauth/authorize");
-  github.searchParams.set("client_id", env.GITHUB_CLIENT_ID);
+  github.searchParams.set("client_id", clientId);
   github.searchParams.set("redirect_uri", `${url.origin}/api/callback`);
   github.searchParams.set("scope", scope);
   github.searchParams.set("state", state);

@@ -1,5 +1,6 @@
 // Inici de sessió de Decap CMS amb GitHub (pas 2): GitHub torna ací amb un codi,
 // el canviem per un token i el passem a la finestra de Decap que ha obert el popup.
+import { CLIENT_ID_PER_DEFECTE } from "./auth.js";
 const pagina = (estat, contingut) => `<!doctype html><html><body><script>
 (function () {
   var missatge = 'authorization:github:${estat}:' + JSON.stringify(${JSON.stringify(contingut)});
@@ -28,7 +29,7 @@ export async function onRequest({ request, env }) {
     method: "POST",
     headers: { accept: "application/json", "content-type": "application/json", "user-agent": "mi-web-decap-auth" },
     body: JSON.stringify({
-      client_id: env.GITHUB_CLIENT_ID,
+      client_id: env.GITHUB_CLIENT_ID || CLIENT_ID_PER_DEFECTE,
       client_secret: env.GITHUB_CLIENT_SECRET,
       code,
       redirect_uri: `${url.origin}/api/callback`,
