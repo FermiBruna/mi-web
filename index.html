@@ -58,6 +58,26 @@ section{padding:5rem 0}.section-eyebrow{text-align:center;color:#fff;text-transf
 .contact-content{max-width:600px;margin:0 auto}.contact-form{background:var(--surface);padding:2.5rem;border-radius:8px;box-shadow:var(--shadow)}.form-group{margin-bottom:1.5rem}.form-group label{display:block;margin-bottom:.5rem;font-weight:600;color:#fff}.form-group input,.form-group textarea{width:100%;padding:.9rem 1rem;border:1px solid #555;border-radius:4px;font-family:var(--font-body);font-size:1rem;background:#4a4a4a;color:var(--text)}.form-group textarea{min-height:120px;resize:vertical}.submit-btn{background:#fff;color:#333;border:none;padding:1rem 2.5rem;font-size:.9rem;text-transform:uppercase;letter-spacing:2px;cursor:pointer;border-radius:4px;width:100%;font-weight:600}
 .visitors-section{text-align:center;margin:2rem 0;color:var(--muted);font-size:.9rem}.btn-like{background:transparent;border:1px solid #fff;color:#fff;padding:.6rem 1.5rem;border-radius:30px;font-family:var(--font-body);font-size:.9rem;cursor:pointer;letter-spacing:1px;text-transform:uppercase;margin:.5rem;display:inline-flex;align-items:center;gap:.5rem}
 .qr-share{display:flex;flex-direction:column;align-items:center;gap:.6rem;margin:1.5rem auto 1.2rem}.qr-share img{width:150px;height:150px;background:#fff;border-radius:10px}.qr-share p{margin:0;max-width:22rem}
+.etiqueta-nou{background:#ffd84d;color:#222;font-size:.65rem;font-weight:700;padding:1px 6px;border-radius:999px;vertical-align:middle;margin-left:2px;text-transform:lowercase}
+.boto-albums{position:fixed;left:16px;bottom:16px;z-index:1500;display:flex;align-items:center;gap:8px;background:#ffd84d;color:#222;border:none;border-radius:999px;padding:10px 16px;font-family:var(--font-body);font-weight:700;font-size:.95rem;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35);transition:transform .2s}
+.boto-albums[hidden]{display:none}
+.boto-albums:hover{transform:translateY(-2px)}
+.boto-albums svg{width:20px;height:20px}
+.boto-albums .num{background:#222;color:#ffd84d;border-radius:999px;padding:0 8px;font-size:.8rem}
+.nav-albums[hidden]{display:none!important}
+.panell-albums{position:fixed;inset:0;z-index:1800;background:rgba(30,30,30,.75);display:flex;align-items:center;justify-content:center;padding:1rem}
+.panell-albums[hidden]{display:none}
+.panell-albums .caixa{background:var(--surface);border-radius:12px;max-width:760px;width:100%;max-height:85vh;overflow:auto;padding:1.5rem;box-shadow:var(--shadow)}
+.panell-albums .cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.panell-albums h2{font-family:var(--font-title);font-weight:600;font-size:1.5rem;margin:0;color:var(--text-strong)}
+.panell-albums .tanca{background:none;border:none;color:var(--text);font-size:1.6rem;cursor:pointer;line-height:1}
+.panell-albums .graella{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.panell-albums a.album{display:block;text-decoration:none;color:var(--text);background:#2f2f2f;border-radius:8px;overflow:hidden;transition:transform .2s}
+.panell-albums a.album:hover{transform:translateY(-3px)}
+.panell-albums a.album img{width:100%;height:150px;object-fit:cover;display:block}
+.panell-albums a.album div{padding:.7rem .8rem}
+.panell-albums a.album strong{display:block;color:var(--text-strong)}
+.panell-albums a.album small{color:var(--muted)}
 footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2rem 0;font-size:.9rem;border-top:1px solid rgba(255,255,255,.15)}.social-links{display:flex;justify-content:center;gap:1.2rem;margin:1.5rem 0;flex-wrap:wrap}.social-item{display:flex;flex-direction:column;align-items:center;gap:.35rem}.social-links a{display:inline-flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;background:rgba(255,255,255,.08);color:var(--text-strong);border:1px solid rgba(255,255,255,.18);transition:transform .2s ease,background .2s ease}.social-links a:hover{transform:scale(1.06);background:rgba(255,255,255,.16)}.social-links svg{width:28px;height:28px;fill:currentColor}.social-name{font-size:.82rem;color:rgba(255,255,255,.8);text-align:center;line-height:1.1;max-width:76px}.social-item.fb1 a{background:#1877F2;color:#fff}.social-item.fb2 a{background:#1877F2;color:#fff}.social-item.ig a{background:#E1306C;color:#fff}.social-item.px a{background:#6364FF;color:#fff}
 .lightbox{position:fixed;inset:0;background:rgba(73,73,73,.95);z-index:2000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .4s ease-in-out,visibility .4s ease-in-out;padding:0}.lightbox.active{opacity:1;visibility:visible;pointer-events:auto}.lightbox-main{position:relative;width:100%;max-width:96%;display:flex;flex-direction:column;align-items:center;justify-content:center}.lightbox-center{width:100%;max-height:84vh;display:flex;align-items:center;justify-content:center}.lightbox-center img,.lightbox-center video,.lightbox-center iframe{max-width:100%;max-height:84vh;object-fit:contain;border-radius:4px;box-shadow:0 20px 40px rgba(0,0,0,.7);opacity:0;transform:scale(.972);transition:opacity 480ms ease-in-out,transform 480ms ease-in-out}.lightbox-center video{background:#111}.lightbox-center iframe{width:90vw;max-width:1200px;aspect-ratio:16/9;border:none}.lightbox.active .lightbox-center img,.lightbox.active .lightbox-center video,.lightbox.active .lightbox-center iframe{opacity:1;transform:scale(1)}.lightbox-side{position:absolute;top:50%;transform:translateY(-50%);width:15%;max-width:150px;opacity:.42;filter:brightness(.62);cursor:pointer;border-radius:4px;overflow:hidden;z-index:5;transition:opacity .35s ease-in-out,filter .35s ease-in-out}.lightbox-side img,.lightbox-side video{width:100%;display:block}.lightbox-side video{background:#111;pointer-events:none}.lightbox-side:hover{opacity:.78;filter:brightness(.92)}.lightbox-prev{left:2%}.lightbox-next{right:2%}.close-lightbox{position:fixed;top:18px;right:18px;font-size:2rem;background:rgba(0,0,0,0.6);color:#fff;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:40;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.3);transition:transform .2s}.close-lightbox:hover{transform:scale(1.1)}.lightbox-caption{text-align:center;color:#fff;font-size:1rem;margin-top:.7rem;max-width:min(92vw,1100px);padding:0 1rem 4.2rem;line-height:1.35}.lightbox-nav-mobile{display:none}.lightbox-arrow-btn{display:inline-flex;width:56px;height:56px;border:1px solid rgba(255,255,255,.42);border-radius:999px;background:rgba(0,0,0,.38);color:#fff;align-items:center;justify-content:center;font-size:1.7rem;line-height:1;cursor:pointer;backdrop-filter:blur(8px);transition:transform .2s ease,background .2s ease,opacity .2s ease}.lightbox-arrow-btn:hover{transform:scale(1.06);background:rgba(0,0,0,.55)}.lightbox-arrow-btn:active{transform:scale(.96)}.audio-overlay{position:fixed;left:50%;bottom:1rem;transform:translateX(-50%);display:flex;align-items:center;gap:.65rem;padding:.65rem .9rem;border-radius:999px;background:rgba(20,20,20,.55);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.2);opacity:0;pointer-events:none;transition:opacity .35s ease;z-index:35}.audio-overlay.visible{opacity:1;pointer-events:auto}.audio-overlay input[type=range]{width:130px;accent-color:#fff}.audio-close-btn, .audio-play-btn{width:42px;height:42px;border:none;border-radius:999px;background:rgba(255,255,255,.14);color:#fff;cursor:pointer;font-size:1rem;display:inline-flex;align-items:center;justify-content:center}.audio-controls-mobile{display:none;align-items:center;gap:.5rem;opacity:0;pointer-events:none;transition:opacity .28s ease}.audio-controls-mobile.visible{display:flex;opacity:1;pointer-events:auto}
 /* Botón MENÚ */
@@ -95,6 +115,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       <ul class="nav-links" id="navLinks">
         <li><a href="#inicio" data-i18n="nav_inicio">Inici</a></li>
         <li><a href="#galeria" data-i18n="nav_galeria">Galeria</a></li>
+        <li class="nav-albums" hidden><a href="#" class="obre-albums"><span data-i18n="nav_albums">Àlbums</span> <span class="etiqueta-nou" data-i18n="albums_nou">nou</span></a></li>
         <li><a href="#sobre-mi" data-i18n="nav_sobre">Sobre mi</a></li>
         <li><a href="#mirades" data-i18n="nav_mirades">Mirades amigues</a></li>
         <li><a href="#noticies" data-i18n="nav_noticies">Notícies</a></li>
@@ -111,6 +132,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
     <ul class="nav-links-mobile">
       <li><a href="#inicio" data-i18n="nav_inicio">Inici</a></li>
       <li><a href="#galeria" data-i18n="nav_galeria">Galeria</a></li>
+      <li class="nav-albums" hidden><a href="#" class="obre-albums"><span data-i18n="nav_albums">Àlbums</span> <span class="etiqueta-nou" data-i18n="albums_nou">nou</span></a></li>
       <li><a href="#sobre-mi" data-i18n="nav_sobre">Sobre mi</a></li>
       <li><a href="#mirades" data-i18n="nav_mirades">Mirades amigues</a></li>
       <li><a href="#noticies" data-i18n="nav_noticies">Notícies</a></li>
@@ -250,7 +272,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
 
   const texts={
     ca: { meta_title:'Portfolio de Fotografia – Fermí Bruna',meta_desc:'Fermí Bruna, aficionat a la fotografia, des de València: astrofotografia, paisatge, natura, eclipsis i ICM.',
-      nav_inicio:'Inici',nav_galeria:'Galeria',nav_sobre:'Sobre mi',nav_mirades:'Mirades amigues',nav_noticies:'Notícies',nav_contacto:'Contacte', show_all:'Veure totes',
+      nav_inicio:'Inici',nav_galeria:'Galeria',nav_albums:'Àlbums',albums_nou:'nou',albums_titol:"Àlbums d'esdeveniments",nav_sobre:'Sobre mi',nav_mirades:'Mirades amigues',nav_noticies:'Notícies',nav_contacto:'Contacte', show_all:'Veure totes',
       hero_procedencia:'Des de València',hero_title:'Fotografia per als sentits',hero_subtitle:'Benvingut al món visual de Fermí Bruna - fotografia',hero_btn:'Galeria',
       gal_eyebrow:'Galeria',gal_title:'Una passejada visual',gal_subtitle:'Un mosaic inicial amb una selecció de fotografies. Pots punxar qualsevol imatge per veure-la en gran.',
       filter_astro:'Astrofotografia',filter_nocturnes:'Nocturnes',filter_land:'Paisatge',filter_macro:'Natura',filter_moments:'Moments',filter_eclipsis:'Eclipsis',filter_icm:'ICM - intentional camera movement',
@@ -264,7 +286,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       contact_title:'Contacte',contact_subtitle:'Deixa\'m un missatge',form_name_label:'Nom',form_name_ph:'Deixa el teu nom',form_email_label:'Correu electrònic',form_email_ph:'exemple@correu.com',form_msg_label:'Missatge',form_msg_ph:'Escriu el teu missatge...',form_submit:'Enviar missatge',visits_label:'Visites',like_btn:'M\'agrada',qr_text:'Comparteix aquesta web: escaneja el codi amb la càmera del mòbil.'
     },
     es: { meta_title:'Portafolio de Fotografía – Fermí Bruna',meta_desc:'Fermí Bruna, aficionado a la fotografía, desde València: astrofotografía, paisaje, naturaleza, eclipses e ICM.',
-      nav_inicio:'Inicio',nav_galeria:'Galería',nav_sobre:'Sobre mí',nav_mirades:'Miradas amigas',nav_noticies:'Noticias',nav_contacto:'Contacto', show_all:'Ver todas',
+      nav_inicio:'Inicio',nav_galeria:'Galería',nav_albums:'Álbumes',albums_nou:'nuevo',albums_titol:'Álbumes de eventos',nav_sobre:'Sobre mí',nav_mirades:'Miradas amigas',nav_noticies:'Noticias',nav_contacto:'Contacto', show_all:'Ver todas',
       hero_procedencia:'Desde València',hero_title:'Fotografía para los sentidos',hero_subtitle:'Bienvenido al mundo visual de Fermí Bruna - fotografía',hero_btn:'Galería',
       gal_eyebrow:'Galería',gal_title:'Un paseo visual',gal_subtitle:'Un mosaico inicial con una selección de fotografías. Puedes pulsar cualquier imagen para verla en grande.',
       filter_astro:'Astrofotografía',filter_nocturnes:'Nocturnas',filter_land:'Paisaje',filter_macro:'Naturaleza',filter_moments:'Momentos',filter_eclipsis:'Eclipses',filter_icm:'ICM - intentional camera movement',
@@ -278,7 +300,7 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
       contact_title:'Contacto',contact_subtitle:'Déjame un mensaje',form_name_label:'Nombre',form_name_ph:'Deja tu nombre',form_email_label:'Correo electrónico',form_email_ph:'ejemplo@correo.com',form_msg_label:'Mensaje',form_msg_ph:'Escribe tu mensaje...',form_submit:'Enviar mensaje',visits_label:'Visites',like_btn:'Me gusta',qr_text:'Comparte esta web: escanea el código con la cámara del móvil.'
     },
     en: { meta_title:'Photography Portfolio – Fermí Bruna',meta_desc:'Fermí Bruna, amateur photographer from València: astrophotography, landscape, nature, eclipses and ICM.',
-      nav_inicio:'Home',nav_galeria:'Gallery',nav_sobre:'About me',nav_mirades:'Fellow looks',nav_noticies:'News',nav_contacto:'Contact', show_all:'View all',
+      nav_inicio:'Home',nav_galeria:'Gallery',nav_albums:'Albums',albums_nou:'new',albums_titol:'Event albums',nav_sobre:'About me',nav_mirades:'Fellow looks',nav_noticies:'News',nav_contacto:'Contact', show_all:'View all',
       hero_procedencia:'From València',hero_title:'Photography for the senses',hero_subtitle:'Welcome to the visual world of Fermí Bruna - photography',hero_btn:'Gallery',
       gal_eyebrow:'Gallery',gal_title:'A visual stroll',gal_subtitle:'An initial mosaic with a selection of photographs. You can click any image to view it larger.',
       filter_astro:'Astrophotography',filter_nocturnes:'Night',filter_land:'Landscape',filter_macro:'Nature',filter_moments:'Moments',filter_eclipsis:'Eclipses',filter_icm:'ICM - intentional camera movement',
@@ -1017,6 +1039,47 @@ footer{background:#2a2a2a;color:rgba(255,255,255,.6);text-align:center;padding:2
   s.crossOrigin = 'anonymous';
   s.setAttribute('data-cf-beacon', '{"version":"2024.11.0","token":"f0f03d0605bf45f1a3b17cf7d5e6861f","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}');
   document.body.appendChild(s);
+})();
+</script>
+<button class="boto-albums" id="botoAlbums" type="button" hidden aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2"/></svg><span data-i18n="nav_albums">Àlbums</span><span class="num" id="numAlbums"></span></button>
+<div class="panell-albums" id="panellAlbums" hidden role="dialog" aria-modal="true" aria-labelledby="titolAlbums">
+  <div class="caixa">
+    <div class="cap"><h2 id="titolAlbums" data-i18n="albums_titol">Àlbums d'esdeveniments</h2><button class="tanca" id="tancaAlbums" aria-label="Tanca">✕</button></div>
+    <div class="graella" id="graellaAlbums"></div>
+  </div>
+</div>
+<script>
+/* Àlbums d'esdeveniments: botó flotant, entrada al menú i panell (només si hi ha àlbums actius) */
+(function(){
+  var T={ca:{fotos:'fotografies',fins:'fins al'},es:{fotos:'fotografías',fins:'hasta el'},en:{fotos:'photos',fins:'until'}};
+  var panell=document.getElementById('panellAlbums'), graella=document.getElementById('graellaAlbums'), albums=[];
+  function lang(){ return document.documentElement.lang||'ca'; }
+  function pinta(){
+    var t=T[lang()]||T.ca; graella.innerHTML='';
+    albums.forEach(function(a){
+      var d=new Date(a.expiresAt), el=document.createElement('a'); el.className='album';
+      el.href='/albums/'+a.slug+'?lang='+lang();
+      el.innerHTML='<img alt="" loading="lazy"><div><strong></strong><small></small></div>';
+      el.querySelector('img').src='/api/albums/'+a.slug+'/'+a.cover+'/thumb.jpg';
+      el.querySelector('strong').textContent=a.title;
+      el.querySelector('small').textContent=a.count+' '+t.fotos+' · '+t.fins+' '+d.getDate()+'/'+(d.getMonth()+1);
+      graella.appendChild(el);
+    });
+  }
+  function obri(e){ if(e) e.preventDefault();
+    var m=document.getElementById('mobileMenu'); if(m && m.classList.contains('open')){ var b=document.getElementById('menuBtn'); if(b) b.click(); }
+    pinta(); panell.hidden=false; document.body.style.overflow='hidden'; }
+  function tanca(){ panell.hidden=true; document.body.style.overflow=''; }
+  document.getElementById('tancaAlbums').onclick=tanca;
+  panell.addEventListener('click',function(e){ if(e.target===panell) tanca(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape' && !panell.hidden) tanca(); });
+  fetch('/api/albums',{cache:'no-store'}).then(function(r){ return r.ok?r.json():[]; }).then(function(llista){
+    albums=Array.isArray(llista)?llista:[]; if(!albums.length) return;
+    document.getElementById('numAlbums').textContent=albums.length;
+    var boto=document.getElementById('botoAlbums'); boto.hidden=false; boto.onclick=obri;
+    document.querySelectorAll('.nav-albums').forEach(function(li){ li.hidden=false; });
+    document.querySelectorAll('.obre-albums').forEach(function(a){ a.addEventListener('click',obri); });
+  }).catch(function(){});
 })();
 </script>
 </body>

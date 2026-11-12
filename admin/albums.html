@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Àlbums – pujar</title>
+<link rel="icon" href="/Logo.png">
+<style>
+:root{--bg:#494949;--surface:#3a3a3a;--text:#f0f0f0;--muted:#bbb;--accent:#ffd84d}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.5}
+main{max-width:860px;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+h1{font-weight:600;margin:0 0 .25rem}
+h2{font-size:1.15rem;margin:2rem 0 .75rem}
+p.ajuda{color:var(--muted);margin:.25rem 0 1rem;font-size:.95rem}
+.targeta{background:var(--surface);border-radius:10px;padding:1.25rem;margin-top:1rem}
+label{display:block;font-size:.9rem;color:var(--muted);margin:.75rem 0 .3rem}
+input[type=text]{width:100%;padding:.65rem .8rem;border-radius:8px;border:1px solid #666;background:#2f2f2f;color:#fff;font-size:1rem}
+button,.boto{background:var(--accent);color:#222;border:none;border-radius:999px;padding:.7rem 1.3rem;font-weight:700;font-size:1rem;cursor:pointer;text-decoration:none;display:inline-block}
+button.secundari{background:#5a5a5a;color:#fff}
+button:disabled{opacity:.5;cursor:default}
+.zona{border:2px dashed #777;border-radius:10px;padding:2rem 1rem;text-align:center;color:var(--muted);cursor:pointer;margin-top:.5rem}
+.zona.sobre{border-color:var(--accent);color:#fff}
+.previ{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:6px;margin-top:1rem}
+.previ div{position:relative;aspect-ratio:1;border-radius:6px;overflow:hidden;cursor:pointer;background:#2f2f2f;outline:3px solid transparent}
+.previ div.portada{outline-color:var(--accent)}
+.previ div.portada::after{content:'Portada';position:absolute;left:4px;bottom:4px;background:var(--accent);color:#222;font-size:.7rem;font-weight:700;padding:1px 6px;border-radius:999px}
+.previ img{width:100%;height:100%;object-fit:cover;display:block}
+.barra{height:10px;background:#2f2f2f;border-radius:999px;overflow:hidden;margin:1rem 0 .4rem}
+.barra div{height:100%;width:0;background:var(--accent);transition:width .2s}
+.error{color:#ff9b8a;margin-top:.75rem}
+.fet{color:#9be39b}
+.enllac{display:flex;gap:.5rem;margin-top:.75rem}
+.enllac input{flex:1}
+.llista .album{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.75rem 0;border-bottom:1px solid #555}
+.llista .album:last-child{border-bottom:none}
+.llista small{color:var(--muted)}
+.llista .accions{display:flex;gap:.4rem;flex-shrink:0}
+.llista button{padding:.4rem .8rem;font-size:.85rem}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <h1>Àlbums d'esdeveniments</h1>
+  <p class="ajuda">Cada àlbum es veu a la web durant 15 dies i després s'esborra sol.</p>
+
+  <section id="pasEntrar" class="targeta">
+    <p style="margin-top:0">Per pujar àlbums has d'entrar amb el teu compte de GitHub, com a Decap.</p>
+    <button id="entrar">Entra amb GitHub</button>
+    <p class="error" id="errEntrar"></p>
+  </section>
+
+  <div id="panell" hidden>
+    <section class="targeta">
+      <h2 style="margin-top:0">Nou àlbum</h2>
+      <label for="titol">Títol</label>
+      <input type="text" id="titol" placeholder="La Murta d'Alzira">
+      <label for="data">Data o lloc (opcional)</label>
+      <input type="text" id="data" placeholder="Novembre 2026">
+      <label>Fotografies (JPEG o PNG)</label>
+      <div class="zona" id="zona">Arrossega aquí les fotos des del Finder<br>o fes clic per triar-les</div>
+      <input type="file" id="fitxers" accept="image/jpeg,image/png,image/webp" multiple hidden>
+      <p class="ajuda" id="resum"></p>
+      <div class="previ" id="previ"></div>
+      <p class="ajuda" id="ajudaPortada" hidden>Fes clic en una foto per triar-la com a portada.</p>
+      <div style="margin-top:1rem"><button id="publica" disabled>Publica l'àlbum</button></div>
+      <div id="progres" hidden>
+        <div class="barra"><div id="barra"></div></div>
+        <p class="ajuda" id="textProgres"></p>
+      </div>
+      <p class="error" id="errPublica"></p>
+      <div id="resultat" hidden>
+        <p class="fet">Àlbum publicat. Aquest és l'enllaç per compartir:</p>
+        <div class="enllac"><input type="text" id="url" readonly><button class="secundari" id="copia">Copia</button></div>
+        <p style="margin-top:1rem"><a class="boto" id="obri" target="_blank">Obri l'àlbum</a></p>
+      </div>
+    </section>
+
+    <section class="targeta llista">
+      <h2 style="margin-top:0">Àlbums actius</h2>
+      <div id="llista"><p class="ajuda">Carregant…</p></div>
+    </section>
+  </div>
+</main>
+
+<script>
+(function(){
+  var sessio = sessionStorage.getItem('albumsSessio');
+  var fitxers = [], portada = 0;
+  var $ = function(id){ return document.getElementById(id); };
+  var LOCAL = location.hostname === 'localhost';
+  // El login de GitHub està registrat a mi-web-16p.pages.dev (igual que Decap); els enllaços es comparteixen amb el domini propi
+  var AUTH = LOCAL ? '' : 'https://mi-web-16p.pages.dev';
+  var WEB = LOCAL ? location.origin : 'https://fermibruna-fotografia.com';
+
+  function api(ruta, opcions){
+    opcions = opcions || {};
+    opcions.headers = Object.assign({}, opcions.headers || {}, sessio ? {'x-session': sessio} : {});
+    return fetch('/api/albums' + ruta, opcions).then(function(r){
+      return r.json().catch(function(){ return {}; }).then(function(d){
+        if(!r.ok){ if(r.status===401){ sessionStorage.removeItem('albumsSessio'); } throw new Error(d.error || ('Error ' + r.status)); }
+        return d;
+      });
+    });
+  }
+
+  function mostraPanell(){ $('pasEntrar').hidden = true; $('panell').hidden = false; carregaLlista(); }
+
+  // ---- Entrar amb GitHub (el mateix sistema que fa servir Decap) ----
+  $('entrar').onclick = function(){
+    $('errEntrar').textContent = '';
+    if(LOCAL){ return iniciaSessio('dev'); }
+    var finestra = window.open(AUTH + '/api/auth?provider=github&scope=repo', 'github', 'width=600,height=720');
+    function rebre(e){
+      if(typeof e.data !== 'string' || (AUTH && e.origin !== AUTH && e.origin !== location.origin)) return;
+      if(e.data === 'authorizing:github'){ e.source.postMessage('authorizing:github', e.origin); return; }
+      var m = e.data.match(/^authorization:github:(success|error):(.*)$/);
+      if(!m) return;
+      window.removeEventListener('message', rebre);
+      var dades = {}; try { dades = JSON.parse(m[2]); } catch(err){}
+      if(m[1] !== 'success' || !dades.token){ $('errEntrar').textContent = dades.message || 'No s\'ha pogut entrar.'; return; }
+      iniciaSessio(dades.token);
+    }
+    window.addEventListener('message', rebre);
+    if(!finestra){ $('errEntrar').textContent = 'El navegador ha bloquejat la finestra de GitHub. Permet les finestres emergents i torna-ho a provar.'; }
+  };
+  function iniciaSessio(token){
+    api('/login', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({token: token})})
+      .then(function(d){ sessio = d.session; sessionStorage.setItem('albumsSessio', sessio); mostraPanell(); })
+      .catch(function(err){ $('errEntrar').textContent = err.message; });
+  }
+
+  // ---- Triar fotos ----
+  var zona = $('zona');
+  zona.onclick = function(){ $('fitxers').click(); };
+  $('fitxers').onchange = function(){ afegeix(this.files); this.value=''; };
+  zona.addEventListener('dragover', function(e){ e.preventDefault(); zona.classList.add('sobre'); });
+  zona.addEventListener('dragleave', function(){ zona.classList.remove('sobre'); });
+  zona.addEventListener('drop', function(e){ e.preventDefault(); zona.classList.remove('sobre'); afegeix(e.dataTransfer.files); });
+
+  function afegeix(llista){
+    var noves = Array.prototype.filter.call(llista, function(f){ return /^image\/(jpeg|png|webp)$/.test(f.type); });
+    var rebutjades = llista.length - noves.length;
+    fitxers = fitxers.concat(noves).sort(function(a,b){ return a.name.localeCompare(b.name, undefined, {numeric:true}); });
+    $('resum').textContent = fitxers.length + ' fotos seleccionades' + (rebutjades ? ' · ' + rebutjades + ' fitxers ignorats (només JPEG, PNG o WebP; les fotos HEIC de l\'iPhone s\'han d\'exportar abans a JPEG)' : '');
+    pintaPrevi();
+  }
+  function pintaPrevi(){
+    var previ = $('previ'); previ.innerHTML = '';
+    fitxers.forEach(function(f, i){
+      var d = document.createElement('div'); if(i===portada) d.className='portada';
+      var img = document.createElement('img'); img.loading='lazy'; img.src = URL.createObjectURL(f); img.alt = f.name;
+      d.appendChild(img); d.title = f.name;
+      d.onclick = function(){ portada = i; pintaPrevi(); };
+      previ.appendChild(d);
+    });
+    $('ajudaPortada').hidden = !fitxers.length;
+    $('publica').disabled = !fitxers.length;
+  }
+
+  // ---- Reduir una foto al navegador ----
+  function redueix(fitxer, costat, qualitat){
+    return createImageBitmap(fitxer, {imageOrientation:'from-image'}).catch(function(){ return createImageBitmap(fitxer); }).then(function(bmp){
+      var escala = Math.min(1, costat / Math.max(bmp.width, bmp.height));
+      var w = Math.round(bmp.width * escala), h = Math.round(bmp.height * escala);
+      var c = document.createElement('canvas'); c.width = w; c.height = h;
+      var ctx = c.getContext('2d'); ctx.imageSmoothingQuality = 'high'; ctx.drawImage(bmp, 0, 0, w, h);
+      bmp.close && bmp.close();
+      return new Promise(function(res){ c.toBlob(res, 'image/jpeg', qualitat); });
+    });
+  }
+  function puja(slug, n, mida, blob, intents){
+    intents = intents || 0;
+    return api('/' + slug + '/foto/' + n + '/' + mida, {method:'PUT', headers:{'content-type':'image/jpeg'}, body: blob})
+      .catch(function(err){ if(intents < 2) return new Promise(function(r){ setTimeout(r, 1500); }).then(function(){ return puja(slug, n, mida, blob, intents+1); }); throw err; });
+  }
+
+  // ---- Publicar ----
+  $('publica').onclick = function(){
+    var titol = $('titol').value.trim();
+    $('errPublica').textContent = '';
+    if(!titol){ $('errPublica').textContent = 'Escriu un títol per a l\'àlbum.'; $('titol').focus(); return; }
+    var total = fitxers.length, fets = 0, slug;
+    $('publica').disabled = true; $('progres').hidden = false; $('resultat').hidden = true;
+    var actualitza = function(){ $('barra').style.width = (fets/total*100) + '%'; $('textProgres').textContent = 'Pujant ' + fets + ' de ' + total + '… No tanques aquesta pàgina.'; };
+    actualitza();
+    api('', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({title: titol, date: $('data').value.trim()})})
+      .then(function(meta){
+        slug = meta.slug;
+        var seg = 0;
+        function treballador(){
+          if(seg >= total) return Promise.resolve();
+          var i = seg++, n = i + 1, f = fitxers[i];
+          return redueix(f, 2048, 0.86)
+            .then(function(gran){ return puja(slug, n, 'web', gran); })
+            .then(function(){ return redueix(f, 640, 0.8); })
+            .then(function(petita){ return puja(slug, n, 'thumb', petita); })
+            .then(function(){ fets++; actualitza(); return treballador(); });
+        }
+        return Promise.all([treballador(), treballador(), treballador()]);
+      })
+      .then(function(){ return api('/' + slug + '/publica', {method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify({count: total, cover: portada + 1})}); })
+      .then(function(){
+        var url = WEB + '/albums/' + slug;
+        $('url').value = url; $('obri').href = url; $('resultat').hidden = false;
+        $('textProgres').textContent = 'Fet: ' + total + ' fotos pujades.';
+        fitxers = []; portada = 0; pintaPrevi(); $('resum').textContent = ''; $('titol').value = ''; $('data').value = '';
+        carregaLlista();
+      })
+      .catch(function(err){
+        $('errPublica').textContent = 'No s\'ha pogut acabar: ' + err.message + (err.message.indexOf('entrar') >= 0 ? ' Recarrega la pàgina i torna a entrar.' : ' Torna-ho a provar.');
+        $('publica').disabled = false;
+      });
+  };
+  $('copia').onclick = function(){ $('url').select(); navigator.clipboard ? navigator.clipboard.writeText($('url').value) : document.execCommand('copy'); this.textContent = 'Copiat'; var b=this; setTimeout(function(){ b.textContent='Copia'; }, 1500); };
+
+  // ---- Llista d'àlbums actius ----
+  function carregaLlista(){
+    api('').then(function(llista){
+      var cont = $('llista'); cont.innerHTML = '';
+      if(!llista.length){ cont.innerHTML = '<p class="ajuda">Ara mateix no hi ha cap àlbum actiu.</p>'; return; }
+      llista.forEach(function(a){
+        var dies = Math.max(0, Math.ceil((a.expiresAt - Date.now()) / 86400000));
+        var fila = document.createElement('div'); fila.className = 'album';
+        var info = document.createElement('div');
+        info.innerHTML = '<strong></strong><br><small></small>';
+        info.querySelector('strong').textContent = a.title;
+        info.querySelector('small').textContent = a.count + ' fotos · queden ' + dies + ' dies';
+        var acc = document.createElement('div'); acc.className = 'accions';
+        var url = WEB + '/albums/' + a.slug;
+        var bC = document.createElement('button'); bC.className='secundari'; bC.textContent='Copia l\'enllaç';
+        bC.onclick = function(){ navigator.clipboard.writeText(url); bC.textContent='Copiat'; setTimeout(function(){ bC.textContent='Copia l\'enllaç'; }, 1500); };
+        var bE = document.createElement('button'); bE.className='secundari'; bE.textContent='Esborra';
+        bE.onclick = function(){
+          if(!confirm('Segur que vols esborrar «' + a.title + '»? Les fotos desapareixeran de la web.')) return;
+          bE.disabled = true; api('/' + a.slug, {method:'DELETE'}).then(carregaLlista).catch(function(err){ alert(err.message); bE.disabled=false; });
+        };
+        acc.appendChild(bC); acc.appendChild(bE);
+        fila.appendChild(info); fila.appendChild(acc); cont.appendChild(fila);
+      });
+    }).catch(function(){ $('llista').innerHTML = '<p class="ajuda">No s\'ha pogut carregar la llista.</p>'; });
+  }
+
+  if(sessio) mostraPanell();
+})();
+</script>
+</body>
+</html>
