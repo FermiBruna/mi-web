@@ -147,6 +147,14 @@ export async function onRequest({ request, env, params }) {
   document.querySelectorAll('.idiomes button').forEach(function(b){ b.onclick=function(){ idioma(b.dataset.l); }; });
   var q=new URLSearchParams(location.search).get('lang'), nav=(navigator.language||'').slice(0,2);
   idioma(q || (nav==='es'||nav==='en'?nav:'ca'));
+  // Comptador de visites de la web: la visita a un àlbum també compta (una vegada al dia per navegador; ?yo l'exclou)
+  try {
+    var avui='visit_counted_'+new Date().toISOString().slice(0,10);
+    if(localStorage.getItem('fb_no_contar')!=='1' && localStorage.getItem(avui)!=='1'){
+      fetch('/api/comptador?clau=fermibruna_fotografia_visites',{method:'POST',cache:'no-store'})
+        .then(function(r){ if(r.ok) localStorage.setItem(avui,'1'); }).catch(function(){});
+    }
+  } catch(e) {}
   var x0=null;
   visor.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
   visor.addEventListener('touchend',function(e){ if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; if(Math.abs(dx)>50) mostra(actual+(dx<0?1:-1)); x0=null; });
