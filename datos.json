@@ -962,6 +962,12 @@
       "archivo": "/img/cocoonnebula-esta.jpg",
       "categoria": "astro",
       "descripcion": "Cocoon Nebula - València"
+    },
+    {
+      "archivo": "/img/riusellentxella-esta.jpg",
+      "categoria": "nocturnes",
+      "descripcion": "Riu Sellent tot just abans d´estimbar-se davant de Xella",
+      "fecha": "9 desembre 2022"
     }
   ]
 }
